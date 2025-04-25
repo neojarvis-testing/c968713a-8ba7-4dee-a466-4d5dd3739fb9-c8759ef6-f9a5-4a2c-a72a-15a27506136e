@@ -61,7 +61,3 @@ module.exports = function (config) {
     restartOnFileChange: false
   });
 };
-};
-
-};
-
