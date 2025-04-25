@@ -1,0 +1,86 @@
+name: Build
+'on':
+  push:
+    branches:
+      - '*'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: zulu
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: '${{ runner.os }}-sonar'
+          restore-keys: '${{ runner.os }}-sonar'
+      - name: Cache SonarQube scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v4
+        with:
+          path: ./.sonar/scanner
+          key: '${{ runner.os }}-sonar-scanner'
+          restore-keys: '${{ runner.os }}-sonar-scanner'
+      - name: Install SonarQube scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p .sonar/scanner
+          dotnet tool install --global dotnet-sonarscanner --version 6.2.0
+      - name: Update SonarQube scanner
+        run: |
+          dotnet tool update --global dotnet-sonarscanner --version 6.2.0
+      - name: Copy specific folders to .NET app
+        run: |
+          ls -la
+          for prefix in angular reactapp public; do
+            for dir in $(find . -maxdepth 1 -type d -name "${prefix}*"); do
+              cp -r "$dir" dotnetapp/
+            done
+          done
+          ls -la dotnetapp/
+      - name: Build and analyze dotnet
+        env:
+          SONAR_TOKEN: 811c9a490983734401ba4e491eaefc8bfa7281de
+          REPOSITORY_NAME: >-
+            c968713a-8ba7-4dee-a466-4d5dd3739fb9-c8759ef6-f9a5-4a2c-a72a-15a27506136e
+          ORGANIZATION_NAME: iamneo-production
+        run: >
+          cd dotnetapp
+
+          ~/.dotnet/tools/dotnet-sonarscanner begin
+          /k:"${ORGANIZATION_NAME}_${REPOSITORY_NAME}" /o:"${ORGANIZATION_NAME}"
+          /d:sonar.token="${SONAR_TOKEN}"
+          /d:sonar.host.url="https://sonarcloud.io/"
+
+          dotnet build
+
+          ~/.dotnet/tools/dotnet-sonarscanner end
+          /d:sonar.token="${SONAR_TOKEN}"
+      - name: Trigger API
+        if: always()
+        env:
+          API_URL: '${{ secrets.API_URL }}'
+          API_SECRET: '${{ secrets.API_SECRET }}'
+        run: >
+          REPO_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d '/' -f 2)
+
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+
+          API_PAYLOAD="{ \"repo_id\": \"$REPO_NAME\", \"branch_name\":
+          \"$BRANCH_NAME\", \"api_secret\": \"$API_SECRET\" }"
+
+          curl -X POST -H "Content-Type: application/json" -d "$API_PAYLOAD"
+          $API_URL
