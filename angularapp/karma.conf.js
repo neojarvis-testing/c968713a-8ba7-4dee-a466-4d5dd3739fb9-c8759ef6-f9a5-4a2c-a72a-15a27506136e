@@ -60,4 +60,11 @@ module.exports = function (config) {
     singleRun: true,
     restartOnFileChange: false
   });
+<<<<<<< HEAD
 };
+=======
+};
+
+};
+
+>>>>>>> 3fcf0f1d836a7f70aff0ddbdc4e0fd164bac8320
