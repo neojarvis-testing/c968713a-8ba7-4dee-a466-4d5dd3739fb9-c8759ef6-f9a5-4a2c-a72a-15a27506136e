@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AppRoutingModule,
     AppRoutingModule,
+    AppRoutingModule,
     HttpClientModule,
   ],
   providers: [],
