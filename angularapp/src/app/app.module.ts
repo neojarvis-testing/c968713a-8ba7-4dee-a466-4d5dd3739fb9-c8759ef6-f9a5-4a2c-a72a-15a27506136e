@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdmineditloanComponent } from './components/admineditloan/admineditloan.component';
@@ -46,7 +48,11 @@ import { ViewloanComponent } from './components/viewloan/viewloan.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+
+    AppRoutingModule,
+    AppRoutingModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
