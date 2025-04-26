@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Services;
 using dotnetapp.Models;
-using dotnetapp.Services;
 
 namespace dotnetapp.Controllers
 {
@@ -23,8 +22,9 @@ namespace dotnetapp.Controllers
             try
             {
                 var (status, message) = await _authService.Login(model);
-                if (status == 0)
+                if (status == 0){
                     return Unauthorized(message);
+                }
 
                 return Ok(new { Token = message });
             }
