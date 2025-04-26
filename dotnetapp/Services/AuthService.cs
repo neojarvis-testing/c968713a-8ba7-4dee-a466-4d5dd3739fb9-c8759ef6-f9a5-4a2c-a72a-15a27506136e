@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -7,9 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using dotnetapp.Models;
-using dotnetapp.Data;
 
 namespace dotnetapp.Services
 {
@@ -18,75 +17,49 @@ namespace dotnetapp.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-        private readonly ApplicationDbContext _context;
 
         public AuthService(
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration,
-            ApplicationDbContext context)
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
-            _context = context;
         }
-
-// //public async Task<(int, string)> Registration(User model, string role)
-// {
-//     // Check if user already exists
-//     var userExists = await _userManager.FindByEmailAsync(model.Email);
-//     if (userExists != null)
-//         return (0, "User already exists");
-
-//     // Create user
-//     var user = new ApplicationUser
-//     {
-//         UserName = model.Email,
-//         Email = model.Email,
-//         SecurityStamp = Guid.NewGuid().ToString(),
-//         Name = model.Name
-//     };
-
-//     var result = await _userManager.CreateAsync(user, model.Password);
-//     if (!result.Succeeded)
-//     {
-//         var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-//         return (0, $"User creation failed! Errors: {errors}");
-//     }
-
-//     // Assign role
-//     if (!await _roleManager.RoleExistsAsync(role))
-//         await _roleManager.CreateAsync(new IdentityRole(role));
-
-//     await _userManager.AddToRoleAsync(user, role);
-
-//     return (1, "User created successfully!");
-// }
 
         public async Task<(int, string)> Registration(User model, string role)
         {
+            // Check if user already exists
             var userExists = await _userManager.FindByEmailAsync(model.Email);
             if (userExists != null)
                 return (0, "User already exists");
 
+            // Create user
             var user = new ApplicationUser
             {
                 UserName = model.Email,
                 Email = model.Email,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                Name=model.Username
+                Name = model.Username,
+                SecurityStamp = Guid.NewGuid().ToString()
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
-                return (0, "User creation failed! Please check user details and try again");
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                return (0, $"User creation failed! Errors: {errors}");
+            }
 
+            // Assign role
             if (!await _roleManager.RoleExistsAsync(role))
-                await _roleManager.CreateAsync(new IdentityRole(role));
+            {
+                var roleResult = await _roleManager.CreateAsync(new IdentityRole(role));
+                if (!roleResult.Succeeded)
+                    return (0, "Role creation failed!");
+            }
 
             await _userManager.AddToRoleAsync(user, role);
-
             return (1, "User created successfully!");
         }
 
@@ -102,8 +75,8 @@ namespace dotnetapp.Services
             var userRoles = await _userManager.GetRolesAsync(user);
             var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
             claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
 
