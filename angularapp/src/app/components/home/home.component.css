@@ -10,7 +10,9 @@
   .home-container h1 {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #333;
+    color:white;
+    -webkit-text-stroke: 1px black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
   
   .home-container p {
