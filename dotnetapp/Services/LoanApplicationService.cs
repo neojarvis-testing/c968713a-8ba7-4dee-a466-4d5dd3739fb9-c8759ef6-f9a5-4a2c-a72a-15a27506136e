@@ -44,7 +44,6 @@ namespace dotnetapp.Services
             var existingLoanApplication = await _context.LoanApplications.FindAsync(loanApplicationId);
             if (existingLoanApplication == null) return false;
 
-            // Update properties
             existingLoanApplication.UserId = loanApplication.UserId;
             existingLoanApplication.LoanId = loanApplication.LoanId;
             existingLoanApplication.SubmissionDate = loanApplication.SubmissionDate;
