@@ -1,1 +1,24 @@
+<div class="container">
 <h1>Login</h1>
+    <form #loginData="ngForm" (ngSubmit)="login()">
+        <div >  
+        <label class="form-label" for="">Email:</label>
+          <input type="email" name="email" id="email" class="form-control" [(ngModel)]="logindto.Email" placeholder="Enter the Email">
+  </div>
+
+  <div>  
+    <label for="" class="form-label">Password:</label>
+      <input type="password" class="form-control" name="password" id="password" [(ngModel)]="logindto.Password" placeholder="Enter the Password">
+</div>
+
+<div style="text-align: center;">
+    <button type="submit" class="btn btn-success">Login</button>
+</div>
+
+<div>
+    <p></p>
+</div>
+
+    </form>
+
+</div>
