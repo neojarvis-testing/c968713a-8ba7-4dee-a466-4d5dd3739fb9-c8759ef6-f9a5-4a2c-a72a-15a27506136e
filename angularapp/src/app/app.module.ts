@@ -52,11 +52,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppRoutingModule,
-
-    AppRoutingModule,
-    AppRoutingModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
