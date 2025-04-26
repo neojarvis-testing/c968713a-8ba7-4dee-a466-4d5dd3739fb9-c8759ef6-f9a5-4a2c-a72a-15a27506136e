@@ -48,7 +48,6 @@ namespace dotnetapp.Services
 
             existingLoan.LoanType = loan.LoanType;
             existingLoan.MaximumAmount = loan.MaximumAmount;
-            // Update other properties as needed
 
             await _context.SaveChangesAsync();
             return true;
