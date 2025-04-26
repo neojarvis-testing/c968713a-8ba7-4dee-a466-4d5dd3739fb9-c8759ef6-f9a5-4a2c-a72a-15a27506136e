@@ -30,12 +30,10 @@ namespace dotnetapp.Services
 
         public async Task<(int, string)> Registration(User model, string role)
         {
-            // Check if user already exists
             var userExists = await _userManager.FindByEmailAsync(model.Email);
             if (userExists != null)
                 return (0, "User already exists");
 
-            // Create user
             var user = new ApplicationUser
             {
                 UserName = model.Email,
@@ -51,7 +49,6 @@ namespace dotnetapp.Services
                 return (0, $"User creation failed! Errors: {errors}");
             }
 
-            // Assign role
             if (!await _roleManager.RoleExistsAsync(role))
             {
                 var roleResult = await _roleManager.CreateAsync(new IdentityRole(role));
