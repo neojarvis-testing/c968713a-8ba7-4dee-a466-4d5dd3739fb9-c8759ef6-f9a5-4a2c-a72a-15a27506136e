@@ -1,1 +1,13 @@
-<h1>Feedback Details</h1>
+<div class="container">
+    <h2>Add Feedback</h2>
+    <form (ngSubmit)="submitFeedback()" #feedbackForm="ngForm">
+        <div>
+            <label>Feedback</label>
+            <textarea id="feedback" name="feedback" class="form-control" [(ngModel)]="feedbackText" required rows="5">
+            </textarea>
+            <div *ngIf="feedbackForm.submitted && !feedbackText" class="text-danger" >
+            </div>
+        </div>
+        <button type="submit" >Submit</button>
+    </form>
+</div>
