@@ -1,27 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { Login } from 'src/app/models/login.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-   logindto:Login={
-    Email:'',
-    Password:''
+export class LoginComponent {
+  logindto = {
+    Email: '',
+    Password: ''
+  };
 
-   };
+  showPassword: boolean = false; // To toggle password visibility
 
-   
-  constructor() { }
+  // Function to calculate password strength
+  calculateStrength(password: string): string {
+    const strongRegex = new RegExp(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})'
+    );
+    const mediumRegex = new RegExp(
+      '^((?=.*[a-z])(?=.*[A-Z])|(?=.*[a-z])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9]))(?=.{6,})'
+    );
 
-  ngOnInit(): void {
+    if (strongRegex.test(password)) {
+      return 'Strong';
+    } else if (mediumRegex.test(password)) {
+      return 'Medium';
+    } else {
+      return 'Weak';
+    }
   }
-  
-  login()
-  {
 
+  // Simulated login function
+  login(): void {
+    if (this.logindto.Email && this.logindto.Password) {
+      console.log('Logging in with:', this.logindto);
+      // Add your authentication logic here
+    } else {
+      console.log('Please fill in all required fields.');
+    }
   }
-
 }

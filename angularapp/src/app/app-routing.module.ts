@@ -101,10 +101,8 @@ component:UseraddfeedbackComponent
   {
     path:'**',
     redirectTo:'/error'
-  }
+  }];
 
-
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

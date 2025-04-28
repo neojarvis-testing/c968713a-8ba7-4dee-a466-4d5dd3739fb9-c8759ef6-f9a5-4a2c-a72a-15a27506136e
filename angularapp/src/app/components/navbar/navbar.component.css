@@ -9,12 +9,13 @@
   
   }
   
-  .navbar-title a{
+
+  .navbar-title  a{
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 1px;
+    text-decoration: none;
     color: aliceblue;
-    text-decoration: wavy;
   }
   
   .navbar-links a {
