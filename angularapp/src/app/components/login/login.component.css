@@ -1,0 +1,42 @@
+.container {
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(15px);
+    margin-top: 20px;
+    width: 400px;
+    height: 350px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.container h1{
+    text-align: center;
+    color: rgb(4, 5, 5);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration:solid;
+
+
+}
+.error-message{
+    color: red;
+}
+.form-label{
+    color: rgb(0, 0, 0);
+    font-size: large;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 5px;
+}
+
+button {
+ margin-top: 10px;
+ margin-bottom: 10px;
+ padding: 8px;
+ width: 200px;
+}
+.foot{
+    text-align:center;
+}
+
+
+
+
