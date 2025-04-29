@@ -10,7 +10,7 @@ import { LoanApplication } from '../models/loanapplication.model';
 })
 export class LoanService {
 
-  public baseUrl="https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/api";
+  public baseUrl="https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/api";
   constructor(private http: HttpClient) {}
  
   private getAuthHeaders(): HttpHeaders {

@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+@Injectable({
+  providedIn:'root'
+})
 
 @Component({
   selector: 'app-login',
@@ -6,11 +12,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   logindto = {
     Email: '',
     Password: ''
   };
-
+ 
+  constructor(private services:AuthService,private router:Router)
+  {}
   showPassword: boolean = false; // To toggle password visibility
 
   // Function to calculate password strength
@@ -34,7 +43,12 @@ export class LoginComponent {
   // Simulated login function
   login(): void {
     if (this.logindto.Email && this.logindto.Password) {
-      console.log('Logging in with:', this.logindto);
+        
+      this.services.login(this.logindto).subscribe(res=>{
+         alert("Login Successfull");
+      })
+
+
       // Add your authentication logic here
     } else {
       console.log('Please fill in all required fields.');

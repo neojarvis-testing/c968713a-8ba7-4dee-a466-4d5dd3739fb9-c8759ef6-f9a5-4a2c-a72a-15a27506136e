@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { User } from '../models/user.model'; // Update import paths as necessary
 import { Login } from '../models/login.model'; 
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
+  private baseUrl = 'https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
  
   private userRoleSubject = new BehaviorSubject<string | null>(null);
   private userIdSubject = new BehaviorSubject<number | null>(null);
@@ -26,12 +27,24 @@ export class AuthService {
   login(login: Login): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, login).pipe(
       tap((response: any) => {
+        console.log('API Response:', response); // Debugging log
+  
+        // Token storage
         if (response.token) {
           localStorage.setItem('token', response.token);
-          localStorage.setItem('userRole', response.role);
+        }
+  
+        // Role storage
+        const role = response.role ; // Fallback role
+        localStorage.setItem('userRole', role);
+        this.userRoleSubject.next(role);
+  
+        // ID storage
+        if (response.id != null) {
           localStorage.setItem('userId', response.id.toString());
-          this.userRoleSubject.next(response.role);
           this.userIdSubject.next(response.id);
+        } else {
+          console.warn('ID is missing from the response.');
         }
       })
     );
@@ -57,7 +70,5 @@ export class AuthService {
   }
 }
 
-function tap(arg0: (response: any) => void): import("rxjs").OperatorFunction<Object, any> {
-  throw new Error('Function not implemented.');
-}
+
  

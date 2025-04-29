@@ -1,5 +1,5 @@
 export class Feedback{
-    FeedbackId?:number;
+    FeedbackId:number;
     UserId:number;
     FeedbackText:string;
     Date:Date;

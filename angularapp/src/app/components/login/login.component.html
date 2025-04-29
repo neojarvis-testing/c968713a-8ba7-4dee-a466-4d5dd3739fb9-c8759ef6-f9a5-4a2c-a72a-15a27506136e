@@ -15,7 +15,7 @@
         />
         <div
           class="error-message"
-          *ngIf="loginData.submitted && (!logindto.Email || loginData.logindto.Email.touched)"
+          *ngIf="loginData.submitted && (!logindto.Email)"
         >
           <strong>Email is required.</strong>
         </div>

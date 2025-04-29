@@ -1,11 +1,9 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/models/feedback.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
-
-@Injectable({
-  providedIn:'root'
-})
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 @Component({
   selector: 'app-useraddfeedback',
@@ -13,37 +11,44 @@ import { FeedbackService } from 'src/app/services/feedback.service';
   styleUrls: ['./useraddfeedback.component.css']
 })
 export class UseraddfeedbackComponent implements OnInit {
-  newfeedback:Feedback={
+
+  constructor(private feedbackService: FeedbackService, private router: Router) {}
+  ngOnInit(): void {}
+
+  isSubmitted: boolean = false;
+  feedback: Feedback = {
     FeedbackId:0,
-    FeedbackText:'',
-    UserId:0,
-    Date:new Date()
-  }
+    UserId: 0,
+    FeedbackText: '',
+    Date: undefined
+  };
 
-  FeedbackText:string='';
-  showSuccessModal:boolean=false;
-    constructor(private service:FeedbackService,private route:Router) { }
+  onSubmit() {
+    if (this.feedback) {
+      this.feedback.UserId = parseInt(localStorage.getItem('userId'), 10);
+      this.feedback.Date = new Date();
+      console.log('Submitting feedback:', this.feedback);
+      this.feedbackService.sendFeedback(this.feedback).subscribe((res) => {
+        console.log(res);
+        this.isSubmitted = true; // Ensure this line is present
+        console.log("Added successfully");
 
-  submitFeedback(){
-    this.service.sendFeedback(this.newfeedback).subscribe(res=>{
-      console.log('Feedback successfully added.');
-    });
-    if(this.FeedbackText.trim())
-    {
-      this.showSuccessModal=true;
-      console.log('Feedback submitted:', this.FeedbackText);
-      this.FeedbackText='';
+        // Show SweetAlert2 success message
+        Swal.fire({
+          title: 'Feedback Submitted',
+          text: 'Your feedback has been successfully submitted!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/userviewfeedback']);
+        });
+      });
+    } else {
+      console.log('Please enter your feedback');
     }
-    else{
-      console.log('Feedback is required.');
-    }
-  }
-  closeModal()
-  {
-    this.showSuccessModal=false;
   }
 
-  ngOnInit(): void {
+  closePopup() {
+    this.isSubmitted = false;
   }
-
 }

@@ -1,25 +1,27 @@
-<div class="container">
-    <h2>Add Feedback</h2>
-    <form (ngSubmit)="submitFeedback()" #feedbackForm="ngForm">
-        <div>
-            <label>Feedback<span class="text-danger">*</span></label>
-            <textarea id="feedback" name="feedback" class="form-control" [(ngModel)]="FeedbackText" required rows="5">
-            </textarea>
-            <div *ngIf="feedbackForm.submitted && !FeedbackText" class="text-danger" >
-                *Feedback is required
+<!-- <app-usernav></app-usernav> -->
+<div class="feedback-page-container">
+    <div class="feedback-container">
+        <h1>Add Feedback</h1>
+        <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+            <!-- Feedback Input -->
+            <div class="form-group">
+                <label for="feedback">Feedback <span class="required">*</span>:</label>
+                <textarea placeholder="Every feedback counts" id="feedback" name="feedback" rows="10" [(ngModel)]="feedback.FeedbackText" #feedbackField="ngModel" required></textarea>
+                <div *ngIf="feedbackField.invalid && feedbackField.touched" class="error">
+                    Please enter your feedback.
+                </div>
             </div>
-        </div>
-            <button type="submit" class="btn btn-primary mt-3 " >Submit</button>
-        </form>
-</div>
-            <div *ngIf="showSuccessModal" class="modal">
-                <div class="modal-content">
-                    <p>Successfully Added!</p>
-                    <button (click)="closeModal()" class="btn btn-primary ">Ok</button>
-                    </div>
-        </div>
-     
-       
-    
-    
 
+            <!-- Submit Button -->
+            <button type="submit" [disabled]="feedbackForm.invalid">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Popup for success message -->
+<div *ngIf="isSubmitted" class="popup">
+    <div class="popup-content">
+        <p>Submitted successfully!</p>
+        <button (click)="closePopup()">OK</button>
+    </div>
+</div>
