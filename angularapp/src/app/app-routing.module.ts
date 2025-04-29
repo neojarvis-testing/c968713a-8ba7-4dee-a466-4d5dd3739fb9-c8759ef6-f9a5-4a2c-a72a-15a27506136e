@@ -15,12 +15,14 @@ import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoanformComponent } from './components/loanform/loanform.component';
 import { CreateloanComponent } from './components/createloan/createloan.component';
+import { ViewloanComponent } from './components/viewloan/viewloan.component';
 
 const routes: Routes = [
   {
 path:'admin/admineditloan',
 component:AdmineditloanComponent
   },
+  {path:'admin/viewloan',component:ViewloanComponent},
 
   {
 path:'login',
