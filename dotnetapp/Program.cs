@@ -46,6 +46,22 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireNonAlphanumeric = false;
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
+                           "https://8081-ceaeccbebfffaedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-cdebaaabaaceadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-abfbbbdabfccfffadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-cebeddbfbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-dedadddddbafecbafcedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-dfaadbbbbbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
 
 
 var app = builder.Build();
@@ -55,7 +71,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowSpecificOrigin");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 
@@ -64,3 +80,5 @@ app.UseAuthentication();
 app.MapControllers();
 
 app.Run();
+
+
