@@ -1,1 +1,25 @@
-<h1>Add Feedback</h1>
+<div class="container">
+    <h2>Add Feedback</h2>
+    <form (ngSubmit)="submitFeedback()" #feedbackForm="ngForm">
+        <div>
+            <label>Feedback<span class="text-danger">*</span></label>
+            <textarea id="feedback" name="feedback" class="form-control" [(ngModel)]="FeedbackText" required rows="5">
+            </textarea>
+            <div *ngIf="feedbackForm.submitted && !FeedbackText" class="text-danger" >
+                *Feedback is required
+            </div>
+        </div>
+            <button type="submit" class="btn btn-primary mt-3 " >Submit</button>
+        </form>
+</div>
+            <div *ngIf="showSuccessModal" class="modal">
+                <div class="modal-content">
+                    <p>Successfully Added!</p>
+                    <button (click)="closeModal()" class="btn btn-primary ">Ok</button>
+                    </div>
+        </div>
+     
+       
+    
+    
+
