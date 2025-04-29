@@ -1,54 +1,46 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using dotnetapp.Services;
 using dotnetapp.Models;
+using dotnetapp.Services;
+using System.Threading.Tasks;
+
+
 
 namespace dotnetapp.Controllers
 {
-    [Route("api")]
+    [Route("api/")]
+    // [AutoValidateAntiforgeryToken]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthService _authService;
-
+ 
         public AuthenticationController(IAuthService authService)
         {
             _authService = authService;
         }
-
+ 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            try
-            {
-                var (status, message) = await _authService.Login(model);
-                if (status == 0){
-                    return Unauthorized(message);
-                }
-
-                return Ok(new { Token = message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            var (statusCode, message) = await _authService.Login(model);
+            if (statusCode == 200)
+                return Ok(new { token = message, Message = " login successfull" });
+                // return Ok(new { Message = "User login successfully"});
+ 
+            return BadRequest(message);
         }
-
+ 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(User model)
+        public async Task<IActionResult> Register([FromBody] User model)
         {
-            try
-            {
-                var (status, message) = await _authService.Registration(model, model.UserRole);
-                if (status == 0)
-                    return BadRequest(message);
-
-                return Ok(message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            System.Console.WriteLine(model.UserRole);
+            var (statusCode, message) = await _authService.Registration(model, model.UserRole);
+            if (statusCode == 200) 
+                // return Ok(message);
+                return Ok(new { Message = "User created successfully"});
+ 
+            return StatusCode(statusCode, message);
         }
     }
 }
+ 
