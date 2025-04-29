@@ -4,7 +4,6 @@ import { AdmineditloanComponent } from './components/admineditloan/admineditloan
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-import { CreateloanComponent } from './components/createloan/createloan.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewloanComponent } from './components/userviewloan/userviewloan.component';
@@ -15,6 +14,7 @@ import { RequestedloanComponent } from './components/requestedloan/requestedloan
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoanformComponent } from './components/loanform/loanform.component';
+import { CreateLoanComponent } from './components/createloan/createloan.component';
 
 const routes: Routes = [
   {
@@ -35,11 +35,6 @@ component:RegistrationComponent,
   {
 path:'admin/adminviewfeedback',
 component:AdminviewfeedbackComponent
-  },
-
-  {
-path:'adimn/createloan',
-component:CreateloanComponent,
   },
 
   {
@@ -90,7 +85,7 @@ component:UseraddfeedbackComponent
 
   {
     path:'admin/createloan',
-    component:CreateloanComponent
+    component:CreateLoanComponent
 
   },
 

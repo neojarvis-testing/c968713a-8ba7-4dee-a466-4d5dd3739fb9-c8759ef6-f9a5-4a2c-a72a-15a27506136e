@@ -1,1 +1,73 @@
-<h1>Create New Loan</h1>
+<div>
+    <h2>Create New Loan</h2>
+    <form (ngSubmit)="AddLoan(loanForm)" #loanForm="ngForm">
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <div>
+        <label>
+          Loan Type*:
+          <input type="text" name="LoanType" [(ngModel)]="loanDetails.LoanType" required />
+        </label>
+        <div *ngIf="loanForm.submitted && !loanDetails.LoanType" class="error">
+          Loan Type is required.
+        </div>
+      </div>
+      <div>
+        <label>
+          Description:
+          <input type="text" name="Description" [(ngModel)]="loanDetails.Description" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Interest Rate*:
+          <input type="number" name="InterestRate" [(ngModel)]="loanDetails.InterestRate" required />
+        </label>
+        <div *ngIf="loanForm.submitted && !loanDetails.InterestRate" class="error">
+          Interest Rate is required.
+        </div>
+      </div>
+      <div>
+        <label>
+          Maximum Amount*:
+          <input type="number" name="MaximunAmount" [(ngModel)]="loanDetails.MaximunAmount" required />
+        </label>
+        <div *ngIf="loanForm.submitted && !loanDetails.MaximunAmount" class="error">
+          Maximum Amount is required.
+        </div>
+      </div>
+      <div>
+        <label>
+          Repayment Tenure*:
+          <input type="number" name="RepaymentTenure" [(ngModel)]="loanDetails.RepaymentTenure" required />
+        </label>
+        <div *ngIf="loanForm.submitted && !loanDetails.RepaymentTenure" class="error">
+          Repayment Tenure is required.
+        </div>
+      </div>
+      <div>
+        <label>
+          Eligibility*:
+          <input type="text" name="Eligibility" [(ngModel)]="loanDetails.Eligibility" required />
+        </label>
+        <div *ngIf="loanForm.submitted && !loanDetails.Eligibility" class="error">
+          Eligibility is required.
+        </div>
+      </div>
+      <div>
+        <label>
+          Documents Required*:
+          <input type="text" name="DocumentsRequired" [(ngModel)]="loanDetails.DocumentsRequired" required />
+        </label>
+        <div *ngIf="loanForm.submitted && !loanDetails.DocumentsRequired" class="error">
+          Documents Required is required.
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
