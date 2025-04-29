@@ -23,7 +23,8 @@ import { UserviewfeedbackComponent } from './components/userviewfeedback/uservie
 import { UserviewloanComponent } from './components/userviewloan/userviewloan.component';
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateLoanComponent } from './components/createloan/createloan.component';
+import { CreateloanComponent } from './components/createloan/createloan.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CreateLoanComponent } from './components/createloan/createloan.componen
     AdminnavComponent,
     AdminviewfeedbackComponent,
     AuthguardComponent,
-    CreateLoanComponent,
+    CreateloanComponent,
     ErrorComponent,
     HomeComponent,
     LoanformComponent,

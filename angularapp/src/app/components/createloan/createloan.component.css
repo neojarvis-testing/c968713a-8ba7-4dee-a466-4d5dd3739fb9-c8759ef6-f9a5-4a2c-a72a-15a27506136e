@@ -1,81 +1,156 @@
-/* Container for the form */
-div {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Form heading */
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Form labels */
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #555;
-  }
-  
-  /* Form inputs */
-  input[type="text"],
-  input[type="number"],
-  input[type="date"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  /* Checkbox input */
-  input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  /* Submit button */
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Success message */
-  .success-message {
-    color: green;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* Error message */
-  .error-message {
-    color: red;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* Validation error messages */
-  .error {
-    color: red;
-    font-size: 12px;
-    margin-top: -15px;
-    margin-bottom: 10px;
-  }
-  
+/* General styling for the form container */
+.create-loan-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+/* Form Header */
+.create-loan-container h1 {
+  text-align: center;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  position: relative;
+}
+
+.create-loan-container h1::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: blue; /* Blue line below the heading */
+  margin-top: 10px;
+}
+
+/* Input Fields */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+input, button {
+  width: 98%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+.required {
+  color: red;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Submit Button */
+button {
+  background: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+button:hover {
+  background: blue;
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* Error messages */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+/* Success message */
+.success {
+  color: green;
+  font-size: 12px;
+  margin-top: 5px;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+/* Center the validation message */
+.form-validation-message {
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+/* Modal styles */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* OK Button in Modal */
+.ok-button {
+  background: darkblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+}
+
+.ok-button:hover {
+  background: darkblue;
+}

@@ -14,7 +14,7 @@ import { RequestedloanComponent } from './components/requestedloan/requestedloan
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoanformComponent } from './components/loanform/loanform.component';
-import { CreateLoanComponent } from './components/createloan/createloan.component';
+import { CreateloanComponent } from './components/createloan/createloan.component';
 
 const routes: Routes = [
   {
@@ -85,7 +85,7 @@ component:UseraddfeedbackComponent
 
   {
     path:'admin/createloan',
-    component:CreateLoanComponent
+    component:CreateloanComponent
 
   },
 
