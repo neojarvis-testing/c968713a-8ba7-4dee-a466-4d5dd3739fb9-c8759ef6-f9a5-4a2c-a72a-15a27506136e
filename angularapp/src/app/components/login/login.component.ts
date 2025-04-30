@@ -31,7 +31,14 @@ localStorage.setItem('userRole', role);
 
         // Navigate to the role-specific route
         if (role) {
-          this.router.navigate([`${role}/viewloan`]); // Convert role to lower case to match route paths
+          if (role=='admin') {
+            this.router.navigate([`${role}/adminnav`]); 
+          }
+          else if (role=='user') {
+            this.router.navigate([`${role}/usernav`]); 
+
+          }
+          // Convert role to lower case to match route paths
           Swal.fire({
             title: 'Success!',
             text: `Successfully logged in as ${role}`,
