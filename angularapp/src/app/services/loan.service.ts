@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Loan } from '../models/loan.model';
 import { LoanApplication } from '../models/loanapplication.model';
- import { HttpHeaders } from '@angular/common/http';
+ import { HttpHeaders } from '@angular/common/http'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoanService {
 
-  public baseUrl="https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/api";
+  public baseUrl="https://8080-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io/api";
   constructor(private http: HttpClient) {}
  
   private getAuthHeaders(): HttpHeaders {
