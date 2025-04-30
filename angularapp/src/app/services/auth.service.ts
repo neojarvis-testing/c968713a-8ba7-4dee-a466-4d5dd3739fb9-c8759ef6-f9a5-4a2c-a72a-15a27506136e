@@ -40,12 +40,12 @@ export class AuthService {
         this.userRoleSubject.next(role);
   
         // ID storage
-        if (response.id != null) {
-          localStorage.setItem('userId', response.id.toString());
-          this.userIdSubject.next(response.id);
-        } else {
-          console.warn('ID is missing from the response.');
-        }
+        // if (response.id != null) {
+        //   localStorage.setItem('userId', response.id.toString());
+        //   this.userIdSubject.next(response.id);
+        // } else {
+        //   console.warn('ID is missing from the response.');
+        // }
       })
     );
   }
@@ -60,7 +60,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
  
-  getCurrentUserRole(): string | null {
+  getCurrentUserRole(): string {
     return localStorage.getItem('userRole');
   }
  

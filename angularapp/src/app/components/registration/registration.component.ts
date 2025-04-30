@@ -1,10 +1,10 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 import { User } from 'src/app/models/user.model';
-@Injectable({
-  providedIn:'root'
-})
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -12,49 +12,70 @@ import { User } from 'src/app/models/user.model';
 })
 export class RegistrationComponent implements OnInit {
 
-  formSubmitted:boolean=false;
+   registrationData:User = {
+    Username:'',
+    Email:'',
+    Password:'',
+    MobileNumber:'',
+    UserRole:'',
+    UserId:0 // Update to match expected backend field
+  };
+  // username: string = '';
+  // email: string = '';
+  // password: string = '';
+   confirmPassword: string = '';
+  // mobileNumber: string = '';
+  // UserRole: string = '';
 
-  registration:User={
+  passwordFieldType: string = 'password'; 
+  confirmPasswordFieldType: string = 'password';
 
-    UserId :0,
-   Email:'',
-   Password:'',
-   Username:'',
-   MobileNumber:'',
-   UserRole:''
-  }
-  confirmPassword:string='';
-  isconfirm:boolean=false;
+  constructor(private authService: AuthService, private router: Router) { }
 
-  constructor(private service:AuthService, private route:Router) { }
-  
+  ngOnInit(): void { }
 
-  register()
-  {
-    this.formSubmitted=true;
-    if(this.registration.UserId && this.registration.Email && this.registration.Password && this.registration.Username && this.registration.MobileNumber && this.registration.UserRole && this.registration.Password==this.confirmPassword)
-    {
-      this.isconfirm=true;
-       this.service.register(this.registration).subscribe(e=>{
-              alert("Registration successfull");
-              console.log(e);
-              
-              this.route.navigate(['/login']);
-       },e=>{
-        console.log(e);
-        
-       });
-
+  onRegister() {
+    if (this.registrationData.Password !== this.confirmPassword) {
+      alert('Passwords do not match');
+      return;
     }
 
+  
+
+    console.log('Registration Data:', this.registrationData); // Debugging: Log the registration data
+    console.log('Role Value:', this.registrationData.UserRole); // Debugging: Log the role value
+
+    this.authService.register(this.registrationData).subscribe({
+      next: (response) => {
+        console.log('Registration successful:', response);
+        
+        // Show SweetAlert2 success message
+        Swal.fire({
+          title: 'Registration Successful',
+          text: 'You have successfully registered!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/login']);
+        });
+      },
+      error: (err) => {
+        console.error('Registration failed', err);
+        if (err.error && err.error.errors) {
+          console.log('Validation Errors:', err.error.errors);
+          alert(`Registration failed: ${JSON.stringify(err.error.errors)}`);
+        } else {
+          alert('Registration failed. Please check your input and try again.');
+        }
+      }
+    });
   }
 
-  ngOnInit(): void 
-  {
-
+  togglePasswordVisibility(field: string) {
+    if (field === 'password') {
+      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+    } else if (field === 'confirmPassword') {
+      this.confirmPasswordFieldType = this.confirmPasswordFieldType === 'password' ? 'text' : 'password';
+    }
   }
-
-
 }
-
-
