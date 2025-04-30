@@ -2,12 +2,14 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items:first baseline;
     background: linear-gradient(35deg,#000428, #a92e57, #004e92);
-    padding: 10px 30px;
+    padding: 10px 40px;
     color: white;
+  
   }
   
+
   .navbar-title  a{
     font-size: 24px;
     font-weight: bold;

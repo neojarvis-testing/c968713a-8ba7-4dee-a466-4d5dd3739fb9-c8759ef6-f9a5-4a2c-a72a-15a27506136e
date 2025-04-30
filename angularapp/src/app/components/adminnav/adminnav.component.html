@@ -1,1 +1,25 @@
-<p>adminnav works!</p>
+<nav class="navbar">
+    <div class="navbar-header">
+        <span class="navbar-brand">
+            <!-- <img class="logo" src="../../../assets/images/logo.png" /> -->
+            <p class="brand-logo">Farm Financer</p>
+        </span>
+    </div>
+    <ul class="nav-links">
+        <li class="admin-info"><span>Hello, {{ username }}! Welcome back to your dashboard.</span></li>
+        <li><a routerLink="/Admin">Home</a></li>
+        <li class="dropdown" (click)="toggleDropdown($event)">
+            <a class="dropdown-toggle" href="#">Loan <i class="fas fa-chevron-down arrow-icon"></i></a>
+            <ul class="dropdown-menu">
+                <li><a routerLink="/createloan">Add Loan</a></li>
+                <li><a routerLink="/viewloan">View Loan</a></li>
+            </ul>
+        </li>
+        <li><a routerLink="/requestedloan">Requested Loan</a></li>
+        <li><a routerLink="/adminviewfeedback">Feedbacks</a></li>
+        <li><button class="logout-btn" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button></li>
+    </ul>
+  </nav>
+  

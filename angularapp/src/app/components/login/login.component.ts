@@ -1,15 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  credentials = { email: '', password: '' };
+  passwordFieldType: string = 'password'; 
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
+  onLogin(): void {
+    this.authService.login(this.credentials).subscribe({
+      next: (response: any) => {
+        localStorage.setItem('token', response.token);
+        const role = this.authService.getUserRoleFromToken(response.token);
+        console.log('Decoded Role:', role);
+        localStorage.setItem('userRole', role);
+
+        // Navigate to the role-specific route
+        if (role) {
+          this.router.navigate([`/${role}`]); // Convert role to lower case to match route paths
+          Swal.fire({
+            title: 'Success!',
+            text: `Successfully logged in as ${role}`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        } else {
+          console.log("error at logincomponent");
+          this.router.navigate(['/error']); // Fallback route
+        }
+      },
+      error: () => {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Invalid credentials. Please try again.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      },
+    });
   }
 
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
 }
