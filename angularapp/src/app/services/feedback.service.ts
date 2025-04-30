@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -58,4 +57,4 @@ return this.http.post<Feedback>(`${this.baseUrl}/feedback`, feedback, {
     });
   }
 }
->>>>>>> 7949390b3b55fa11acb532a2e39972fb69bb8030
+
