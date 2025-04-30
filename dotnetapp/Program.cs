@@ -1,53 +1,41 @@
-using Microsoft.EntityFrameworkCore;
-using dotnetapp.Data;
-using dotnetapp.Models;
-using dotnetapp.Services;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using dotnetapp.Models;
+using dotnetapp.Services;
+using dotnetapp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
- 
- 
-builder.Services.AddControllers();
-builder.Services.AddDbContext<ApplicationDbContext>(e=>e.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
- 
-    builder.Services.AddAuthentication(options =>
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
+
+// Configure authentication with JWT
+builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JWT:Issuer"],
-            ValidAudience = builder.Configuration["JWT:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
-        };
-    });
- 
-builder.Services.Configure<IdentityOptions>(options =>
+})
+.AddJwtBearer(options =>
 {
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 6;
-    options.Password.RequireNonAlphanumeric = false;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
+    };
 });
+
+
+
  
 builder.Services.AddCors(options =>
 {
@@ -71,15 +59,31 @@ builder.Services.AddCors(options =>
  builder.Services.AddTransient<LoanService>();
  builder.Services.AddTransient<LoanApplicationService>();
  
+
+// https://8081-fcbbdabddbadffbefadcceffaacaaae.premiumproject.examly.io/
+
+// Registering services
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<FeedbackService>();
+builder.Services.AddScoped<LoanApplicationService>();
+builder.Services.AddScoped<LoanService>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 var app = builder.Build();
  
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
 }
 app.UseCors("AllowSpecificOrigin");
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
  
 app.UseAuthorization();
@@ -91,3 +95,28 @@ app.Run();
  
  
  
+
+
+// Use the CORS policy
+app.UseCors("SpecificOriginsPolicy");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+app.Run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,87 +1,34 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { RegistrationComponent } from './registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-@Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
-})
-export class RegistrationComponent implements OnInit {
-  formSubmitted: boolean = false;
-  
-  registration: User = {
-    UserId: 0,
-    Email: '',
-    Password: '',
-    Username: '',
-    MobileNumber: '',
-    UserRole: ''
-  };
+describe('RegistrationComponent', () => {
+  let component: RegistrationComponent;
+  let fixture: ComponentFixture<RegistrationComponent>;
 
-  confirmPassword: string = '';
-  isconfirm: boolean = false;
-  error: string = '';
-  passwordError: string = '';
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, FormsModule],
+      declarations: [ RegistrationComponent ]
+    })
+    .compileComponents();
+  });
 
-  constructor(private service: AuthService, private route: Router) { }
+  beforeEach(() => {
+    fixture = TestBed.createComponent(RegistrationComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  
-  passwordMatch() {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!]).{8,}$/;
+  fit('Frontend_should_create_registration_component', () => {
+    expect(component).toBeTruthy();
+  });
 
-    if (!passwordRegex.test(this.registration.Password)) {
-      this.passwordError = "*Password must have at least one uppercase, one lowercase, one digit, and one special character.";
-      this.isconfirm = false;
-      return;
-    } else {
-      this.passwordError = ''; 
-    }
-
-    if (this.registration.Password !== this.confirmPassword) {
-      this.isconfirm = false;
-      this.error = "*Passwords do not match";
-    } else {
-      this.isconfirm = true;
-      this.error = ''; 
-    }
-  }
-
-
-  register() {
-    this.formSubmitted = true;
-
-   
-    this.passwordMatch();
-    if (!this.isconfirm) {
-      alert("Passwords do not match.");
-      return; 
-    }
-
-    if (this.passwordError) {
-      alert(this.passwordError);
-      return;
-    }
-
-    if (this.registration.UserId && this.registration.Email && this.registration.Password &&
-        this.registration.Username && this.registration.MobileNumber && this.registration.UserRole) {
-
-        this.service.register(this.registration).subscribe({
-            next: () => {
-                alert("Registration successful");
-                this.route.navigate(['/login']); 
-            },
-            error: (err) => {
-                alert("Registration failed: " + err.message);
-            }
-        });
-    }
-  }
-
-  ngOnInit(): void { }
-}
+  fit('Frontend_should_contain_registration_heading_in_the_registration_component', () => {
+    const componentHTML = fixture.debugElement.nativeElement.outerHTML;
+    expect(componentHTML).toContain('Registration');
+  });
+});

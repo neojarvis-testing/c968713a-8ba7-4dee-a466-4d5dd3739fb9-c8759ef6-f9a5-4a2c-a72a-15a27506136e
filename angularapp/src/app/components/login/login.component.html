@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Login</h1>
-    <form #loginData="ngForm" (ngSubmit)="login()">
+    <form #loginData="ngForm" (ngSubmit)="onLogin()">
       <div>
         <label class="form-label" for="email">Email:</label>
         <input
@@ -15,7 +15,7 @@
         />
         <div
           class="error-message"
-          *ngIf="loginData.submitted && (!logindto.Email || loginData.logindto.Email.touched)"
+          *ngIf="loginData.submitted && (!logindto.Email)"
         >
           <strong>Email is required.</strong>
         </div>
@@ -25,10 +25,9 @@
         <label for="password" class="form-label">Password:</label>
         <div class="password-container">
           <input
-            [type]="showPassword ? 'text' : 'password'"
             class="form-control"
             name="password"
-            id="password"
+            id="password" type="password"
             [(ngModel)]="logindto.Password"
             placeholder="Enter the Password"
             required
@@ -42,9 +41,7 @@
         >
           <strong>Password is required.</strong>
         </div>
-        <div *ngIf="logindto.Password" class="password-strength">
-          Password strength: {{ calculateStrength(logindto.Password) }}
-        </div>
+        
       </div>
   
       <div style="text-align: center;">
