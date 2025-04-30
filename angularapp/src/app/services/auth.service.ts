@@ -25,34 +25,22 @@ export class AuthService {
       this.http.post<any>(`${this.apiUrl}/login`, credentials).subscribe(
         response => {
           localStorage.setItem('token', response.token);
-          const role = this.getUserRoleFromToken(response.token);
-          console.log("Decoded Role:", role); // Logging for debugging
-          const userId = this.getUserIdFromToken(response.token); // Extracting UserId
-          console.log("UserId:", userId); // Logging for debugging
-          localStorage.setItem('userRole', role);
-          localStorage.setItem('userId', userId); // Storing UserId in local storage
-          this.currentUserRole.next(role);
-          observer.next(response);
-          observer.complete();
-        },
-        error => {
-          console.log("Error at AuthService");
-          observer.error(error);
         }
-      );
-    });
-  }
-
-  register(user: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, user, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+  
+        // Role storage
+        const role = response.role ; // Fallback role
+        localStorage.setItem('userRole', role);
+        this.userRoleSubject.next(role);
+  
+        // ID storage
+        if (response.id != null) {
+          localStorage.setItem('userId', response.id.toString());
+          this.userIdSubject.next(response.id);
+        } else {
+          console.warn('ID is missing from the response.');
+        }
       })
-    });
-  }
-
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    );
   }
 
   logout(): void {
@@ -117,10 +105,9 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
-
-  isAdmin(): boolean {
-    const role = this.getUserRole();
-    return role === 'Admin';
+ 
+  getCurrentUserRole(): string | null {
+    return localStorage.getItem('userRole');
   }
 
   isUser(): boolean {
