@@ -1,96 +1,75 @@
-using System;
-using System.Collections.Generic;
+using dotnetapp.Models;
+using dotnetapp.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using dotnetapp.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace dotnetapp.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly ApplicationDbContext _context;
 
-        public AuthService(
-            UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration)
+        public AuthService(IConfiguration configuration, ApplicationDbContext context)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
             _configuration = configuration;
+            _context = context;
         }
 
         public async Task<(int, string)> Registration(User model, string role)
         {
-            var userExists = await _userManager.FindByEmailAsync(model.Email);
-            if (userExists != null)
-                return (0, "User already exists");
-
-            var user = new ApplicationUser
+            if (await _context.Users.AnyAsync(u => u.Email == model.Email))
             {
-                UserName = model.Email,
-                Email = model.Email,
-                Name = model.Username,
-                SecurityStamp = Guid.NewGuid().ToString()
-            };
-
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded)
-            {
-                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                return (0, $"User creation failed! Errors: {errors}");
+                return (400, "User already exists");
             }
-
-            if (!await _roleManager.RoleExistsAsync(role))
-            {
-                var roleResult = await _roleManager.CreateAsync(new IdentityRole(role));
-                if (!roleResult.Succeeded)
-                    return (0, "Role creation failed!");
-            }
-
-            await _userManager.AddToRoleAsync(user, role);
-            return (1, "User created successfully!");
+            model.UserRole = role;
+            _context.Users.Add(model);
+            await _context.SaveChangesAsync();
+            return (200, "User created successfully!");
         }
 
-        public async Task<(int, string)> Login(LoginModel model)
+
+      public async Task<(int, string)> Login(LoginModel model)
+{
+    var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == model.Email);
+    
+    if (user == null || user.Password != model.Password)
+        return (400, "Invalid Email or Password");
+            
+            var token = GenerateToken(user);
+    
+
+           return (200, JsonSerializer.Serialize(new { token = token, role = user.UserRole }));
+}
+
+
+        private string GenerateToken(User user)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null)
-                return (0, "Invalid email");
-
-            if (!await _userManager.CheckPasswordAsync(user, model.Password))
-                return (0, "Invalid password");
-
-            var userRoles = await _userManager.GetRolesAsync(user);
-            var claims = new List<Claim>
+            var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Role, user.UserRole)
             };
-            claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            var token = GenerateToken(claims);
-            return (1, token);
-        }
-
-        private string GenerateToken(IEnumerable<Claim> claims)
-        {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:Issuer"],
-                audience: _configuration["JWT:Audience"],
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddHours(1),
-                signingCredentials: creds);
+                signingCredentials: creds
+            );
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

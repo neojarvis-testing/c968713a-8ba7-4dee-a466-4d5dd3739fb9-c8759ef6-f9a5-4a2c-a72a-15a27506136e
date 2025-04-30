@@ -19,7 +19,10 @@
     "@angular/platform-browser": "~10.1.3",
     "@angular/platform-browser-dynamic": "~10.1.3",
     "@angular/router": "~10.1.3",
+<<<<<<< HEAD
     "bootstrap-icons": "^1.11.3",
+=======
+>>>>>>> 7949390b3b55fa11acb532a2e39972fb69bb8030
     "karma-coverage": "2.2.0",
     "puppeteer": "^19.7.5",
     "rxjs": "~6.6.0",

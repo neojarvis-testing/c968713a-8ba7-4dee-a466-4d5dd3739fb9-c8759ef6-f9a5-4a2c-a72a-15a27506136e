@@ -1,67 +1,28 @@
+
 <div class="container">
-    <h1>Login</h1>
-    <form #loginData="ngForm" (ngSubmit)="login()">
-      <div>
-        <label class="form-label" for="email">Email:</label>
+  <h1>LOGIN</h1>
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="credentials.email" required
+        placeholder="Enter your email" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <div class="password-container">
         <input
-          type="email"
-          name="email"
-          id="email"
-          class="form-control"
-          [(ngModel)]="logindto.Email"
-          placeholder="Enter the Email"
+          [type]="passwordFieldType"
+          id="password"
+          name="password"
+          [(ngModel)]="credentials.password"
           required
-          aria-label="Email"
+          placeholder="Enter your password"
         />
-        <div
-          class="error-message"
-          *ngIf="loginData.submitted && (!logindto.Email || loginData.logindto.Email.touched)"
-        >
-          <strong>Email is required.</strong>
-        </div>
+        <i class="fa" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePasswordVisibility()"></i>
       </div>
-  
-      <div>
-        <label for="password" class="form-label">Password:</label>
-        <div class="password-container">
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            class="form-control"
-            name="password"
-            id="password"
-            [(ngModel)]="logindto.Password"
-            placeholder="Enter the Password"
-            required
-            aria-label="Password"
-          />
-         
-        </div>
-        <div
-          class="error-message"
-          *ngIf="loginData.submitted && !logindto.Password"
-        >
-          <strong>Password is required.</strong>
-        </div>
-        <div *ngIf="logindto.Password" class="password-strength">
-          Password strength: {{ calculateStrength(logindto.Password) }}
-        </div>
-      </div>
-  
-      <div style="text-align: center;">
-        <button
-          type="submit"
-          class="btn btn-success"
-          [disabled]="loginData.invalid"
-        >
-          Login
-        </button>
-      </div>
-  
-      <div class="foot">
-        <p>
-          Don't have an account?
-          <a routerLink="/register" aria-label="Register here">Register here</a>
-        </p>
-      </div>
-    </form>
-  </div>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+  <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+</div>
+
