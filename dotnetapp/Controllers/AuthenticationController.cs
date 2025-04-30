@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace dotnetapp.Controllers
 {
     [Route("api/")]
-    // [AutoValidateAntiforgeryToken]
+   
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace dotnetapp.Controllers
         {
             var (statusCode, message) = await _authService.Login(model);
             if (statusCode == 200)
-                return Ok(new { token = message, Message = " login successfull" });
+                return Ok(new { token = message, Message = "login successfully" });
                 // return Ok(new { Message = "User login successfully"});
  
             return BadRequest(message);

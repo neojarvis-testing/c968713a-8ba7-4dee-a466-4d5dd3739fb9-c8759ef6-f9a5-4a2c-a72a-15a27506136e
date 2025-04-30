@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-@Injectable({
-  providedIn:'root'
-})
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
+import { Login } from 'src/app/models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -11,46 +10,58 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  logindto:Login={
+   Email:'',
+   Password:''
+  }
+  passwordFieldType: string = 'password'; 
 
-  logindto = {
-    Email: '',
-    Password: ''
-  };
- 
-  constructor(private services:AuthService,private router:Router)
-  {}
-  showPassword: boolean = false; // To toggle password visibility
+  constructor(private authService: AuthService, private router: Router) {}
 
-  // Function to calculate password strength
-  calculateStrength(password: string): string {
-    const strongRegex = new RegExp(
-      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})'
-    );
-    const mediumRegex = new RegExp(
-      '^((?=.*[a-z])(?=.*[A-Z])|(?=.*[a-z])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9]))(?=.{6,})'
-    );
+  onLogin(): void {
+    this.authService.login(this.logindto).subscribe({
+      next: (response: any) => {
 
-    if (strongRegex.test(password)) {
-      return 'Strong';
-    } else if (mediumRegex.test(password)) {
-      return 'Medium';
-    } else {
-      return 'Weak';
-    }
+        localStorage.setItem('token', response.token);
+       
+       const parsedToken = JSON.parse(response.token);
+const role = parsedToken.role; // Extract role from parsed JSON
+console.log('Decoded Role:', role);
+localStorage.setItem('userRole', role);
+
+        // Navigate to the role-specific route
+        if (role) {
+          if (role=='admin') {
+            this.router.navigate([`${role}/adminnav`]); 
+          }
+          else if (role=='user') {
+            this.router.navigate([`${role}/usernav`]); 
+
+          }
+          // Convert role to lower case to match route paths
+          Swal.fire({
+            title: 'Success!',
+            text: `Successfully logged in as ${role}`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        } else {
+          console.log("error at logincomponent");
+          this.router.navigate(['/error']); // Fallback route
+        }
+      },
+      error: () => {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Invalid credentials. Please try again.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      },
+    });
   }
 
-  // Simulated login function
-  login(): void {
-    if (this.logindto.Email && this.logindto.Password) {
-        
-      this.services.login(this.logindto).subscribe(res=>{
-         alert("Login Successfull");
-      })
-
-
-      // Add your authentication logic here
-    } else {
-      console.log('Please fill in all required fields.');
-    }
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }

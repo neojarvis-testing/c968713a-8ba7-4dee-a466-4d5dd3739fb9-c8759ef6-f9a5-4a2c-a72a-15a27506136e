@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
-using dotnetapp.Data;
 using dotnetapp.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace dotnetapp.Controllers
 {
-    [Route("api/feedback")]
     [ApiController]
+    // [AutoValidateAntiforgeryToken]
+    [Route("api/feedback")]
     public class FeedbackController : ControllerBase
     {
         private readonly FeedbackService _feedbackService;
@@ -21,7 +17,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
+        public async Task<IActionResult> GetAllFeedbacks()
         {
             try
             {
@@ -35,14 +31,11 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("user/{userId}")]
-        public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbacksByUserId(int userId)
+        public async Task<IActionResult> GetFeedbacksByUserId(int userId)
         {
             try
             {
                 var feedbacks = await _feedbackService.GetFeedbacksByUserId(userId);
-                if (feedbacks == null || !feedbacks.Any())
-                    return NotFound("Cannot find any feedback");
-
                 return Ok(feedbacks);
             }
             catch (Exception ex)
@@ -52,29 +45,57 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddFeedback([FromBody] Feedback feedback)
+        public async Task<IActionResult> AddFeedback([FromBody] Feedback feedback)
         {
             try
             {
-                var result = await _feedbackService.AddFeedback(feedback);
-                return Ok("Feedback added successfully");
+                await _feedbackService.AddFeedback(feedback);
+                var response = new { message = "Feedback added successfully" }; // Create a response object
+                return Ok(response); // Return the response object as JSON
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                var errorResponse = new { message = ex.Message }; // Create an error response object
+                return StatusCode(500, errorResponse); // Return the error response object as JSON
             }
         }
 
+
         [HttpDelete("{feedbackId}")]
-        public async Task<ActionResult> DeleteFeedback(int feedbackId)
+        public async Task<IActionResult> DeleteFeedback(int feedbackId)
         {
             try
             {
-                var result = await _feedbackService.DeleteFeedback(feedbackId);
-                if (!result)
-                    return NotFound("Cannot find any feedback");
+                var deleted = await _feedbackService.DeleteFeedback(feedbackId);
+                if (!deleted)
+                {
+                    var errorResponse = new { message = "Feedback not found" }; // Create an error response object
+                    return NotFound(errorResponse); // Return the error response object as JSON
+                }
 
-                return Ok("Feedback deleted successfully");
+                var response = new { message = "Feedback deleted successfully" }; // Create a response object
+                return Ok(response); // Return the response object as JSON
+            }
+            catch (Exception ex)
+            {
+                var errorResponse = new { message = ex.Message }; // Create an error response object
+                return StatusCode(500, errorResponse); // Return the error response object as JSON
+            }
+        }
+
+
+        // Make sure this method is inside the class
+        [HttpGet("username/{userId}")]
+        public async Task<IActionResult> GetUsernameByUserId(int userId)
+        {
+            try
+            {
+                var username = await _feedbackService.GetUsernameByUserId(userId);
+                if (string.IsNullOrEmpty(username))
+                {
+                    return NotFound("User not found");
+                }
+                return Ok(new { Username = username });
             }
             catch (Exception ex)
             {
