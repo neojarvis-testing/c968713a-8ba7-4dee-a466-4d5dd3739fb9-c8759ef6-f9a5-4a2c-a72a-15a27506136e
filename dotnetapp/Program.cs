@@ -46,6 +46,7 @@ builder.Services.AddCors(options =>
             "https://8081-abfbbbdabfccfffadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
             "https://8081-cebeddbfbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
             "https://8081-dedadddddbafecbafcedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+            "https://8081-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io",
             "https://8081-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io"
         )
         .AllowAnyMethod()

@@ -1,0 +1,23 @@
+
+.home-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .home-container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color:white;
+    -webkit-text-stroke: 1px black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .home-container p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+  }
+  
