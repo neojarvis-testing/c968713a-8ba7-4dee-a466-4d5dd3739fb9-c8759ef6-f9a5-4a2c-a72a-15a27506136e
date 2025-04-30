@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,7 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root',
 })
 export class FeedbackService {
-  private baseUrl = 'https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
+  private baseUrl = 'https://8080-fddafbebadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
  
   constructor(private http: HttpClient) {}
  
@@ -56,3 +57,4 @@ return this.http.post<Feedback>(`${this.baseUrl}/feedback`, feedback, {
     });
   }
 }
+

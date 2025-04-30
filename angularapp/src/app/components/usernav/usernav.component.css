@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    padding: 1rem;
+    color: white;
+    border-radius: 10px; /* Slight rounding for a softer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.brand-logo {
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
+    color: white;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 0;
+    font-family: "Barlow Condensed", sans-serif;
+}
+
+.user-info {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Navigation links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+    margin-right: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-align: right;
+    text-decoration: underline;
+}
+
+/* Admin info */
+.admin-info span {
+    color: white;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white; /* White background */
+    list-style: none;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    z-index: 1000; /* Ensure the dropdown is above other content */
+    transition: all 0.3s ease; /* Smooth transition effect */
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown.show .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu a {
+    color: #333; /* Dark text color for better contrast */
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f4f4f4; /* Light background on hover */
+}
+
+/* Arrow icon rotation */
+.arrow-icon {
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.dropdown.show .arrow-icon {
+    transform: rotate(180deg); /* Rotate arrow when dropdown is shown */
+}
+
+/* Logout button */
+.logout-btn {
+    background: transparent; /* Transparent background */
+    color: white; /* White text to match other links */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Slightly visible on hover for effect */
+    color: white; /* Keep the text color white on hover */
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.brand-logo {
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
+    color: white;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+/* Content styles */
+.content {
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Subtle blur effect */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    border-radius: 5px; /* Slight rounding for a softer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.home-p {
+    padding-top: 30px;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.6;
+    color: white;
+}
