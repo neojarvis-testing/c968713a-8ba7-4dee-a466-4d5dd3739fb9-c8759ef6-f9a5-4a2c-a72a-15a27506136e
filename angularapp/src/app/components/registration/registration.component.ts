@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Component, Injectable, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +17,4 @@ export class RegistrationComponent implements OnInit {
  
 
 
-  ngOnInit(): void {
- 
-
-}
+  ngOnInit(): void {}}
