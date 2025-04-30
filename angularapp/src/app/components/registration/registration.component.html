@@ -42,7 +42,7 @@
         required 
         [(ngModel)]="registrationData.Password">
     <div class="error" *ngIf="registrationForm.submitted && !registrationData.Password">
-        Password is required
+       {{passwordError}}
     </div>
 
     <!-- Confirm Password Field -->

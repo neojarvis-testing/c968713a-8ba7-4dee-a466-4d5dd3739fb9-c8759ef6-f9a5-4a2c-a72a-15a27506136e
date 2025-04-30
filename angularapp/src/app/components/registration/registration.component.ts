@@ -31,6 +31,11 @@ export class RegistrationComponent implements OnInit {
    confirmPassword: string = '';
   // mobileNumber: string = '';
   // UserRole: string = '';
+  isPasswordStrong:boolean=false;
+  passwordError='';
+  isConfirm:boolean=false;
+  error='';
+
 
   passwordFieldType: string = 'password'; 
   confirmPasswordFieldType: string = 'password';
@@ -38,6 +43,30 @@ export class RegistrationComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void { }
+
+  validatePassword() {
+    const password = this.registrationData.Password;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    this.isPasswordStrong = regex.test(password);
+   
+    if (!this.isPasswordStrong) {
+      this.passwordError = "Password must contain at least one uppercase, one lowercase, one number, one special character, and be at least 8 characters long.";
+    } else {
+      this.passwordError = ''; 
+    }
+  }
+ 
+  
+  passwordMatch() {
+    if (this.registrationData.Password !== this.confirmPassword) {
+      this.isConfirm = false;
+      this.error = "*Passwords do not match";
+    } else {
+      this.isConfirm = true;
+      this.error = '';
+    }
+  }
+ 
 
   onRegister() {
     if (this.registrationData.Password !== this.confirmPassword) {
