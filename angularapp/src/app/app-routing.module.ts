@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 import { CreateloanComponent } from './components/createloan/createloan.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LoanformComponent } from './components/loanform/loanform.component';
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
 import { AdmineditloanComponent } from './components/admineditloan/admineditloan.component';
 import { RequestedloanComponent } from './components/requestedloan/requestedloan.component';
+
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedloanComponent } from './components/userappliedloan/userappliedloan.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
@@ -17,7 +19,6 @@ import { AuthGuard } from './components/authguard/auth.guard';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 
