@@ -1,0 +1,142 @@
+.feedback-page-container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .feedback-header {
+    background: linear-gradient(to right, #002d62, #3a5795);
+    color: white;
+    padding: 1rem;
+  }
+  
+  .feedback-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+  
+  .navigation {
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Overall page styling */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4; /* Light grey background for the entire page */
+  }
+  
+  /* Center the feedback form */
+  .feedback-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Header */
+  .feedback-container h1 {
+    text-align: center;
+    color: #003366; /* Dark blue color for the header */
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Input Fields */
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  label .required {
+    color: red;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  textarea:focus {
+    border-color: #003366;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  button {
+    display: block;
+    margin-top: 20px; /* Add some space above the button */
+    margin-left: 0; /* Align the button to the left */
+    padding: 10px 20px;
+    background: #003366; /* Dark blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #00509e; /* Lighter blue on hover */
+  }
+  
+  button:disabled {
+    background: #aaa; /* Grey when disabled */
+    cursor: not-allowed;
+  }
+  
+  /* Error messages */
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Popup styling */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    text-align: center;
+  }
