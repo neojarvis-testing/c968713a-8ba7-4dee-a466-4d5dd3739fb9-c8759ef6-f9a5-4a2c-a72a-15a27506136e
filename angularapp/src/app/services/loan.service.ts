@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Loan } from '../models/loan.model';
 import { LoanApplication } from '../models/loanapplication.model';
- import { HttpHeaders } from '@angular/common/http'; 
 
 
 import { AuthService } from './auth.service';
