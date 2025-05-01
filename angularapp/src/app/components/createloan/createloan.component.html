@@ -1,1 +1,88 @@
-<h1>Create New Loan</h1>
+<app-adminnav></app-adminnav>
+
+<div class="create-loan-container">
+  <h1>Create New Loan</h1>
+  <form #loanForm="ngForm" (ngSubmit)="onSubmit(loanForm)">
+    <div class="form-group">
+      <label for="loanType">Loan Type<span class="required">*</span></label>
+      <input type="text" id="loanType" name="loanType" ngModel required minlength="1" maxlength="30" placeholder="Loan Type">
+      <div *ngIf="loanForm.submitted || loanForm.controls.loanType?.dirty">
+        <div *ngIf="loanForm.controls.loanType?.errors?.required" class="error">Loan Type is required</div>
+        <div *ngIf="loanForm.controls.loanType?.errors?.maxlength" class="error">Loan Type must be less than 30 words</div>
+      </div>
+    </div>
+
+    <div class="form-group">  
+      <label for="description">Description<span class="required">*</span></label>
+      <input type="text" id="description" name="description" ngModel required minlength="1" maxlength="100" placeholder="Loan Description">
+      <div *ngIf="loanForm.submitted || loanForm.controls.description?.dirty">
+        <div *ngIf="loanForm.controls.description?.errors?.required" class="error">Description is required</div>
+        <div *ngIf="loanForm.controls.description?.errors?.maxlength" class="error">Description must be less than 100 words</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="interestRate">Interest Rate<span class="required">*</span></label>
+      <input type="number" id="interestRate" name="interestRate" ngModel required pattern="^[0-9]+(\.[0-9]*)?$" max="20" placeholder="Interest Rate">
+      <div *ngIf="loanForm.submitted || loanForm.controls.interestRate?.dirty">
+        <div *ngIf="loanForm.controls.interestRate?.errors?.required" class="error">Interest Rate is required</div>
+        <div *ngIf="loanForm.controls.interestRate?.errors?.pattern" class="error">Interest Rate must be a valid number</div>
+        <div *ngIf="loanForm.controls.interestRate?.errors?.max" class="error">Interest Rate must be less than 20</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="maximumAmount">Maximum Amount<span class="required">*</span></label>
+      <input type="number" id="maximumAmount" name="maximumAmount" ngModel required pattern="^[0-9]+(\.[0-9]*)?$" min="30000" max="1500000" placeholder="Maximum Amount">
+      <div *ngIf="loanForm.submitted || loanForm.controls.maximumAmount?.dirty">
+        <div *ngIf="loanForm.controls.maximumAmount?.errors?.required" class="error">Maximum Amount is required</div>
+        <div *ngIf="loanForm.controls.maximumAmount?.errors?.pattern" class="error">Maximum Amount must be a valid number</div>
+        <div *ngIf="loanForm.controls.maximumAmount?.errors?.min" class="error">Maximum Amount must be greater than 30000</div>
+        <div *ngIf="loanForm.controls.maximumAmount?.errors?.max" class="error">Maximum Amount must be less than 1500000</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="repaymentTenure">Repayment Tenure<span class="required">*</span></label>
+      <input type="number" id="repaymentTenure" name="repaymentTenure" ngModel required pattern="^[0-9]+$" min="1" max="35" placeholder="Repayment Tenure (Months)">
+      <div *ngIf="loanForm.submitted || loanForm.controls.repaymentTenure?.dirty">
+        <div *ngIf="loanForm.controls.repaymentTenure?.errors?.required" class="error">Repayment Tenure is required</div>
+        <div *ngIf="loanForm.controls.repaymentTenure?.errors?.pattern" class="error">Repayment Tenure must be a valid integer</div>
+        <div *ngIf="loanForm.controls.repaymentTenure?.errors?.min" class="error">Repayment Tenure must be greater than 1</div>
+        <div *ngIf="loanForm.controls.repaymentTenure?.errors?.max" class="error">Repayment Tenure must be less than 35</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="eligibility">Eligibility<span class="required">*</span></label>
+      <input type="text" id="eligibility" name="eligibility" ngModel required minlength="1" maxlength="50" placeholder="Eligibility Criteria">
+      <div *ngIf="loanForm.submitted || loanForm.controls.eligibility?.dirty">
+        <div *ngIf="loanForm.controls.eligibility?.errors?.required" class="error">Eligibility is required</div>
+        <div *ngIf="loanForm.controls.eligibility?.errors?.maxlength" class="error">Eligibility must be less than 50 words</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="documentsRequired">Documents Required<span class="required">*</span></label>
+      <input type="text" id="documentsRequired" name="documentsRequired" ngModel required minlength="1" maxlength="50" placeholder="Documents Required">
+      <div *ngIf="loanForm.submitted || loanForm.controls.documentsRequired?.dirty">
+        <div *ngIf="loanForm.controls.documentsRequired?.errors?.required" class="error">Documents Required is required</div>
+        <div *ngIf="loanForm.controls.documentsRequired?.errors?.maxlength" class="error">Documents Required must be less than 50 words</div>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+    <div class="form-validation-message">
+      <p *ngIf="message" [ngClass]="{'error': message.includes('required') || message.includes('exists'), 'success': message.includes('Successfully')}">{{ message }}</p>
+    </div>
+  </form>
+
+  <!-- Modal -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>Successfully Added!</p>
+      <button class="ok-button" (click)="closeModal()">OK</button>
+    </div>
+  </div>
+</div>

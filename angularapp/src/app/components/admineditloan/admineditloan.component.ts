@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admineditloan.component.css']
 })
 export class AdmineditloanComponent implements OnInit {
+  
 
   constructor() { }
 

@@ -3,8 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Loan } from '../models/loan.model';
 import { LoanApplication } from '../models/loanapplication.model';
+ import { HttpHeaders } from '@angular/common/http'; 
+
+
 import { AuthService } from './auth.service';
-// import { LoanApplication } from '../models/loanapplication.model';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +18,7 @@ export class LoanService {
   private apiUrl = 'https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
+ 
 
   private getHeaders(): HttpHeaders {
     const token = this.authService.getToken();

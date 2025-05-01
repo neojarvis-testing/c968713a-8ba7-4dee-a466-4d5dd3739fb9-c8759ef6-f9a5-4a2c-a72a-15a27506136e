@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root',
 })
 export class FeedbackService {
-  private baseUrl = 'https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
+  private baseUrl = 'https://8080-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
  
   constructor(private http: HttpClient) {}
  

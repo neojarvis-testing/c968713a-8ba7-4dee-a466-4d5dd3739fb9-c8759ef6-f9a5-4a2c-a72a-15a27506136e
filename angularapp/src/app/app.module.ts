@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AdmineditloanComponent } from './components/admineditloan/admineditloan.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-import { CreateloanComponent } from './components/createloan/createloan.component';
+// import { AuthguardComponent } from './components/authguard/authguard.component';
+// import { CreateloanComponent } from './components/createloan/createloan.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoanformComponent } from './components/loanform/loanform.component';
@@ -22,6 +23,7 @@ import { UserviewfeedbackComponent } from './components/userviewfeedback/uservie
 import { UserviewloanComponent } from './components/userviewloan/userviewloan.component';
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateloanComponent } from './components/createloan/createloan.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 
