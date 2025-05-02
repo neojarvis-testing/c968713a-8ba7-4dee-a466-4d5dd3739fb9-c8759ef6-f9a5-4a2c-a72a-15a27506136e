@@ -39,6 +39,7 @@ export class UserviewfeedbackComponent implements OnInit {
   }
 
   confirmDelete(feedback: Feedback): void {
+<<<<<<< HEAD
   if (!feedback || !feedback.FeedbackId) {
     console.error("Invalid feedback selection:", feedback);
     Swal.fire({
@@ -114,3 +115,47 @@ cancelLogout(): void {
 
 
 
+=======
+    this.selectedFeedback = feedback;
+    this.showDeleteModal = true;
+  }
+
+  deleteFeedback(): void {
+    if (this.selectedFeedback) {
+      this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId).subscribe(
+        () => {
+          this.showDeleteModal = false;
+          this.loadFeedbacks(); // Reload feedbacks to reflect the deletion
+          
+          // Show SweetAlert2 success message
+          Swal.fire({
+            title: 'Feedback Deleted',
+            text: 'The feedback has been successfully deleted!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          this.router.navigate(['/userviewfeedback']);
+        },
+        (error) => {
+          console.error('Error deleting feedback:', error);
+          this.errorMessage = 'Failed to delete feedback.';
+        }
+      );
+    }
+  }
+
+  logout(): void {
+    this.showLogoutModal = true;
+  }
+
+  confirmLogout(): void {
+    this.showLogoutModal = false;
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  cancelLogout(): void {
+    this.showLogoutModal = false;
+  }
+}
+>>>>>>> 7024ff1ee02010c05571865f9bee8ad78a7d9c1f

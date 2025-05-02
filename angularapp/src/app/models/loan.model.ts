@@ -3,7 +3,7 @@ export interface Loan{
     LoanType:string;
     Description:string;
     InterestRate:number;
-    MaximunAmount:number;
+    MaximumAmount:number;
     RepaymentTenure:number;
     Eligibility:string;
     DocumentsRequired:string;
