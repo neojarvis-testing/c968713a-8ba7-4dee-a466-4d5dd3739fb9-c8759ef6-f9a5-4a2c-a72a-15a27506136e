@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { Feedback } from 'src/app/models/feedback.model';
-import Swal from 'sweetalert2';
-
+import Swal from 'sweetalert2'; // Import SweetAlert2
+ 
 @Component({
   selector: 'app-userviewfeedback',
   templateUrl: './userviewfeedback.component.html',
@@ -15,13 +15,13 @@ export class UserviewfeedbackComponent implements OnInit {
   showDeleteModal: boolean = false;
   showLogoutModal: boolean = false;
   errorMessage: string = '';
-
+ 
   constructor(private feedbackService: FeedbackService, private router: Router) {}
-
+ 
   ngOnInit(): void {
     this.loadFeedbacks();
   }
-
+ 
   loadFeedbacks(): void {
     const userId = +localStorage.getItem('userId');
     this.feedbackService.getAllFeedbacksByUserId(userId).subscribe(
@@ -37,8 +37,9 @@ export class UserviewfeedbackComponent implements OnInit {
       }
     );
   }
-
+ 
   confirmDelete(feedback: Feedback): void {
+
 
   if (!feedback || !feedback.FeedbackId) {
     console.error("Invalid feedback selection:", feedback);
@@ -155,3 +156,5 @@ cancelLogout(): void {
 //     this.showLogoutModal = false;
 //   }
 // }
+
+   
