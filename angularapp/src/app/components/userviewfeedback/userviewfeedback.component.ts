@@ -111,6 +111,7 @@ confirmLogout(): void {
 cancelLogout(): void {
   this.showLogoutModal = false;
 }
+}
 // }
 //     this.selectedFeedback = feedback;
 //     this.showDeleteModal = true;
@@ -154,4 +155,3 @@ cancelLogout(): void {
 //     this.showLogoutModal = false;
 //   }
 // }
-

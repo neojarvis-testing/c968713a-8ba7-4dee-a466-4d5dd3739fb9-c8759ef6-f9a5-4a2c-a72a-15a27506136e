@@ -8,15 +8,9 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-<<<<<<< HEAD
-
 
   // private apiUrl = 'https://8080-baecbebeaafaffbefadcceffaacaaae.premiumproject.examly.io/api';
   private apiUrl = 'https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
-=======
-  // private apiUrl = 'https://8080-baecbebeaafaffbefadcceffaacaaae.premiumproject.examly.io/api';
-  private apiUrl = 'https://8080-afbccbebadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
->>>>>>> 7024ff1ee02010c05571865f9bee8ad78a7d9c1f
 
   private currentUserRole = new BehaviorSubject<string | null>(null);
 
