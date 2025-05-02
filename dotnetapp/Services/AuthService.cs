@@ -46,7 +46,11 @@ namespace dotnetapp.Services
             Console.WriteLine(token);
     
 
+<<<<<<< HEAD
            return (200, JsonSerializer.Serialize(new { token }));
+=======
+           return (200, JsonSerializer.Serialize(new { token ,  user.UserRole }));
+>>>>>>> bb078ce93a1e2038a41824b43159818d10712a17
 }
 
 
