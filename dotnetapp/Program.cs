@@ -39,7 +39,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("SpecificOriginsPolicy", policy =>
     {
-<<<<<<< HEAD
+
         policy.WithOrigins(
             "https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
             "https://8081-ceaeccbebfffaedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
@@ -53,7 +53,7 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials();
-=======
+
         builder.WithOrigins("https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
                            "https://8081-ceaeccbebfffaedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-cdebaaabaaceadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
@@ -65,7 +65,7 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials();
->>>>>>> 7024ff1ee02010c05571865f9bee8ad78a7d9c1f
+
     });
 });
 

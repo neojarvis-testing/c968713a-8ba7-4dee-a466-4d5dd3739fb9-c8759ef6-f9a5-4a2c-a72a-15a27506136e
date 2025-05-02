@@ -67,7 +67,7 @@ export class CreateloanComponent implements OnInit {
     LoanType:'',
     Description:'',
     InterestRate:0,
-    MaximunAmount:0,
+    MaximumAmount:0,
     RepaymentTenure:0,
     Eligibility:'',
     DocumentsRequired:''
