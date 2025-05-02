@@ -43,9 +43,10 @@ namespace dotnetapp.Services
         return (400, "Invalid Email or Password");
             
             var token = GenerateToken(user);
+            Console.WriteLine(token);
     
 
-           return (200, JsonSerializer.Serialize(new { token = token, role = user.UserRole }));
+           return (200, JsonSerializer.Serialize(new { token }));
 }
 
 
