@@ -19,12 +19,12 @@ import { UserviewloanComponent } from './components/userviewloan/userviewloan.co
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-<<<<<<< HEAD
+
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
-=======
+
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
->>>>>>> 7024ff1ee02010c05571865f9bee8ad78a7d9c1f
+
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { RouterModule } from '@angular/router';

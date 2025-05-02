@@ -51,8 +51,8 @@ export class UseraddfeedbackComponent implements OnInit {
   closePopup() {
     this.isSubmitted = false;
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 7024ff1ee02010c05571865f9bee8ad78a7d9c1f
+
+
+

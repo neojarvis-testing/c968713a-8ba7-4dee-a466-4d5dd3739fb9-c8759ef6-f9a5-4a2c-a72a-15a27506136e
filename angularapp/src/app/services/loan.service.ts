@@ -19,11 +19,8 @@ export class LoanService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-<<<<<<< HEAD
-  public baseUrl="https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/api";
-  constructor(private http: HttpClient) {}
-=======
->>>>>>> 7024ff1ee02010c05571865f9bee8ad78a7d9c1f
+  
+
  
 
   private getHeaders(): HttpHeaders {
