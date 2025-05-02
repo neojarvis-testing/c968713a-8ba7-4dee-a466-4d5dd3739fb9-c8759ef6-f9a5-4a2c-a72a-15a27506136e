@@ -1,0 +1,43 @@
+
+<app-adminnav></app-adminnav>
+<div class="view-feedback">
+  <h1>Feedback Details</h1>
+  <div class="underline"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>User Name</th>
+        <th>Feedback</th>
+        <th>Posted Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feed of feedbacks; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ getUsername(feed.userId) }}</td> <!-- Displaying username -->
+        <td>{{ feed.feedbackText }}</td>
+        <td>{{ feed.date | date: 'mediumDate' }}</td>
+        <td>
+          <button (click)="showMore(feed)">Show Profile</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal for additional details -->
+<div class="modal" *ngIf="showProfileModal">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeModal()">&times;</span>
+    <h3>User Profile</h3>
+    <p><strong>Feedback ID:</strong> {{ selectedFeedback?.feedbackId }}</p>
+    <p><strong>User ID:</strong> {{ selectedFeedback?.userId }}</p>
+    <p><strong>Username:</strong> {{ getUsername(selectedFeedback?.userId) }}</p> <!-- Displaying username -->
+    <p><strong>Feedback Text:</strong> {{ selectedFeedback?.feedbackText }}</p>
+    <p><strong>Date:</strong> {{ selectedFeedback?.date | date: 'mediumDate' }}</p>
+    <!-- Add other details as needed -->
+  </div>
+</div>
+

@@ -1,0 +1,127 @@
+
+<!-- <app-adminnav></app-adminnav>
+ 
+<div class="view-loan-container">
+  <h1>Loan Details</h1>
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search by Loan Type or Description"
+      [(ngModel)]="searchTerm"
+      (input)="searchLoans()"
+    />
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Loan Type</th>
+        <th>Description</th>
+        <th>Interest Rate</th>
+        <th>Maximum Amount</th>
+        <th>Repayment Tenure (Months)</th>
+        <th>Eligibility</th>
+        <th>Documents Required</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of filteredLoans">
+        <td>{{loan.loanType}}</td>
+        <td>{{loan.description}}</td>
+        <td class="td-right">{{loan.interestRate}}</td>
+        <td class="td-right">{{loan.maximumAmount}}.00</td>
+        <td class="td-right">{{loan.repaymentTenure}}</td>
+        <td>{{loan.eligibility}}</td>
+        <td>{{loan.documentsRequired}}</td>
+        <td>
+          <div class="button-main">
+            <button class="editButton" (click)="editLoan(loan.loanId)">Edit</button>
+            <button class="deleteButton" (click)="confirmDelete(loan)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ 
+
+  <div *ngIf="message" class="message">
+    {{ message }}
+  </div>
+ 
+
+  <div *ngIf="showDeleteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeDeleteModal()">&times;</span>
+      <p>Are you sure you want to delete?</p>
+      <button class="ok-button" (click)="deleteLoan()">Yes, Delete</button>
+      <button class="cancel-button" (click)="closeDeleteModal()">Cancel</button>
+    </div>
+  </div>
+</div> -->
+
+<app-adminnav></app-adminnav>
+
+<div class="view-loan-container">
+  <h1>Loan Details</h1>
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search by Loan Type or Description"
+      [(ngModel)]="searchTerm"
+      (input)="searchLoans()"  /> 
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Loan Type</th>
+        <th>Description</th>
+        <th>Interest Rate</th>
+        <th>Maximum Amount</th>
+        <th>Repayment Tenure (Months)</th>
+        <th>Eligibility</th>
+        <th>Documents Required</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of paginatedLoans">
+        <td>{{loan.loanType}}</td>
+        <td>{{loan.description}}</td>
+        <td class="td-right">{{loan.interestRate}}</td>
+        <td class="td-right">{{loan.maximumAmount}}.00</td>
+        <td class="td-right">{{loan.repaymentTenure}}</td>
+        <td>{{loan.eligibility}}</td>
+        <td>{{loan.documentsRequired}}</td>
+        <td>
+          <div class="button-main">
+            <button class="editButton" (click)="editLoan(loan.loanId)">Edit</button>
+            <button class="deleteButton" (click)="confirmDelete(loan)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Conditionally show pagination controls if more than 10 records -->
+  <div *ngIf="filteredLoans.length > 10" class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}} of {{totalPages}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  <!-- Display message -->
+  <div *ngIf="message" class="message">
+    {{ message }}
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div *ngIf="showDeleteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeDeleteModal()">&times;</span>
+      <p>Are you sure you want to delete?</p>
+      <button class="ok-button" (click)="deleteLoan()">Yes, Delete</button>
+      <button class="cancel-button" (click)="closeDeleteModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,50 @@
+
+<app-usernav></app-usernav>
+ 
+<div class="view-feedback">
+  <h1>Available Loans</h1>
+  <div class="underline"></div>
+ 
+  <div class="search-container">
+    <input type="text" id="search" name="search" placeholder="Search..." (input)="searchByLoanName($event.target.value)">
+  </div>
+ 
+  <table *ngIf="filteredLoans.length > 0; else noRecords" class="table-content">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Loan Type</th>
+        <th>Loan Description</th>
+        <th class="td-right">Interest Rate</th>
+        <th class="td-right">Maximum Amount</th>
+        <th class="td-right">Repayment Tenure (Months)</th>
+        <th>Eligibility</th>
+        <th>Documents Required</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of filteredLoans; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ loan.loanType }}</td>
+        <td>{{ loan.description }}</td>
+        <td>{{ loan.interestRate }}</td>
+        <td>{{ loan.maximumAmount }}.00</td>
+        <td>{{ loan.repaymentTenure }}</td>
+        <td>{{ loan.eligibility }}</td>
+        <td>{{ loan.documentsRequired }}</td>
+        <td>
+          <button (click)="applyForLoan(loan)" [disabled]="isLoanApplied(loan.loanId)">
+            {{ isLoanApplied(loan.loanId) ? 'Applied' : 'Apply' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noRecords>
+    <div class="no-records">
+      Oops! No records found.
+    </div>
+  </ng-template>
+</div>
+

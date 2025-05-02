@@ -17,7 +17,7 @@ namespace dotnetapp.Models
         public int UserId{get; set;}
         [ForeignKey("UserId")]
 
-        [JsonIgnore]
+        
         public User? User{get; set;}
 
         public string FeedbackText{get; set;}=string.Empty;
