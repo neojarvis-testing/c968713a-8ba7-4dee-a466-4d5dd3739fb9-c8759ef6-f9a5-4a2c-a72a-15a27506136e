@@ -9,7 +9,7 @@ import { Feedback } from 'src/app/models/feedback.model';
 })
 export class AdminviewfeedbackComponent implements OnInit {
   feedbacks: Feedback[] = [];
-  feedbackUsernames: { [key: number]: string } = {}; // Stores usernames mapped by user IDs
+  feedbackUsernames: { [key: number]: string } = {};
   selectedFeedback: Feedback | null = null;
   showProfileModal: boolean = false;
   errorMessage: string = '';
@@ -25,9 +25,8 @@ export class AdminviewfeedbackComponent implements OnInit {
       (data) => {
         console.log('Loading feedbacks...');
         this.feedbacks = data;
-        this.loadUsernames();
+        this.loadUsernames(); // Call after feedbacks are loaded
         console.log(this.feedbacks);
-
         if (this.feedbacks.length === 0) {
           this.errorMessage = 'No data found';
         }
@@ -42,17 +41,13 @@ export class AdminviewfeedbackComponent implements OnInit {
   loadUsernames(): void {
     console.log('Loading usernames...');
     this.feedbacks.forEach(feedback => {
-      this.feedbackService.getAllFeedbacksByUserId(feedback.UserId).subscribe(
-        feedbacks => {
-          if (feedbacks.length > 0) {
-            this.feedbackUsernames[feedback.UserId] = feedbacks[0].UserId.toString(); // Keeping UserId, converting to string
-          } else {
-            this.feedbackUsernames[feedback.UserId] = 'Unknown'; // Default if no data found
-          }
-          console.log(`UserId for user ID ${feedback.UserId}: ${this.feedbackUsernames[feedback.UserId]}`);
+      this.feedbackService.getUsernameByUserId(feedback.UserId).subscribe(
+        username => {
+          console.log(`Username for user ID ${feedback.UserId} is: ${username}`); // Log the username here
+          this.feedbackUsernames[feedback.UserId] = username;
         },
         error => {
-          console.error(`Error fetching UserId for user ID ${feedback.UserId}:`, error);
+          console.error('Error fetching username:', error);
           this.feedbackUsernames[feedback.UserId] = 'Unknown';
         }
       );
@@ -70,7 +65,7 @@ export class AdminviewfeedbackComponent implements OnInit {
   }
 
   getUsername(userId: number): string {
-    console.log(`Fetching username for user ID ${userId}: ${this.feedbackUsernames[userId]}`);
-    return this.feedbackUsernames[userId] || '...'; // Defaults to '...' if username is not available
+    console.log(`Username for user ID ${userId} is: ${this.feedbackUsernames[userId]}`); // Log the fetched username
+    return this.feedbackUsernames[userId] || '...';
   }
 }

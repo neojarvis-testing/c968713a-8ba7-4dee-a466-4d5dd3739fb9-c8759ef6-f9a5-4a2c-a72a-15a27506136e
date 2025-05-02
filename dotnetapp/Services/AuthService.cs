@@ -45,7 +45,7 @@ namespace dotnetapp.Services
             var token = GenerateToken(user);
     
 
-           return (200, JsonSerializer.Serialize(new { token = token, role = user.UserRole }));
+           return (200, JsonSerializer.Serialize(new { token ,  user.UserRole }));
 }
 
 
