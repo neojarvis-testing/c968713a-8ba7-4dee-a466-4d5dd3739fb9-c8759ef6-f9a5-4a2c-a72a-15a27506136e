@@ -1,3 +1,4 @@
+
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -15,6 +16,7 @@ body {
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 10px;
+
     text-align: center;
     width: 350px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);

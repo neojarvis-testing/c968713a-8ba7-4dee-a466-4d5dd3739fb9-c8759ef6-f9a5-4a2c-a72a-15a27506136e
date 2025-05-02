@@ -55,8 +55,10 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
