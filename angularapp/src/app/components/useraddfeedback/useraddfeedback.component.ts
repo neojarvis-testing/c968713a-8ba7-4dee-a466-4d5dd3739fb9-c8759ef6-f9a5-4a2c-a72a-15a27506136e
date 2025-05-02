@@ -17,10 +17,10 @@ export class UseraddfeedbackComponent implements OnInit {
 
   isSubmitted: boolean = false;
   feedback: Feedback = {
-    FeedbackId:0,
+    // FeedbackId:0,
     UserId: 0,
     FeedbackText: '',
-    Date: undefined
+    Date: new Date()
   };
 
   onSubmit() {
