@@ -1,5 +1,5 @@
 
-.home-container {
+.content {
     text-align: center;
     margin: 50px auto;
     padding: 20px;
@@ -7,7 +7,7 @@
     font-family: 'Arial', sans-serif;
   }
   
-  .home-container h1 {
+  .content h1 {
     font-size: 36px;
     margin-bottom: 20px;
     color:white;
@@ -15,7 +15,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
   
-  .home-container p {
+  .content p {
     font-size: 18px;
     color: #555;
     line-height: 1.6;

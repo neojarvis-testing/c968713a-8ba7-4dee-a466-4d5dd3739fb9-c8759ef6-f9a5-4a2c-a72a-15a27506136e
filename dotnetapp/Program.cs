@@ -34,31 +34,24 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
-
- 
+// Add CORS policy configuration
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin", policy =>
+    options.AddPolicy("SpecificOriginsPolicy", builder =>
     {
-        policy.WithOrigins("https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
+        builder.WithOrigins("https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
                            "https://8081-ceaeccbebfffaedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-cdebaaabaaceadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-abfbbbdabfccfffadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-cebeddbfbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-dedadddddbafecbafcedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-dfaadbbbbbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-afbccbebadfbfdaaedceffaacaaae.premiumproject.examly.io")
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials();
+                           "https://8081-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io") // Replace with your front-end or
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();
     });
 });
- 
- builder.Services.AddScoped<FeedbackService>();
- builder.Services.AddTransient<LoanService>();
- builder.Services.AddTransient<LoanApplicationService>();
- 
 
 // https://8081-fcbbdabddbadffbefadcceffaacaaae.premiumproject.examly.io/
 
@@ -72,30 +65,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 var app = builder.Build();
- 
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
 }
-app.UseCors("AllowSpecificOrigin");
+
 app.UseHttpsRedirection();
-
-app.UseAuthentication();
- 
-app.UseAuthorization();
-app.UseAuthentication();
-app.MapControllers();
- 
-app.Run();
- 
- 
- 
- 
-
 
 // Use the CORS policy
 app.UseCors("SpecificOriginsPolicy");
@@ -105,18 +84,3 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.Run();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

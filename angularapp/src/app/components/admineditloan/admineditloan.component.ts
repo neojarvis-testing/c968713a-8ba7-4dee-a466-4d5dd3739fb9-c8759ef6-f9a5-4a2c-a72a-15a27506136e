@@ -10,6 +10,7 @@ import { LoanService } from 'src/app/services/loan.service';
   styleUrls: ['./admineditloan.component.css']
 })
 export class AdmineditloanComponent implements OnInit {
+  
 
   loan: Loan = {
     LoanType: '',
