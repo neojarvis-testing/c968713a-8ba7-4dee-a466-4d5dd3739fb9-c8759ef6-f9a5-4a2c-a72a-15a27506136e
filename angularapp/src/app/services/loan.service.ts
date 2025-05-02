@@ -16,7 +16,9 @@ import { AuthService } from './auth.service';
 export class LoanService {
   private apiUrl = 'https://8080-fddafbebadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
 
+
   constructor(private http: HttpClient, private authService: AuthService) {}
+
  
 
   private getHeaders(): HttpHeaders {

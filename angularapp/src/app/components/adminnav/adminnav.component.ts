@@ -18,7 +18,7 @@ export class AdminnavComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private feedbackService: FeedbackService) {}
 
   ngOnInit(): void {
-    this.userId = parseInt(localStorage.getItem('userId')!, 10); // Assuming userId is stored in localStorage
+    this.userId = parseInt(localStorage.getItem('userId')!, 10); 
     this.getUsername();
   }
 
@@ -46,4 +46,5 @@ export class AdminnavComponent implements OnInit {
       dropdown.classList.toggle('show');
     }
   }
+ 
 }
