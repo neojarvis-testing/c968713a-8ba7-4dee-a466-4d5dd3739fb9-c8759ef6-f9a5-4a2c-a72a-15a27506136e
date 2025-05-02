@@ -33,7 +33,7 @@
 
     <div class="form-group">
       <label for="maximumAmount">Maximum Amount<span class="required">*</span></label>
-      <input type="number" id="maximumAmount" name="maximumAmount" [(ngModel)]="newLoan.MaximunAmount" required pattern="^[0-9]+(\.[0-9]*)?$" min="30000" max="1500000" placeholder="Maximum Amount">
+      <input type="number" id="maximumAmount" name="maximumAmount" [(ngModel)]="newLoan.MaximumAmount" required pattern="^[0-9]+(\.[0-9]*)?$" min="30000" max="1500000" placeholder="Maximum Amount">
       <div *ngIf="loanForm.submitted || loanForm.controls.maximumAmount?.dirty">
         <div *ngIf="loanForm.controls.maximumAmount?.errors?.required" class="error">Maximum Amount is required</div>
         <div *ngIf="loanForm.controls.maximumAmount?.errors?.pattern" class="error">Maximum Amount must be a valid number</div>
