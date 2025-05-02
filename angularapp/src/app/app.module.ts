@@ -1,16 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdmineditloanComponent } from './components/admineditloan/admineditloan.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-// import { AuthguardComponent } from './components/authguard/authguard.component';
-// import { CreateloanComponent } from './components/createloan/createloan.component';
+import { CreateloanComponent } from './components/createloan/createloan.component';
 import { ErrorComponent } from './components/error/error.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoanformComponent } from './components/loanform/loanform.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -22,10 +18,14 @@ import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewloanComponent } from './components/userviewloan/userviewloan.component';
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateloanComponent } from './components/createloan/createloan.component';
+import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +35,6 @@ import { UserhomeComponent } from './userhome/userhome.component';
     AdminviewfeedbackComponent,
     CreateloanComponent,
     ErrorComponent,
-    HomeComponent,
     LoanformComponent,
     LoginComponent,
     NavbarComponent,
@@ -47,15 +46,17 @@ import { UserhomeComponent } from './userhome/userhome.component';
     UserviewfeedbackComponent,
     UserviewloanComponent,
     ViewloanComponent,
+    HomeComponent,
     AdminhomeComponent,
-    UserhomeComponent,
+    UserhomeComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    HttpClientModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
