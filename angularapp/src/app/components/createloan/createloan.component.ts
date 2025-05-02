@@ -62,6 +62,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./createloan.component.css']
 })
 export class CreateloanComponent implements OnInit {
+  newLoan:Loan={
+    LoanId:0,
+    LoanType:'',
+    Description:'',
+    InterestRate:0,
+    MaximunAmount:0,
+    RepaymentTenure:0,
+    Eligibility:'',
+    DocumentsRequired:''
+  }
   message: string = '';
   showModal: boolean = false;
 
@@ -75,10 +85,9 @@ export class CreateloanComponent implements OnInit {
       return;
     }
 
-    const newLoan: Loan = form.value;
-    console.log('New Loan to be added:', newLoan);
+    console.log('New Loan to be added:', this.newLoan);
 
-    this.loanService.addLoan(newLoan).subscribe(
+    this.loanService.addLoan(this.newLoan).subscribe(
       response => {
         console.log('Loan added successfully:', response);
         this.showSuccessMessage('Loan added successfully'); // Show success message

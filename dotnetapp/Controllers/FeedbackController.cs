@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    // [AutoValidateAntiforgeryToken]
+    
     [Route("api/feedback")]
     public class FeedbackController : ControllerBase
     {
@@ -50,13 +50,13 @@ namespace dotnetapp.Controllers
             try
             {
                 await _feedbackService.AddFeedback(feedback);
-                var response = new { message = "Feedback added successfully" }; // Create a response object
-                return Ok(response); // Return the response object as JSON
+                var response = new { message = "Feedback added successfully" }; 
+                return Ok(response); 
             }
             catch (Exception ex)
             {
-                var errorResponse = new { message = ex.Message }; // Create an error response object
-                return StatusCode(500, errorResponse); // Return the error response object as JSON
+                var errorResponse = new { message = ex.Message }; 
+                return StatusCode(500, errorResponse); 
             }
         }
 
@@ -69,11 +69,11 @@ namespace dotnetapp.Controllers
                 var deleted = await _feedbackService.DeleteFeedback(feedbackId);
                 if (!deleted)
                 {
-                    var errorResponse = new { message = "Feedback not found" }; // Create an error response object
-                    return NotFound(errorResponse); // Return the error response object as JSON
+                    var errorResponse = new { message = "Feedback not found" }; 
+                    return NotFound(errorResponse); 
                 }
 
-                var response = new { message = "Feedback deleted successfully" }; // Create a response object
+                var response = new { message = "Feedback deleted successfully" };
                 return Ok(response); // Return the response object as JSON
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace dotnetapp.Controllers
         }
 
 
-        // Make sure this method is inside the class
+        
         [HttpGet("username/{userId}")]
         public async Task<IActionResult> GetUsernameByUserId(int userId)
         {
