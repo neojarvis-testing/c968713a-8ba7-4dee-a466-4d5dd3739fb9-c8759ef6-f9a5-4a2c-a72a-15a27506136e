@@ -39,14 +39,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("SpecificOriginsPolicy", builder =>
     {
-        builder.WithOrigins("https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
-                           "https://8081-ceaeccbebfffaedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-cdebaaabaaceadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-abfbbbdabfccfffadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-cebeddbfbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-dedadddddbafecbafcedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-dfaadbbbbbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
-                           "https://8081-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io") // Replace with your front-end or
+        builder.WithOrigins("https://8081-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io") // Replace with your front-end origin
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials();
@@ -84,17 +77,3 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.Run();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
