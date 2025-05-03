@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
-
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,10 +10,10 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   credentials = { email: '', password: '' };
-  passwordFieldType: string = 'password'; 
-
+  passwordFieldType: string = 'password';
+ 
   constructor(private authService: AuthService, private router: Router) {}
-
+ 
   onLogin(): void {
     this.authService.login(this.credentials).subscribe({
       next: (response: any) => {
@@ -21,11 +21,11 @@ export class LoginComponent {
         const role = this.authService.getUserRoleFromToken(response.token);
         console.log('Decoded Role:', role);
         localStorage.setItem('userRole', role);
-
+ 
         // Navigate to the role-specific route
         if (role) {
           if (role=='admin') {
-            this.router.navigate([`/${role}`]); 
+            this.router.navigate([`/${role}`]);
           }
           if (role=='user') {
              this.router.navigate([`/${role}`]);
@@ -52,8 +52,9 @@ export class LoginComponent {
       },
     });
   }
-
+ 
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }
+ 

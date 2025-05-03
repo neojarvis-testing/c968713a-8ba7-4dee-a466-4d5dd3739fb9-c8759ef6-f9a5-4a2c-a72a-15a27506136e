@@ -4,7 +4,18 @@
     color: #333;
     margin: 0;
     padding: 0;
+   
   }
+  .image{
+    height: 600px;
+    width:1300px;
+    background: url('https://www.shutterstock.com/image-photo/handshake-two-farmer-on-background-600nw-2176760259.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+   
+    }
+   
   
   .feedback-header {
     background: linear-gradient(to right, #002d62, #3a5795);

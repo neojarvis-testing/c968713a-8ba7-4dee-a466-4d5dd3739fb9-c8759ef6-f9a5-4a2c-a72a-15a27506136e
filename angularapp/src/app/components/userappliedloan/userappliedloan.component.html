@@ -1,4 +1,6 @@
 <app-usernav></app-usernav>
+
+  <div class="image">
 <div class="view-feedback">
   <div class="feed"> 
   <h1>Applied Loans</h1>
@@ -35,6 +37,8 @@
     </tbody>
   </table>
 </div>
+</div>
+  </div>
 
   <!-- Confirmation Popup -->
   <div *ngIf="showConfirmationPopup" class="confirmation-popup">
@@ -42,4 +46,4 @@
     <button (click)="deleteLoan()">Yes, Delete</button>
     <button (click)="cancelDelete()">Cancel</button>
   </div>
-</div>
+

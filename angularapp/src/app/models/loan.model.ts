@@ -1,10 +1,10 @@
 export interface Loan{
-    LoanId?:number;
-    LoanType:string;
-    Description:string;
-    InterestRate:number;
-    MaximumAmount:number;
-    RepaymentTenure:number;
-    Eligibility:string;
-    DocumentsRequired:string;
+    loanId?:number;
+    loanType:string;
+    description:string;
+    interestRate:number;
+    maximumAmount:number;
+    repaymentTenure:number;
+    eligibility:string;
+    documentsRequired:string;
 }
