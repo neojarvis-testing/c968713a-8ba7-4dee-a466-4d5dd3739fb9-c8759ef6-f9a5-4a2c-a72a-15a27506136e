@@ -1,4 +1,3 @@
-
 using dotnetapp.Models;
 using dotnetapp.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
-
+ 
 namespace dotnetapp.Controllers
 {
     [ApiController]
@@ -14,12 +13,12 @@ namespace dotnetapp.Controllers
     public class LoanController : ControllerBase
     {
         private readonly LoanService _loanService;
-
+ 
         public LoanController(LoanService loanService)
         {
             _loanService = loanService;
         }
-
+ 
         [HttpGet]
         [Authorize(Roles="Admin")]  // Enforce authentication
         public async Task<ActionResult<IEnumerable<Loan>>> GetAllLoans()
@@ -34,7 +33,7 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response for server error
             }
         }
-
+ 
         [HttpGet("{loanId}")]
         [Authorize(Roles="Admin, User")]  // Enforce authentication
         public async Task<ActionResult> GetLoanById(int loanId)
@@ -53,7 +52,7 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response for server error
             }
         }
-
+ 
         [HttpPost]
         [Authorize(Roles="Admin")]  // Uncommented to enforce authentication
         public async Task<ActionResult> AddLoan([FromBody] Loan loan)
@@ -72,7 +71,7 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response
             }
         }
-
+ 
         [HttpPut("{loanId}")]
         [Authorize(Roles="Admin")]  // Enforce authentication
         public async Task<ActionResult> UpdateLoan(int loanId, [FromBody] Loan loan)
@@ -95,7 +94,7 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response
             }
         }
-
+ 
         [HttpDelete("{loanId}")]
         [Authorize(Roles="Admin")]  // Enforce authentication
         public async Task<ActionResult> DeleteLoan(int loanId)
@@ -120,4 +119,3 @@ namespace dotnetapp.Controllers
         }
     }
 }
-

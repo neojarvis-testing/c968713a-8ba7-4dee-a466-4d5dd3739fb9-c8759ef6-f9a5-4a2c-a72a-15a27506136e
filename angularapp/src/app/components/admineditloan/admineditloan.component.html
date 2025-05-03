@@ -6,7 +6,7 @@
   <form #editLoanForm="ngForm" (ngSubmit)="onSubmit(editLoanForm)">
     <div class="form-group">
       <label for="LoanType">Loan Type</label>
-      <input type="text" id="LoanType" name="LoanType" [(ngModel)]="loan.LoanType" required>
+      <input type="text" id="LoanType" name="LoanType" [(ngModel)]="loan.loanType" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.LoanType?.dirty">
         <div *ngIf="editLoanForm.controls.LoanType?.errors?.required" class="error">Loan Type is required</div>
       </div>
@@ -14,7 +14,7 @@
 
     <div class="form-group">
       <label for="Description">Description</label>
-      <input type="text" id="Description" name="Description" [(ngModel)]="loan.Description" required>
+      <input type="text" id="Description" name="Description" [(ngModel)]="loan.description" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.Description?.dirty">
         <div *ngIf="editLoanForm.controls.Description?.errors?.required" class="error">Description is required</div>
       </div>
@@ -22,7 +22,7 @@
 
     <div class="form-group">
       <label for="InterestRate">Interest Rate</label>
-      <input type="number" id="InterestRate" name="InterestRate" [(ngModel)]="loan.InterestRate" required>
+      <input type="number" id="InterestRate" name="InterestRate" [(ngModel)]="loan.interestRate" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.InterestRate?.dirty">
         <div *ngIf="editLoanForm.controls.InterestRate?.errors?.required" class="error">Interest Rate is required</div>
       </div>
@@ -30,7 +30,7 @@
 
     <div class="form-group">
       <label for="MaximumAmount">Maximum Amount</label>
-      <input type="number" id="MaximumAmount" name="MaximumAmount" [(ngModel)]="loan.MaximumAmount" required>
+      <input type="number" id="MaximumAmount" name="MaximumAmount" [(ngModel)]="loan.maximumAmount" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.MaximumAmount?.dirty">
         <div *ngIf="editLoanForm.controls.MaximumAmount?.errors?.required" class="error">Maximum Amount is required</div>
       </div>
@@ -38,7 +38,7 @@
 
     <div class="form-group">
       <label for="RepaymentTenure">Repayment Tenure</label>
-      <input type="number" id="RepaymentTenure" name="RepaymentTenure" [(ngModel)]="loan.RepaymentTenure" required>
+      <input type="number" id="RepaymentTenure" name="RepaymentTenure" [(ngModel)]="loan.repaymentTenure" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.RepaymentTenure?.dirty">
         <div *ngIf="editLoanForm.controls.RepaymentTenure?.errors?.required" class="error">Repayment Tenure is required</div>
       </div>
@@ -46,7 +46,7 @@
 
     <div class="form-group">
       <label for="Eligibility">Eligibility</label>
-      <input type="text" id="Eligibility" name="Eligibility" [(ngModel)]="loan.Eligibility" required>
+      <input type="text" id="Eligibility" name="Eligibility" [(ngModel)]="loan.eligibility" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.Eligibility?.dirty">
         <div *ngIf="editLoanForm.controls.Eligibility?.errors?.required" class="error">Eligibility is required</div>
       </div>
@@ -54,7 +54,7 @@
 
     <div class="form-group">
       <label for="DocumentsRequired">Documents Required</label>
-      <input type="text" id="DocumentsRequired" name="DocumentsRequired" [(ngModel)]="loan.DocumentsRequired" required>
+      <input type="text" id="DocumentsRequired" name="DocumentsRequired" [(ngModel)]="loan.documentsRequired" required>
       <div *ngIf="editLoanForm.submitted || editLoanForm.controls.DocumentsRequired?.dirty">
         <div *ngIf="editLoanForm.controls.DocumentsRequired?.errors?.required" class="error">Documents Required is required</div>
       </div>

@@ -58,12 +58,12 @@ export class UserviewloanComponent implements OnInit {
 
   searchByLoanName(searchtxt: string): void {
     this.filteredLoans = this.loans.filter(loan =>
-      loan.LoanType.toLowerCase().includes(searchtxt.toLowerCase())
+      loan.loanType.toLowerCase().includes(searchtxt.toLowerCase())
     );
   }
 
   applyForLoan(loan: Loan): void {
-    this.router.navigate(['/loanform', loan.LoanId]);
+    this.router.navigate(['/loanform', loan.loanId]);
   }
 }
 

@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ 
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(35deg,#000428, #a92e57, #004e92);
+    padding: 10px 40px; /* Reduced height */
+    color: white;
+    border-radius: 0; /* Remove rounded edges */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow */
+    font-family: "Times New Roman", Times, serif; /* Font change */
+       height: 4rem;
+}
+ 
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+   margin-bottom: 7px;
+margin-left: 10px;
+}
+ 
+.brand-logo {
+    font-family: "Times New Roman", Times, serif;
+    color: white;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+ 
+.navbar-header {
+    display: flex;
+    align-items: first baseline;
+    margin-left: 0;
+ 
+   
+}
+ 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-left: 0;
+    font-family: "Times New Roman", Times, serif;
+}
+ 
+.user-info {
+    font-size: 0.9rem;
+    font-style: italic;
+    font-family: "Times New Roman", Times, serif;
+}
+ 
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+ 
+.nav-links li {
+    margin-right: 1rem;
+}
+ 
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-family: "Times New Roman", Times, serif;
+}
+ 
+.nav-links a:hover {
+    text-decoration: underline;
+}
+ 
+/* Admin info */
+.admin-info span {
+    color: white;
+    border: 1px solid white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+ 
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+ 
+.dropdown.show .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
+.dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    font-family: "Times New Roman", Times, serif;
+}
+ 
+.dropdown-menu a:hover {
+    background-color: #f4f4f4;
+}
+ 
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+ 
+.dropdown.show .arrow-icon {
+    transform: rotate(180deg);
+}
+ 
+/* Logout button */
+.logout-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-family: "Times New Roman", Times, serif;
+}
+ 
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+ 
+/* Content styles */
+.content {
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Farm Financer heading */
+h1 {
+    text-align: center;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+ 
+p {
+    text-align: justify;
+    line-height: 1.6;
+    color: #555;
+    font-family: "Times New Roman", Times, serif;
+}
+ 

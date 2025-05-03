@@ -1,0 +1,35 @@
+ 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items:first baseline;
+    background: linear-gradient(35deg,#000428, #a92e57, #004e92);
+    padding: 10px 40px;
+    color: white;
+ 
+  }
+ 
+ 
+  .navbar-title  a{
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: aliceblue;
+  }
+ 
+  .navbar-links a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+ 
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+ 
+  .active {
+    font-weight: bold;
+  }
+ 

@@ -57,7 +57,7 @@ export class UserappliedloanComponent implements OnInit {
 
   searchByLoanName(searchtxt: string): void {
     this.filteredLoans = this.loanApplications.filter(loan =>
-      this.loanDetails[loan.LoanId]?.LoanType.toLowerCase().includes(searchtxt.toLowerCase())
+      this.loanDetails[loan.LoanId]?.loanType.toLowerCase().includes(searchtxt.toLowerCase())
     );
   }
 

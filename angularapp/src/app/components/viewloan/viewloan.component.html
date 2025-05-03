@@ -1,4 +1,3 @@
-
 <!-- <app-adminnav></app-adminnav>
  
 <div class="view-loan-container">
@@ -43,12 +42,12 @@
     </tbody>
   </table>
  
-
+ 
   <div *ngIf="message" class="message">
     {{ message }}
   </div>
  
-
+ 
   <div *ngIf="showDeleteModal" class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeDeleteModal()">&times;</span>
@@ -58,17 +57,18 @@
     </div>
   </div>
 </div> -->
-
+ 
 <app-adminnav></app-adminnav>
-
+ 
 <div class="view-loan-container">
   <h1>Loan Details</h1>
   <div class="search-container">
     <input
-      type="text"
-      placeholder="Search by Loan Type or Description"
-      [(ngModel)]="searchTerm"
-      (input)="searchLoans()"  /> 
+    type="text"
+    placeholder="Search by Loan Type or Description"
+    [(ngModel)]="searchTerm"
+    (input)="searchLoans()"/>
+    <!-- <button (click)="searchLoans()">Search</button> -->
   </div>
   <table>
     <thead>
@@ -101,19 +101,19 @@
       </tr>
     </tbody>
   </table>
-
+ 
   <!-- Conditionally show pagination controls if more than 10 records -->
   <div *ngIf="filteredLoans.length > 10" class="pagination">
     <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
     <span>Page {{currentPage}} of {{totalPages}}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
   </div>
-
+ 
   <!-- Display message -->
   <div *ngIf="message" class="message">
     {{ message }}
   </div>
-
+ 
   <!-- Delete Confirmation Modal -->
   <div *ngIf="showDeleteModal" class="modal">
     <div class="modal-content">
@@ -124,4 +124,4 @@
     </div>
   </div>
 </div>
-
+ 

@@ -1,0 +1,28 @@
+<app-usernav></app-usernav>
+<router-outlet></router-outlet>
+<div class="feedback-page-container">
+    <div class="feedback-container">
+        <h1>Add Feedback</h1>
+        <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+            <!-- Feedback Input -->
+            <div class="form-group">
+                <label for="feedback">Feedback <span class="required">*</span>:</label>
+                <textarea placeholder="Every feedback counts" id="feedback" name="feedback" rows="10" [(ngModel)]="feedback.FeedbackText" #feedbackField="ngModel" required></textarea>
+                <div *ngIf="feedbackField.invalid && feedbackField.touched" class="error">
+                    Please enter your feedback.
+                </div>
+            </div>
+ 
+            <!-- Submit Button -->
+            <button type="submit" [disabled]="feedbackForm.invalid">Submit</button>
+        </form>
+    </div>
+</div>
+ 
+<!-- Popup for success message -->
+<div *ngIf="isSubmitted" class="popup">
+    <div class="popup-content">
+        <p>Submitted successfully!</p>
+        <button (click)="closePopup()">OK</button>
+    </div>
+</div>

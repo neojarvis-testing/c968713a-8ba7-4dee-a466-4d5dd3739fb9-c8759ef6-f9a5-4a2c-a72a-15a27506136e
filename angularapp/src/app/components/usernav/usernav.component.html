@@ -1,0 +1,25 @@
+<nav class="navbar">
+    <div class="navbar-header">
+      <span class="navbar-brand">
+        <img class="logo" src="https://dcassetcdn.com/design_img/2773941/151249/151249_15240101_2773941_c583c392_thumbnail.png" />
+        <p class="brand-logo">Farm Financer</p>
+      </span>
+    </div>
+    <ul class="nav-links">
+      <li class="admin-info"><span>Hi, {{ username }}! Welcome back</span></li>
+      <li><a routerLink="/user">Home</a></li>
+      <li><a routerLink="/userviewloan">Loans</a></li>
+      <li><a routerLink="/userappliedloan">Applied Loan</a></li>
+      <li class="dropdown" (click)="toggleDropdown($event)">
+        <a href="#" class="dropdown-toggle">Feedback <i class="fas fa-chevron-down arrow-icon"></i></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/useraddfeedback">Post Feedback</a></li>
+          <li><a routerLink="/userviewfeedback">My Feedbacks</a></li>
+        </ul>
+      </li>
+      <li><button class="logout-btn" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button></li>
+    </ul>
+  </nav>
+ 

@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,15 +18,15 @@ import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewloanComponent } from './components/userviewloan/userviewloan.component';
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
-
+ 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { RouterModule } from '@angular/router';
-
-
+ 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +49,7 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     AdminhomeComponent,
     UserhomeComponent
-
+ 
   ],
   imports: [
     BrowserModule,
@@ -59,7 +58,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([])
-
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
