@@ -10,7 +10,7 @@
       </div>
       <div class="form-group">
         <label for="farmerAddress">Farmer Address:</label>
-        <input id="farmerAddress" name="farmerAddress" [(ngModel)]="loanData.FarmAddress" required #farmerAddress="ngModel" />
+        <input id="farmerAddress" name="farmerAddress" [(ngModel)]="loanData.FarmerAddress" required #farmerAddress="ngModel" />
         <div *ngIf="farmerAddress.invalid && farmerAddress.touched" class="error-message">
           Address is required.
         </div>

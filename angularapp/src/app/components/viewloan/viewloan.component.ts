@@ -44,8 +44,8 @@ export class ViewloanComponent implements OnInit {
 
   searchLoans(): void {
     this.filteredLoans = this.loans.filter(loan =>
-      loan.LoanType.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      loan.Description.toLowerCase().includes(this.searchTerm.toLowerCase())
+      loan.loanType.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      loan.description.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
     this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
     this.currentPage = 1; // Reset to first page on new search
@@ -87,9 +87,9 @@ export class ViewloanComponent implements OnInit {
 
   deleteLoan(): void {
     if (this.loanToDelete) {
-      this.loanService.deleteLoan(this.loanToDelete.LoanId!).subscribe(
+      this.loanService.deleteLoan(this.loanToDelete.loanId!).subscribe(
         () => {
-          this.loans = this.loans.filter(l => l.LoanId !== this.loanToDelete!.LoanId);
+          this.loans = this.loans.filter(l => l.loanId !== this.loanToDelete!.loanId);
           this.filteredLoans = this.loans;
           this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
           this.updatePaginatedLoans();
