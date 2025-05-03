@@ -46,6 +46,7 @@ builder.Services.AddCors(options =>
                            "https://8081-cebeddbfbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-dedadddddbafecbafcedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
                            "https://8081-dfaadbbbbbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-fddafbebadfbfdaaedceffaacaaae.premiumproject.examly.io",
                            "https://8081-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io") // Replace with your front-end or
                .AllowAnyMethod()
                .AllowAnyHeader()

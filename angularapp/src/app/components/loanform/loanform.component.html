@@ -1,6 +1,6 @@
 <div class="create-loan-container">
     <h1>Loan Application Form</h1>
-    <!-- <form #loanForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #loanForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="farmLocation">Farm Location:</label>
         <input id="farmLocation" name="farmLocation" [(ngModel)]="loanData.FarmLocation" required #farmLocation="ngModel" />
@@ -36,7 +36,7 @@
       <button type="submit" [disabled]="loanForm.invalid">Apply</button>
       <button type="button" (click)="goBack()">Back</button>
     </form>
-    -->
+   
     <!-- Success Modal -->
     <div *ngIf="showSuccessPopup" class="modal">
       <div class="modal-content">
