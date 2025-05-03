@@ -48,16 +48,21 @@ export class RequestedloanComponent implements OnInit {
 
   fetchLoanDetails(): void {
     this.loanRequests.forEach(loanApp => {
+
       if (loanApp.loanId) {
         this.loanService.getLoanById(loanApp.loanId).subscribe({
           next: (loan: Loan) => {
             this.loans[loanApp.loanId] = loan;
             console.log(this.loans[loanApp.loanId]);
+
+     
+
             console.log(loan);
             this.filterLoans(); // Apply filters after fetching each loan
           },
           error: (error) => {
             console.error(`Error fetching loan with ID ${loanApp.loanId}:`, error);
+
           }
         });
       }
@@ -67,7 +72,9 @@ export class RequestedloanComponent implements OnInit {
   filterLoans() {
     this.filteredLoanRequests = this.loanRequests.filter(loanRequest => {
       const matchesStatus = this.filterStatus === 'all' || loanRequest.LoanStatus.toString() === this.filterStatus;
-      const matchesSearch = this.loans[loanRequest.loanId]?.loanType.toLowerCase().includes(this.searchText.toLowerCase());
+
+      const matchesSearch = this.loans[loanRequest.LoanId]?.LoanType.toLowerCase().includes(this.searchText.toLowerCase());
+
       return matchesStatus && matchesSearch;
     });
   }
@@ -129,3 +136,4 @@ export class RequestedloanComponent implements OnInit {
     this.filterLoans();
   }
 }
+

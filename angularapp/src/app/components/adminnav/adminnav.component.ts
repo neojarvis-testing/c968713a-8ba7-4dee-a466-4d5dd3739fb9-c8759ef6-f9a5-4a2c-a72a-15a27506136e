@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service'; // Ensure the correct path to the AuthService
 import { Router } from '@angular/router';
 import { FeedbackService } from 'src/app/services/feedback.service'; // Ensure the correct path to the FeedbackService
-
+ 
 @Component({
   selector: 'app-adminnav',
   templateUrl: './adminnav.component.html',
@@ -15,7 +15,13 @@ export class AdminnavComponent implements OnInit {
   role: string = this.isAdmin ? 'Admin' : 'User';
   userId: number; // Ensure you have userId
 
+
   constructor(private authService: AuthService, private router: Router, private feedbackService: FeedbackService) {}
+
+
+ 
+  
+ 
 
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('userId')!, 10); 
@@ -38,6 +44,10 @@ export class AdminnavComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+
+  
+
+ 
   // Add dropdown toggle functionality
   toggleDropdown(event: Event): void {
     event.preventDefault();
@@ -46,5 +56,4 @@ export class AdminnavComponent implements OnInit {
       dropdown.classList.toggle('show');
     }
   }
- 
 }
