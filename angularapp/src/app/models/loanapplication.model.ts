@@ -2,11 +2,11 @@ export interface LoanApplication
 {
     LoanApplicationId?: number;
     UserId?:number;
-    LoanId?:number;
+    loanId?:number;
     SubmissionDate:string;
-    LoanStatus:number;
+    LoanStatus?:number;
     FarmLocation:string;
-    FarmAddress:string;
+    FarmerAddress:string;
     FarmSizeInAcres:number;
     FarmPurpose:string;
     File:string;

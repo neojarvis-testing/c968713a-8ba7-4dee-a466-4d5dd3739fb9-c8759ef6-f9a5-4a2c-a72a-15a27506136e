@@ -1,34 +1,41 @@
-
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items:first baseline;
-    background: linear-gradient(35deg,#000428, #a92e57, #004e92);
-    padding: 10px 40px;
-    color: white;
-  
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Corrected from 'first baseline' to 'center' */
+  background-image: linear-gradient(40deg, rgb(6, 49, 6), rgb(34, 148, 34), rgb(6, 49, 6));
+  padding: 10px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow */
+  font-family: "Times New Roman", Times, serif; /* Font change */
+  height: 4rem;
+}
 
-  .navbar-title  a{
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-decoration: none;
-    color: aliceblue;
-  }
-  
-  .navbar-links a {
-    margin-left: 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  
-  .navbar-links a:hover {
-    text-decoration: underline;
-  }
-  
-  .active {
-    font-weight: bold;
-  }
+.navbar-title a {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-logo {
+  height: 40px; /* Adjust the height as needed */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.navbar-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: bold;
+}

@@ -43,7 +43,7 @@ export class UserviewloanComponent implements OnInit {
   checkAppliedLoans(): void {
     this.loanService.getAppliedLoans(this.userId).subscribe(
       (appliedLoans: LoanApplication[]) => {
-        this.appliedLoanIds = appliedLoans.map(app => app.LoanId);
+        this.appliedLoanIds = appliedLoans.map(app => app.loanId);
       },
       error => {
         console.error('Error fetching applied loans:', error);
@@ -57,11 +57,11 @@ export class UserviewloanComponent implements OnInit {
 
   searchByLoanName(searchtxt: string): void {
     this.filteredLoans = this.loans.filter(loan =>
-      loan.LoanType.toLowerCase().includes(searchtxt.toLowerCase())
+      loan.loanType.toLowerCase().includes(searchtxt.toLowerCase())
     );
   }
 
   applyForLoan(loan: Loan): void {
-    this.router.navigate(['/loanform', loan.LoanId]);
+    this.router.navigate(['/loanform', loan.loanId]);
   }
 }

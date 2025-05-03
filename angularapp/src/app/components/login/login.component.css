@@ -2,7 +2,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background: url('https://www.shutterstock.com/image-photo/businessmans-hand-draws-rising-arrow-600nw-2221463507.jpg') no-repeat center center/cover;
+    background: url('https://www.bankofbaroda.in/-/media/project/bob/countrywebsites/india/blogs/loansborrowings/images/types-of-agriculture-loans.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +44,7 @@ body {
     font-weight: bold;
     margin-bottom: 5px;
     color: #fff9f9;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   input {
@@ -53,6 +54,7 @@ body {
     outline: none;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.8);
+    /* font-family: 'Times New Roman', Times, serif; */
   }
   
   /* Password Field with Eye Icon */
@@ -74,7 +76,7 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 18px;
-    background: linear-gradient(135deg, #3498db, #2ecc71);
+    background: linear-gradient(135deg, rgb(36, 66, 45), #2ecc71);
     border: none;
     border-radius: 5px;
     color: rgb(255, 255, 255);
@@ -96,6 +98,7 @@ body {
     margin-top: 15px;
     color: #fff9f9;
     font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   a {
@@ -103,6 +106,7 @@ body {
     color: #3498db;
     font-weight: bold;
     transition: 0.3s;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   a:hover {

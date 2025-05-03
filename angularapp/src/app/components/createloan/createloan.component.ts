@@ -63,14 +63,14 @@ import Swal from 'sweetalert2';
 })
 export class CreateloanComponent implements OnInit {
   newLoan:Loan={
-    LoanId:0,
-    LoanType:'',
-    Description:'',
-    InterestRate:0,
-    MaximumAmount:0,
-    RepaymentTenure:0,
-    Eligibility:'',
-    DocumentsRequired:''
+    loanId:0,
+    loanType:'',
+    description:'',
+    interestRate:0,
+    maximumAmount:0,
+    repaymentTenure:0,
+    eligibility:'',
+    documentsRequired:''
   }
   message: string = '';
   showModal: boolean = false;

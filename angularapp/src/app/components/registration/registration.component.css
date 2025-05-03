@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background: url('https://img.freepik.com/premium-vector/banking-service-background-bank-building-icon-made-with-currency-symbols-dollar-euro-yen-pound-icons_127544-803.jpg?semt=ais_hybrid&w=740') no-repeat center center/cover;
+    background: url('https://images.pexels.com/photos/1334312/pexels-photo-1334312.jpeg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,8 @@ h1 {
     margin-bottom: 20px;
     -webkit-text-stroke: 1px rgb(255, 255, 255);
     font-weight: bold;
-    font-family: 'Cambria', serif;
+    /* font-family: 'Cambria', serif; */
+    font-family: 'Times New Roman', Times, serif;
     text-align: center;
 }
 
@@ -44,6 +45,7 @@ label {
     font-weight: bold;
     color: #fff;
     text-align: left;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 input {
@@ -79,7 +81,7 @@ button {
     width: 100%;
     padding: 12px;
     font-size: 18px;
-    background: linear-gradient(135deg, #3498db, #2ecc71);
+    background: linear-gradient(135deg, rgb(36, 66, 45), #2ecc71);
     border: none;
     border-radius: 8px;
     color: white;
@@ -105,7 +107,8 @@ a {
 }
 
 a:hover {
-    color: #2ecc71;
+     color: #2ecc71; 
+    /* color: whitesmoke; */
 }
 .error{
     color: red;
