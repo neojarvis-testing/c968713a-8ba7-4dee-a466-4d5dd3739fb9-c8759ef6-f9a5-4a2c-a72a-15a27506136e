@@ -38,8 +38,12 @@ export class LoginComponent {
             confirmButtonText: 'OK'
           });
         } else {
-          console.log("error at logincomponent");
-          this.router.navigate(['/error']); // Fallback route
+          Swal.fire({
+            title: 'Enter valid Input!',
+            text: 'No Inputs Found Please enter Valid Inputs.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
         }
       },
       error: () => {
@@ -47,8 +51,7 @@ export class LoginComponent {
           title: 'Error!',
           text: 'Invalid credentials. Please try again.',
           icon: 'error',
-          confirmButtonText: 'OK'
-        });
+          confirmButtonText: 'OK'});
       },
     });
   }

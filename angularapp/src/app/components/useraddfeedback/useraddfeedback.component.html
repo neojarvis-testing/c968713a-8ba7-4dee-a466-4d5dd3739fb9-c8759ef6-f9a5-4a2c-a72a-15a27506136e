@@ -1,5 +1,7 @@
 <app-usernav></app-usernav>
 <router-outlet></router-outlet>
+ 
+<div class="image">
 <div class="feedback-page-container">
     <div class="feedback-container">
         <h1>Add Feedback</h1>
@@ -12,17 +14,18 @@
                     Please enter your feedback.
                 </div>
             </div>
-
+ 
             <!-- Submit Button -->
             <button type="submit" [disabled]="feedbackForm.invalid">Submit</button>
         </form>
     </div>
 </div>
-
+ 
 <!-- Popup for success message -->
 <div *ngIf="isSubmitted" class="popup">
     <div class="popup-content">
         <p>Submitted successfully!</p>
         <button (click)="closePopup()">OK</button>
     </div>
+</div>
 </div>
