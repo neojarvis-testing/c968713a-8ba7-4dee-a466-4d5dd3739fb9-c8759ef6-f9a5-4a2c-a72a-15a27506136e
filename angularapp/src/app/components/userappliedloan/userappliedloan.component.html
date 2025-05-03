@@ -32,7 +32,7 @@
         <td>
           {{ loan.loanStatus === 0 ? 'Pending' : (loan.loanStatus === 1 ? 'Approved' : (loan.loanStatus === 2 ? 'Rejected' : 'Unknown')) }}
         </td>
-        <td><button (click)="confirmDelete(loan)" [disabled]="loan.loanStatus === 1">Delete</button></td>
+        <td><button (click)="confirmDelete(loan)" [disabled]="loan.loanStatus === 1 || loan.loanStatus==2">Delete</button></td>
       </tr>
     </tbody>
   </table>
