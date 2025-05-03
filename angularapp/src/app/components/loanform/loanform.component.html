@@ -12,7 +12,7 @@
         <label for="farmerAddress">Farmer Address:</label>
         <input id="farmerAddress" name="farmerAddress" [(ngModel)]="loanData.FarmerAddress" required #farmerAddress="ngModel" />
         <div *ngIf="farmerAddress.invalid && farmerAddress.touched" class="error-message">
-          Address is required.
+          Farmer Address is required.
         </div>
       </div>
       <div class="form-group">

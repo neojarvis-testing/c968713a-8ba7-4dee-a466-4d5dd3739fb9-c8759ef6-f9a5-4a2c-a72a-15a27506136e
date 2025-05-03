@@ -43,14 +43,20 @@ export class ViewloanComponent implements OnInit {
   }
 
   searchLoans(): void {
-    this.filteredLoans = this.loans.filter(loan =>
-      loan.loanType.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      loan.description.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    this.searchTerm = this.searchTerm.trim(); // Remove extra spaces
+ 
+    if (!this.searchTerm) {
+      this.filteredLoans = [...this.loans]; // Reset to show all loans
+    } else {
+      this.filteredLoans = this.loans.filter(loan =>
+        loan.loanType?.toLowerCase().includes(this.searchTerm.toLowerCase()) 
+      );
+    }
     this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
-    this.currentPage = 1; // Reset to first page on new search
+    this.currentPage = 1; // Reset pagination
     this.updatePaginatedLoans();
   }
+ 
 
   updatePaginatedLoans(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -81,27 +87,37 @@ export class ViewloanComponent implements OnInit {
   }
 
   confirmDelete(loan: Loan): void {
+    localStorage.setItem("loan",JSON.stringify(loan));
     this.loanToDelete = loan;
     this.showDeleteModal = true;
   }
 
   deleteLoan(): void {
-    if (this.loanToDelete) {
-      this.loanService.deleteLoan(this.loanToDelete.loanId!).subscribe(
+    const storedFeedback = JSON.parse(localStorage.getItem('loan') || '{}');
+    console.log('Retrieved Feedback ID:', storedFeedback.loanId);
+   console.log("Getting Id as=>",storedFeedback.loanId);
+   const id=storedFeedback.loanId;
+    if (this.loanToDelete && id) {
+      console.log('Attempting to delete loan with ID:',id);
+  
+      this.loanService.deleteLoan(id).subscribe(
         () => {
-          this.loans = this.loans.filter(l => l.loanId !== this.loanToDelete!.loanId);
-          this.filteredLoans = this.loans;
+          this.loans = this.loans.filter(l => l.loanId !== id);
+          this.filteredLoans = [...this.loans]; // Spread operator to ensure reactivity
           this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
           this.updatePaginatedLoans();
           this.closeDeleteModal();
+          
           this.showSuccessMessage('Loan deleted successfully');
         },
-        error => {
+        (error) => {
           console.error('Error deleting loan:', error);
-          this.showErrorMessage(error.error.message || 'Error deleting loan');
+          this.showErrorMessage(error?.error?.message || 'Error deleting loan');
           this.closeDeleteModal();
         }
       );
+    } else {
+      console.error('Error: Invalid LoanId! Loan ID is undefined or missing.');
     }
   }
 

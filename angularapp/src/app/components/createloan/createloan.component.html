@@ -8,7 +8,7 @@
     
     <div class="form-group">
       <label for="loanType">Loan Type<span class="required">*</span></label>
-      <input class="form-control" type="text" id="loanType" name="loanType" [(ngModel)]="newLoan.loanType"   required minlength="1" maxlength="30" placeholder="Loan Type">
+      <input type="text" id="loanType" name="loanType" [(ngModel)]="newLoan.loanType"   required minlength="1" maxlength="30" placeholder="Loan Type">
       <div *ngIf="loanForm.submitted || loanForm.controls.loanType?.dirty">
         <div *ngIf="loanForm.controls.loanType?.errors?.required" class="error">Loan Type is required</div>
         <div *ngIf="loanForm.controls.loanType?.errors?.maxlength" class="error">Loan Type must be less than 30 words</div>
@@ -17,7 +17,7 @@
 
     <div class="form-group">  
       <label for="description">Description<span class="required">*</span></label>
-      <input class="form-control" type="text" id="description" name="description" [(ngModel)]="newLoan.description" required minlength="1" maxlength="100" placeholder="Loan Description">
+      <input type="text" id="description" name="description" [(ngModel)]="newLoan.description" required minlength="1" maxlength="100" placeholder="Loan Description">
       <div *ngIf="loanForm.submitted || loanForm.controls.description?.dirty">
         <div *ngIf="loanForm.controls.description?.errors?.required" class="error">Description is required</div>
         <div *ngIf="loanForm.controls.description?.errors?.maxlength" class="error">Description must be less than 100 words</div>
@@ -26,7 +26,7 @@
 
     <div class="form-group">
       <label for="interestRate">Interest Rate<span class="required">*</span></label>
-      <input class="form-control" type="number" id="interestRate" name="interestRate" [(ngModel)]="newLoan.interestRate"  required pattern="^[0-9]+(\.[0-9]*)?$" max="20" placeholder="Interest Rate">
+      <input type="number" id="interestRate" name="interestRate" [(ngModel)]="newLoan.interestRate"  required pattern="^[0-9]+(\.[0-9]*)?$" max="20" placeholder="Interest Rate">
       <div *ngIf="loanForm.submitted || loanForm.controls.interestRate?.dirty">
         <div *ngIf="loanForm.controls.interestRate?.errors?.required" class="error">Interest Rate is required</div>
         <div *ngIf="loanForm.controls.interestRate?.errors?.pattern" class="error">Interest Rate must be a valid number</div>
@@ -36,7 +36,7 @@
 
     <div class="form-group">
       <label for="maximumAmount">Maximum Amount<span class="required">*</span></label>
-      <input class="form-control" type="number" id="maximumAmount" name="maximumAmount" [(ngModel)]="newLoan.maximumAmount" required pattern="^[0-9]+(\.[0-9]*)?$" min="30000" max="1500000" placeholder="Maximum Amount">
+      <input type="number" id="maximumAmount" name="maximumAmount" [(ngModel)]="newLoan.maximumAmount" required pattern="^[0-9]+(\.[0-9]*)?$" min="30000" max="1500000" placeholder="Maximum Amount">
       <div *ngIf="loanForm.submitted || loanForm.controls.maximumAmount?.dirty">
         <div *ngIf="loanForm.controls.maximumAmount?.errors?.required" class="error">Maximum Amount is required</div>
         <div *ngIf="loanForm.controls.maximumAmount?.errors?.pattern" class="error">Maximum Amount must be a valid number</div>
@@ -47,7 +47,7 @@
 
     <div class="form-group">
       <label for="repaymentTenure">Repayment Tenure<span class="required">*</span></label>
-      <input class="form-control" type="number" id="repaymentTenure" name="repaymentTenure" [(ngModel)]="newLoan.repaymentTenure" required pattern="^[0-9]+$" min="1" max="35" placeholder="Repayment Tenure (Months)">
+      <input type="number" id="repaymentTenure" name="repaymentTenure" [(ngModel)]="newLoan.repaymentTenure" required pattern="^[0-9]+$" min="1" max="35" placeholder="Repayment Tenure (Months)">
       <div *ngIf="loanForm.submitted || loanForm.controls.repaymentTenure?.dirty">
         <div *ngIf="loanForm.controls.repaymentTenure?.errors?.required" class="error">Repayment Tenure is required</div>
         <div *ngIf="loanForm.controls.repaymentTenure?.errors?.pattern" class="error">Repayment Tenure must be a valid integer</div>
@@ -58,7 +58,7 @@
 
     <div class="form-group">
       <label for="eligibility">Eligibility<span class="required">*</span></label>
-      <input class="form-control" type="text" id="eligibility" name="eligibility" [(ngModel)]="newLoan.eligibility" required minlength="1" maxlength="50" placeholder="Eligibility Criteria">
+      <input type="text" id="eligibility" name="eligibility" [(ngModel)]="newLoan.eligibility" required minlength="1" maxlength="50" placeholder="Eligibility Criteria">
       <div *ngIf="loanForm.submitted || loanForm.controls.eligibility?.dirty">
         <div *ngIf="loanForm.controls.eligibility?.errors?.required" class="error">Eligibility is required</div>
         <div *ngIf="loanForm.controls.eligibility?.errors?.maxlength" class="error">Eligibility must be less than 50 words</div>
@@ -67,7 +67,11 @@
 
     <div class="form-group">
       <label for="documentsRequired">Documents Required<span class="required">*</span></label>
+
       <input class="form-control" type="text" id="documentsRequired" name="documentsRequired" [(ngModel)]="newLoan.documentsRequired" required minlength="1" maxlength="50" placeholder="Documents Required">
+
+      <input type="text" id="documentsRequired" name="documentsRequired" [(ngModel)]="newLoan.documentsRequired" required minlength="1" maxlength="50" placeholder="Documents Required">
+
       <div *ngIf="loanForm.submitted || loanForm.controls.documentsRequired?.dirty">
         <div *ngIf="loanForm.controls.documentsRequired?.errors?.required" class="error">Documents Required is required</div>
         <div *ngIf="loanForm.controls.documentsRequired?.errors?.maxlength" class="error">Documents Required must be less than 50 words</div>
