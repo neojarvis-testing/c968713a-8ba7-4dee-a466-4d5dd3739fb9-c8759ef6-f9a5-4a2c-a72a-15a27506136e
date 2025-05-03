@@ -1,16 +1,16 @@
 <app-usernav></app-usernav>
-
+ 
   <div class="image">
 <div class="view-feedback">
-  <div class="feed"> 
+  <div class="feed">
   <h1>Applied Loans</h1>
   <div class="underline"></div>
-
+ 
   <div class="search-container">
     <label for="search"> </label>
     <input type="text" id="search" name="search" placeholder="Search here..." (input)="searchByLoanName($event.target.value)">
   </div>
-
+ 
   <table>
     <thead>
       <tr>
@@ -39,11 +39,11 @@
 </div>
 </div>
   </div>
-
+ 
   <!-- Confirmation Popup -->
   <div *ngIf="showConfirmationPopup" class="confirmation-popup">
     <p>Are you sure you want to delete?</p>
     <button (click)="deleteLoan()">Yes, Delete</button>
     <button (click)="cancelDelete()">Cancel</button>
   </div>
-
+ 

@@ -68,5 +68,7 @@ export class UserviewloanComponent implements OnInit {
     );
   }
 
-
+  // applyForLoan(loan: Loan): void {
+  //   this.router.navigate([`/loanform/${loan.loanId}`]);
+  // }
 }

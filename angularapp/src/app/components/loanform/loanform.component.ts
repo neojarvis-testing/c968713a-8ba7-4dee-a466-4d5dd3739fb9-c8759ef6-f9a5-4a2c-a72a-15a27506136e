@@ -20,8 +20,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoanformComponent implements OnInit {
   loanData: LoanApplication = {
-    
-    // Initialize as 0
+
+    LoanApplicationId: 0,
+    UserId: 0, // Initialize as 0
+    loanId: 0, // Initialize as 0
     SubmissionDate: '', // Initialize as empty string
     
     FarmLocation: '',

@@ -9,7 +9,7 @@ body {
     margin: 0;
 
 }
-
+ 
 /* Blur Effect with Glassmorphism */
 .Container {
     background: rgba(255, 255, 255, 0.8);
@@ -21,17 +21,18 @@ body {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
    margin-top: 6px;
 }
-
+ 
 /* Header Styling */
 h1 {
     font-size: 32px;
     color: #333;
     margin-bottom: 25px;
     font-weight: bold;
+    /* font-family: 'Cambria', serif; */
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
 }
-
+ 
 /* Form Fields */
 .form-group {
     display: flex;
@@ -39,15 +40,14 @@ h1 {
     text-align: left;
     margin-bottom: 15px;
 }
-
+ 
 label {
     font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
-    text-align: center;
+    color: #fff;
+    text-align: left;
     font-family: 'Times New Roman', Times, serif;
 }
-
+ 
 input {
     padding: 12px;
     border: 1px solid #ccc;
@@ -56,18 +56,18 @@ input {
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.9);
 }
-
+ 
 input::placeholder {
     font-size: 14px; /* Reduced size */
     font-family: 'Times New Roman', Times, serif; /* Changed font style */
     color: rgba(0, 0, 0, 0.6); /* Adjusted color */
 }
-
+ 
 /* Password Field with Eye Icon */
 .password-container {
     position: relative;
 }
-
+ 
 .password-container i {
     position: absolute;
     right: 12px;
@@ -76,39 +76,40 @@ input::placeholder {
     cursor: pointer;
     color: #fff;
 }
-
+ 
 /* Button Styling */
 button {
     width: 100%;
     padding: 12px;
     font-size: 18px;
-    background: linear-gradient(135deg, #3498db, #2ecc71);
+    background: linear-gradient(135deg, rgb(36, 66, 45), #2ecc71);
     border: none;
     border-radius: 8px;
     color: white;
     cursor: pointer;
     transition: 0.3s;
 }
-
+ 
 button:hover {
     transform: scale(1.05);
 }
-
+ 
 /* Link Styling */
 p {
     margin-top: 15px;
     color: #fff;
     font-weight: 500;
 }
-
+ 
 a {
     text-decoration: none;
     color: #3498db;
     font-weight: bold;
 }
-
+ 
 a:hover {
-    color: #2ecc71;
+     color: #2ecc71;
+    /* color: whitesmoke; */
 }
 
 .error {
