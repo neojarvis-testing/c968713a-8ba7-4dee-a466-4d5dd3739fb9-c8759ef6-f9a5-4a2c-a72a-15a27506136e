@@ -21,7 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoanformComponent implements OnInit {
   loanData: LoanApplication = {
 
-    LoanApplicationId: 0,
+    loanApplicationId: 0,
     UserId: 0, // Initialize as 0
     loanId: 0, // Initialize as 0
     SubmissionDate: '', // Initialize as empty string

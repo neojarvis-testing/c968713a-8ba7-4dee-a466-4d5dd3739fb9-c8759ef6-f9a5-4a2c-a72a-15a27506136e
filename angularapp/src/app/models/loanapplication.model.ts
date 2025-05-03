@@ -1,6 +1,6 @@
 export interface LoanApplication
 {
-    LoanApplicationId?: number;
+    loanApplicationId?: number;
     UserId?:number;
     loanId?:number;
     SubmissionDate:string;

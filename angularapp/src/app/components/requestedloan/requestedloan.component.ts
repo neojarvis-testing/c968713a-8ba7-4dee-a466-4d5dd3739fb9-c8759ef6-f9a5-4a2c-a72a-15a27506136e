@@ -80,7 +80,7 @@ export class RequestedloanComponent implements OnInit {
       return;
     }
     loanApplication.LoanStatus = 1; // Approved
-    this.loanService.updateLoanStatus(loanApplication.LoanApplicationId!, loanApplication).subscribe({
+    this.loanService.updateLoanStatus(loanApplication.loanApplicationId!, loanApplication).subscribe({
       next: (updatedLoan: LoanApplication) => {
         this.loanRequests[index] = updatedLoan;
         this.filterLoans(); // Update the filtered list after status change
@@ -97,7 +97,7 @@ export class RequestedloanComponent implements OnInit {
       return;
     }
     loanApplication.LoanStatus = 2; // Rejected
-    this.loanService.updateLoanStatus(loanApplication.LoanApplicationId!, loanApplication).subscribe({
+    this.loanService.updateLoanStatus(loanApplication.loanApplicationId!, loanApplication).subscribe({
       next: (updatedLoan: LoanApplication) => {
         this.loanRequests[index] = updatedLoan;
         this.filterLoans(); // Update the filtered list after status change
