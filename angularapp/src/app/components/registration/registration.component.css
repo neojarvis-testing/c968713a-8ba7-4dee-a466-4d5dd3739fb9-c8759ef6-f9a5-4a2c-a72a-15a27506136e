@@ -5,28 +5,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 140vh;
+    height: 140vh;
     margin: 0;
-
 }
  
 /* Blur Effect with Glassmorphism */
 .Container {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 10px;
-    text-align: left;
-    width: 400px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 15px;
+    /* text-align: center; */
+    width: 450px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-   margin-top: 6px;
+    margin: auto;
 }
  
 /* Header Styling */
 h1 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 25px;
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
     font-weight: bold;
     /* font-family: 'Cambria', serif; */
     font-family: 'Times New Roman', Times, serif;
@@ -50,17 +50,16 @@ label {
  
 input {
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
 }
  
 input::placeholder {
-    font-size: 14px; /* Reduced size */
-    font-family: 'Times New Roman', Times, serif; /* Changed font style */
-    color: rgba(0, 0, 0, 0.6); /* Adjusted color */
+    color: rgba(255, 255, 255, 0.6);
 }
  
 /* Password Field with Eye Icon */
@@ -111,7 +110,6 @@ a:hover {
      color: #2ecc71;
     /* color: whitesmoke; */
 }
-
-.error {
+.error{
     color: red;
 }
