@@ -21,7 +21,7 @@
     <tbody>
       <tr *ngFor="let feed of feedbacks; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ getUsername(feed.userId) }}</td> <!-- Displaying username -->
+        <td>{{ feed.user?.username }}</td> <!-- Displaying username -->
         <td>{{ feed.feedbackText }}</td>
         <td>{{ feed.date | date: 'mediumDate' }}</td>
         <td>
@@ -31,6 +31,7 @@
     </tbody>
   </table>
 </div>
+
 
 <!-- Modal for additional details -->
 <div class="modal" *ngIf="showProfileModal">
@@ -48,4 +49,5 @@
 
 
 </div>
+
 

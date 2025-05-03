@@ -7,5 +7,9 @@ export interface Loan{
     repaymentTenure:number;
     eligibility:string;
     documentsRequired:string;
+
 }
  
+
+
+

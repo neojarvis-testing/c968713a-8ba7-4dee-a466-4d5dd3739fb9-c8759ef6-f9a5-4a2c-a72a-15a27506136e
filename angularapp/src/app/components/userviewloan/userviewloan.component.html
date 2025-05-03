@@ -24,7 +24,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let loan of filteredLoans; let i = index">
-        <td>{{ i + 1 }}</td>
+        <td>{{ loan.loanId }}</td>
         <td>{{ loan.loanType }}</td>
         <td>{{ loan.description }}</td>
         <td>{{ loan.interestRate }}</td>
@@ -33,7 +33,7 @@
         <td>{{ loan.eligibility }}</td>
         <td>{{ loan.documentsRequired }}</td>
         <td>
-          <button (click)="applyForLoan(loan)" [disabled]="isLoanApplied(loan.loanId)">
+          <button (click)="applyForLoan(loan.loanId)" >
             {{ isLoanApplied(loan.loanId) ? 'Applied' : 'Apply' }}
           </button>
         </td>

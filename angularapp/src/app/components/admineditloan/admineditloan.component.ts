@@ -13,6 +13,10 @@ export class AdmineditloanComponent implements OnInit {
   
 
   loan: Loan = {
+
+
+    
+
     loanType: '',
     description: '',
     interestRate: 0,

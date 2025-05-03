@@ -1,28 +1,50 @@
 <app-adminnav></app-adminnav>
 <router-outlet></router-outlet>
-<div>
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
+<div class="container mt-4">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+    
+    <!-- Indicators (dots) -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Carousel items -->
     <div class="carousel-inner">
+
       <div class="carousel-item active" data-bs-interval="500">
         <img style="height: 400px;" src="https://media.istockphoto.com/id/1221679843/photo/money-is-born-soil-in-the-bottom-of-the-plantations-agribusiness-profit-land-value.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=WV3LiD_10a5HS-NgKKfMtrDm42GbJ14BwBTkyqwlK_Q=" jsaction="" class="sFlh5c FyHeAf iPVvYb" style="max-width: 1412px; height: 500px; margin: 0px; width: 1005px;" alt="4,100+ Agricultural Loan Stock Photos, Pictures &amp; Royalty-Free ..." jsname="kn3ccd" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="500">
-        <img style="height: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzXApzbXkWNE5JVBblZoKsWa_lGSJ-PcB_bw&s" class="d-block w-100" alt="...">
+
+      <div class="carousel-item active">
+        <img style="height: 550px;"
+         src="https://www.deere.co.in/assets/images/region-1/products/John%20Deere_Website%20Creatives_Tractor%20Finance_Internal.jpg" class="d-block w-100" style="height: 400px;" alt="Slide 1">
+
       </div>
       <div class="carousel-item">
-        <img style="height: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzXApzbXkWNE5JVBblZoKsWa_lGSJ-PcB_bw&s" class="d-block w-100" alt="...">
+        <img style="height: 550px;"
+        src="https://dcassetcdn.com/design_img/2773941/151249/151249_15240101_2773941_c583c392_thumbnail.png" class="d-block w-100" style="height: 400px;" alt="Slide 2">
+      </div>
+      <div class="carousel-item">
+        <img style="height: 550px;"
+        src="https://www.deere.co.in/assets/images/region-1/products/John%20Deere_Website%20Creatives_Tractor%20Finance_Internal.jpg" class="d-block w-100" style="height: 400px;" alt="Slide 3">
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <div class="content">
+
+  <!-- Description content -->
+  <div class="content mt-4">
     <h1>Farm Financer</h1>
     <p>
       Farm Financer is a digital platform designed to support farmers and agricultural businesses in securing
@@ -34,5 +56,3 @@
     </p>
   </div>
 </div>
-
-

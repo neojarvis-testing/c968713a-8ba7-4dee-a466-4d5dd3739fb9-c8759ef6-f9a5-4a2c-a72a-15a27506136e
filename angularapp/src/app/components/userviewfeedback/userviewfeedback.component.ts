@@ -19,6 +19,7 @@ export class UserviewfeedbackComponent implements OnInit {
   constructor(private feedbackService: FeedbackService, private router: Router) {}
  
   ngOnInit(): void {
+   
     this.loadFeedbacks();
   }
  
@@ -39,122 +40,54 @@ export class UserviewfeedbackComponent implements OnInit {
   }
  
   confirmDelete(feedback: Feedback): void {
-
-
-  if (!feedback || !feedback.FeedbackId) {
-    console.error("Invalid feedback selection:", feedback);
-    Swal.fire({
-      title: 'Error',
-      text: 'Invalid feedback selected. Please try again!',
-      icon: 'error',
-      confirmButtonText: 'OK'
-    });
-    return;
+    localStorage.setItem('FeedbackId',JSON.stringify(feedback));
+    this.selectedFeedback = feedback;
+    this.showDeleteModal = true;
   }
-
-  console.log("Selected feedback before deletion:", feedback);
-  this.selectedFeedback = feedback;
-  this.showDeleteModal = true;
-}
-
-deleteFeedback(): void {
-  if (!this.selectedFeedback?.FeedbackId) {
-    console.error("No valid FeedbackId found:", this.selectedFeedback);
-    Swal.fire({
-      title: 'Error',
-      text: 'No feedback selected for deletion. Please try again!',
-      icon: 'error',
-      confirmButtonText: 'OK'
-    });
-    return;
-  }
-
-  console.log("Attempting to delete feedback with ID:", this.selectedFeedback.FeedbackId);
-  
-  this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId).subscribe(
-    () => {
-      console.log("Feedback deleted successfully!");
-      this.showDeleteModal = false;
-      this.loadFeedbacks(); // Refresh feedback list
-      
-      Swal.fire({
-        title: 'Feedback Deleted',
-        text: 'The feedback has been successfully deleted!',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });
-
-      this.router.navigate(['/userviewfeedback']);
-    },
-    (error) => {
-      console.error('Error deleting feedback:', error);
-      Swal.fire({
-        title: 'Deletion Failed',
-        text: 'Failed to delete feedback. Please try again later.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
-      this.errorMessage = 'Failed to delete feedback.';
+ 
+  deleteFeedback(): void {
+    if (this.selectedFeedback) {
+      const storedFeedback = JSON.parse(localStorage.getItem('FeedbackId') || '{}');
+      console.log('Retrieved Feedback ID:', storedFeedback.feedbackId);
+     console.log("Getting Id as=>",storedFeedback.feedbackId);
+     const id=storedFeedback.feedbackId;
+      this.feedbackService.deleteFeedback(id).subscribe(
+        () => {
+          this.showDeleteModal = false;
+          this.loadFeedbacks(); // Reload feedbacks to reflect the deletion
+         
+          // Show SweetAlert2 success message
+          Swal.fire({
+            title: 'Feedback Deleted',
+            text: 'The feedback has been successfully deleted!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          this.router.navigate(['/userviewfeedback']);
+        }
+        ,
+        (error) => {
+          console.error('Error deleting feedback:', error);
+          this.errorMessage = 'Failed to delete feedback.';
+        }
+      );
     }
-  );
+  }
+ 
+  logout(): void {
+    this.showLogoutModal = true;
+  }
+ 
+  confirmLogout(): void {
+    this.showLogoutModal = false;
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+ 
+  cancelLogout(): void {
+    this.showLogoutModal = false;
+  }
 }
-
-logout(): void {
-  this.showLogoutModal = true;
-}
-
-confirmLogout(): void {
-  this.showLogoutModal = false;
-  localStorage.clear();
-  this.router.navigate(['/login']);
-}
-
-cancelLogout(): void {
-  this.showLogoutModal = false;
-}
-}
-// }
-//     this.selectedFeedback = feedback;
-//     this.showDeleteModal = true;
-//   }
-
-//   deleteFeedback(): void {
-//     if (this.selectedFeedback) {
-//       this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId).subscribe(
-//         () => {
-//           this.showDeleteModal = false;
-//           this.loadFeedbacks(); // Reload feedbacks to reflect the deletion
-          
-//           // Show SweetAlert2 success message
-//           Swal.fire({
-//             title: 'Feedback Deleted',
-//             text: 'The feedback has been successfully deleted!',
-//             icon: 'success',
-//             confirmButtonText: 'OK'
-//           });
-//           this.router.navigate(['/userviewfeedback']);
-//         },
-//         (error) => {
-//           console.error('Error deleting feedback:', error);
-//           this.errorMessage = 'Failed to delete feedback.';
-//         }
-//       );
-//     }
-//   }
-
-//   logout(): void {
-//     this.showLogoutModal = true;
-//   }
-
-//   confirmLogout(): void {
-//     this.showLogoutModal = false;
-//     localStorage.clear();
-//     this.router.navigate(['/login']);
-//   }
-
-//   cancelLogout(): void {
-//     this.showLogoutModal = false;
-//   }
-// }
-
-   
+ 
+ 
+ 

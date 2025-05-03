@@ -7,7 +7,11 @@
         </span>
     </div>
     <ul class="nav-links">
+
         <li class="admin-info"><span>Hello, {{ username }}! Welcome to your dashboard.</span></li>
+
+        <li class="admin-info"><span>Hello, {{ username }}! Welcome back to your dashboard.</span></li>
+
         <li><a routerLink="/admin">Home</a></li>
         <li class="dropdown" (click)="toggleDropdown($event)">
             <a class="dropdown-toggle" href="#">Loan <i class="fas fa-chevron-down arrow-icon"></i></a>

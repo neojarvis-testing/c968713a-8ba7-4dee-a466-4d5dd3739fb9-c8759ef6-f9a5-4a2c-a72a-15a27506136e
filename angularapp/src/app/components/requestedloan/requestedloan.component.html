@@ -1,1 +1,65 @@
-<h1>Loan Requests for Approval</h1>
+<app-adminnav></app-adminnav>
+<div class="loan-request-container">
+  <h2>Loan Requests for Approval</h2>
+  <div class="search-filter">
+    <input type="text" placeholder="Search by Loan Type..." [(ngModel)]="searchText" (input)="onSearchChange(searchText)" />
+    <div class="status-filter">
+      <label for="status-filter">Filter by Status:</label>
+      <select id="status-filter" [(ngModel)]="filterStatus" (change)="onStatusChange($event.target.value)">
+        <option value="all">All</option>
+        <option value="0">Pending</option>
+        <option value="1">Approved</option>
+        <option value="2">Rejected</option>
+      </select>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Loan ID</th>
+        <th>Loan Type</th>
+        <th>Farm Location</th>
+        <th>Submission Date</th>
+        <th>Farm Size (Acres)</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filteredLoanRequests.length === 0">
+        <td colspan="8" class="no-records">Oops! No records found</td>
+      </tr>
+      <tr *ngFor="let loanRequest of filteredLoanRequests; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ loans[loanRequest.loanId]?.loanId || 'N/A' }}</td>
+        <td>{{ loans[loanRequest.loanId]?.loanType || 'N/A' }}</td>
+        <td>{{ loanRequest.farmLocation }}</td>
+        <td>{{ loanRequest.submissionDate | date:'mediumDate' }}</td>
+        <td>{{ loanRequest.farmSizeInAcres }}</td>
+        <td>
+          {{ loanRequest.loanStatus === 0 ? 'Pending' : (loanRequest.loanStatus === 1 ? 'Approved' : 'Rejected') }}
+        </td>
+        <td>
+          <button (click)="approveLoan(i, loanRequest)" [disabled]="loanRequest.loanStatus !== 0">Approve</button>
+          <button (click)="rejectLoan(i, loanRequest)" [disabled]="loanRequest.loanStatus !== 0">Reject</button>
+          <button (click)="showMore(loanRequest)">Show More</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal for additional details -->
+  <div class="modal" *ngIf="selectedLoan">
+    <div class="modal-content">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <h3>Loan Application Details</h3>
+      <p><strong>Username:</strong> {{ selectedLoan?.userId }}</p>
+      <p><strong>Address:</strong> {{ selectedLoan?.farmerAddress }}</p>
+      <p><strong>Proof:</strong> {{ selectedLoan?.file }}</p>
+      <!-- Add other details as needed -->
+    </div>
+  </div>
+
+</div>
+

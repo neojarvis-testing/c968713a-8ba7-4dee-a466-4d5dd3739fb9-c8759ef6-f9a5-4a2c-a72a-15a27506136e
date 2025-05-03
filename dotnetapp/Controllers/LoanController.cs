@@ -5,22 +5,23 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
-
+ 
 namespace dotnetapp.Controllers
 {
+ 
     [ApiController]
     [Route("api/loan")]
     public class LoanController : ControllerBase
     {
         private readonly LoanService _loanService;
-
+ 
         public LoanController(LoanService loanService)
         {
             _loanService = loanService;
         }
-
+ 
         [HttpGet]
-        [Authorize(Roles="Admin")]  // Enforce authentication
+        // [Authorize(Roles="Admin")]
         public async Task<ActionResult<IEnumerable<Loan>>> GetAllLoans()
         {
             try
@@ -33,9 +34,10 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response for server error
             }
         }
-
+ 
+ 
         [HttpGet("{loanId}")]
-        [Authorize(Roles="Admin, User")]  // Enforce authentication
+        // [Authorize(Roles="Admin, User")]
         public async Task<ActionResult> GetLoanById(int loanId)
         {
             try
@@ -52,9 +54,10 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response for server error
             }
         }
-
+ 
+ 
         [HttpPost]
-        [Authorize(Roles="Admin")]  // Uncommented to enforce authentication
+        // [Authorize(Roles="Admin")]
         public async Task<ActionResult> AddLoan([FromBody] Loan loan)
         {
             try
@@ -71,9 +74,11 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response
             }
         }
-
+ 
+ 
+ 
         [HttpPut("{loanId}")]
-        [Authorize(Roles="Admin")]  // Enforce authentication
+        // [Authorize(Roles="Admin")]
         public async Task<ActionResult> UpdateLoan(int loanId, [FromBody] Loan loan)
         {
             try
@@ -94,9 +99,10 @@ namespace dotnetapp.Controllers
                 return StatusCode(500, new { message = ex.Message }); // Return JSON response
             }
         }
-
+ 
+ 
         [HttpDelete("{loanId}")]
-        [Authorize(Roles="Admin")]  // Enforce authentication
+        // [Authorize(Roles="Admin")]
         public async Task<ActionResult> DeleteLoan(int loanId)
         {
             try
@@ -110,12 +116,15 @@ namespace dotnetapp.Controllers
             }
             catch (LoanException ex)
             {
-                return BadRequest(new { message = ex.Message }); 
+                return BadRequest(new { message = ex.Message }); // Return JSON response
             }
             catch (System.Exception ex)
             {
-                return StatusCode(500, new { message = ex.Message }); 
+                return StatusCode(500, new { message = ex.Message }); // Return JSON response
             }
         }
+ 
     }
 }
+ 
+ 

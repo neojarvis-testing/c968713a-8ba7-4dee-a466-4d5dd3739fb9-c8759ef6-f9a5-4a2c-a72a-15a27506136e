@@ -3,7 +3,7 @@ import { Loan } from 'src/app/models/loan.model';
 import { LoanService } from 'src/app/services/loan.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+ 
 @Component({
   selector: 'app-viewloan',
   templateUrl: './viewloan.component.html',
@@ -17,17 +17,17 @@ export class ViewloanComponent implements OnInit {
   showDeleteModal: boolean = false;
   loanToDelete: Loan | null = null;
   message: string = '';
-
+ 
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalPages: number = 1;
-
+ 
   constructor(private loanService: LoanService, private router: Router) { }
-
+ 
   ngOnInit(): void {
     this.fetchLoans();
   }
-
+ 
   fetchLoans(): void {
     this.loanService.getAllLoans().subscribe(
       (loans: Loan[]) => {
@@ -41,37 +41,44 @@ export class ViewloanComponent implements OnInit {
       }
     );
   }
-
+ 
   searchLoans(): void {
-    this.filteredLoans = this.loans.filter(loan =>
-      loan.loanType.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      loan.description.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    this.searchTerm = this.searchTerm.trim(); // Remove extra spaces
+ 
+    if (!this.searchTerm) {
+      this.filteredLoans = [...this.loans]; // Reset to show all loans
+    } else {
+      this.filteredLoans = this.loans.filter(loan =>
+        loan.loanType?.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+ 
     this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
-    this.currentPage = 1; // Reset to first page on new search
+    this.currentPage = 1; // Reset pagination
     this.updatePaginatedLoans();
   }
-
+ 
+ 
   updatePaginatedLoans(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedLoans = this.filteredLoans.slice(startIndex, endIndex);
   }
-
+ 
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.updatePaginatedLoans();
     }
   }
-
+ 
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.updatePaginatedLoans();
     }
   }
-
+ 
   editLoan(loanId: number): void {
     if (loanId) {
       this.router.navigate(['/admineditloan', loanId]);
@@ -79,37 +86,47 @@ export class ViewloanComponent implements OnInit {
       console.error('Loan ID is undefined');
     }
   }
-
+ 
   confirmDelete(loan: Loan): void {
+    localStorage.setItem("loan",JSON.stringify(loan));
     this.loanToDelete = loan;
     this.showDeleteModal = true;
   }
-
+ 
   deleteLoan(): void {
-    if (this.loanToDelete) {
-      this.loanService.deleteLoan(this.loanToDelete.loanId!).subscribe(
+    const storedFeedback = JSON.parse(localStorage.getItem('loan') || '{}');
+    console.log('Retrieved Feedback ID:', storedFeedback.loanId);
+   console.log("Getting Id as=>",storedFeedback.loanId);
+   const id=storedFeedback.loanId;
+    if (this.loanToDelete && id) {
+      console.log('Attempting to delete loan with ID:',id);
+ 
+      this.loanService.deleteLoan(id).subscribe(
         () => {
-          this.loans = this.loans.filter(l => l.loanId !== this.loanToDelete!.loanId);
-          this.filteredLoans = this.loans;
+          this.loans = this.loans.filter(l => l.loanId !== id);
+          this.filteredLoans = [...this.loans]; // Spread operator to ensure reactivity
           this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
           this.updatePaginatedLoans();
           this.closeDeleteModal();
+         
           this.showSuccessMessage('Loan deleted successfully');
         },
-        error => {
+        (error) => {
           console.error('Error deleting loan:', error);
-          this.showErrorMessage(error.error.message || 'Error deleting loan');
+          this.showErrorMessage(error?.error?.message || 'Error deleting loan');
           this.closeDeleteModal();
         }
       );
+    } else {
+      console.error('Error: Invalid LoanId! Loan ID is undefined or missing.');
     }
   }
-
+ 
   closeDeleteModal(): void {
     this.showDeleteModal = false;
     this.loanToDelete = null;
   }
-
+ 
   showSuccessMessage(message: string): void {
     Swal.fire({
       title: 'Success!',
@@ -117,7 +134,7 @@ export class ViewloanComponent implements OnInit {
       confirmButtonText: 'OK'
     });
   }
-
+ 
   showErrorMessage(message: string): void {
     Swal.fire({
       title: 'Error!',
