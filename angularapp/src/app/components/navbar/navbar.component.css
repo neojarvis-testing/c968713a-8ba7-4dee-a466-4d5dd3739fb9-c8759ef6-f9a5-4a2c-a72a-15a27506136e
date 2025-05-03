@@ -8,7 +8,7 @@
   font-family: "Times New Roman", Times, serif; /* Font change */
   height: 4rem;
 }
-
+ 
 .navbar-title a {
   display: flex;
   align-items: center;
@@ -18,12 +18,12 @@
   text-decoration: none;
   color: white;
 }
-
+ 
 .navbar-logo {
   height: 40px; /* Adjust the height as needed */
   margin-right: 10px; /* Space between logo and text */
 }
-
+ 
 .navbar-links a {
   margin-left: 20px;
   color: white;
@@ -31,11 +31,11 @@
   font-family: 'Times New Roman', Times, serif;
   font-size: 17px;
 }
-
+ 
 .navbar-links a:hover {
   text-decoration: underline;
 }
-
+ 
 .active {
   font-weight: bold;
 }

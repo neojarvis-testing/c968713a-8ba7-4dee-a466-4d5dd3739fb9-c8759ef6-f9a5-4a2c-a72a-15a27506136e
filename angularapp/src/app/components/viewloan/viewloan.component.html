@@ -59,7 +59,7 @@
 </div> -->
 
 <app-adminnav></app-adminnav>
-
+<div class="image">
 <div class="view-loan-container">
   <h1>Loan Details</h1>
   <div class="search-container">
@@ -118,9 +118,12 @@
     <div class="modal-content">
       <span class="close" (click)="closeDeleteModal()">&times;</span>
       <p>Are you sure you want to delete?</p>
+      <div style="text-align: center; margin: auto;">
       <button class="ok-button" (click)="deleteLoan()">Yes, Delete</button>
       <button class="cancel-button" (click)="closeDeleteModal()">Cancel</button>
+      </div>
     </div>
   </div>
+</div>
 </div>
 

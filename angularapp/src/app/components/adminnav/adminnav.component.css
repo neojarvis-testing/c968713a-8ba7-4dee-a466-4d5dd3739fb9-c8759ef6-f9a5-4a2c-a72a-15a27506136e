@@ -1,5 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
+ 
+
 /* Navbar styles */
 .navbar {
     display: flex;
@@ -14,7 +16,7 @@
     font-family: "Times New Roman", Times, serif; /* Font change */
     height: 4rem;
 }
-
+ 
 .logo {
     width: 40px;
     height: 40px;
@@ -23,7 +25,7 @@
     margin-left: 0px;
     /* align-items: center; */
 }
-
+ 
 .brand-logo {
     font-family: "Times New Roman", Times, serif;
     color: white;
@@ -31,7 +33,7 @@
     margin-left: 10px;
     /* align-items: center; */
 }
-
+ 
 .navbar-header {
     font-size: 24px;
     font-weight: bold;
@@ -46,7 +48,7 @@
     text-decoration: none;
     color: white;
   } */
-
+ 
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -55,37 +57,37 @@
     margin-left: 0;
     font-family: "Times New Roman", Times, serif;
 }
-
+ 
 .user-info {
     font-size: 0.9rem;
     font-style: italic;
     font-family: "Times New Roman", Times, serif;
 }
-
+ 
 .nav-links {
     display: flex;
     list-style: none;
     padding: 0;
 }
-
+ 
 .nav-links li {
     margin-right: 1rem;
 }
-
+ 
 .nav-links a {
     color: white;
     text-decoration: none;
     font-family: "Times New Roman", Times, serif;
 }
-
+ 
 .nav-links a:hover {
     text-decoration: underline;
 }
-
+ 
 /* .active {
     font-weight: bold;
   } */
-
+ 
 /* Admin info */
 .admin-info span {
     color: white;
@@ -95,7 +97,7 @@
     font-family: "Times New Roman", Times, serif;
     text-align: center;
 }
-
+ 
 /* Dropdown menu */
 .dropdown-menu {
     display: none;
@@ -110,13 +112,13 @@
     opacity: 0;
     transform: translateY(-10px);
 }
-
+ 
 .dropdown.show .dropdown-menu {
     display: block;
     opacity: 1;
     transform: translateY(0);
 }
-
+ 
 .dropdown-menu a {
     color: #333;
     text-decoration: none;
@@ -125,19 +127,19 @@
     white-space: nowrap;
     font-family: "Times New Roman", Times, serif;
 }
-
+ 
 .dropdown-menu a:hover {
     background-color: #f4f4f4;
 }
-
+ 
 .arrow-icon {
     transition: transform 0.3s ease;
 }
-
+ 
 .dropdown.show .arrow-icon {
     transform: rotate(180deg);
 }
-
+ 
 /* Logout button */
 .logout-btn {
     background: transparent;
@@ -147,11 +149,11 @@
     padding: 2px 5px;
     font-family: "Times New Roman", Times, serif;
 }
-
+ 
 .logout-btn:hover {
     background: rgba(255, 255, 255, 0.2);
 }
-
+ 
 /* Content styles */
 .content {
     margin: 20px;
@@ -162,7 +164,7 @@
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+ 
 /* Farm Financer heading */
 h1 {
     text-align: center;
@@ -171,7 +173,7 @@ h1 {
     font-size: 2.2rem;
     font-weight: bold;
 }
-
+ 
 p {
     text-align: justify;
     line-height: 1.6;

@@ -24,10 +24,6 @@ export class LoanformComponent implements OnInit {
     LoanApplicationId: 0,
     UserId: 0, // Initialize as 0
     loanId: 0, // Initialize as 0
-
-    
-    // Initialize as 0
-
     SubmissionDate: '', // Initialize as empty string
     
     FarmLocation: '',

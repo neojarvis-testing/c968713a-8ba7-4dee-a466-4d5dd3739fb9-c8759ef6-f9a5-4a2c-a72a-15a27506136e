@@ -10,7 +10,6 @@ import { LoanformComponent } from './components/loanform/loanform.component';
 import { ViewloanComponent } from './components/viewloan/viewloan.component';
 import { AdmineditloanComponent } from './components/admineditloan/admineditloan.component';
 import { RequestedloanComponent } from './components/requestedloan/requestedloan.component';
-
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedloanComponent } from './components/userappliedloan/userappliedloan.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';

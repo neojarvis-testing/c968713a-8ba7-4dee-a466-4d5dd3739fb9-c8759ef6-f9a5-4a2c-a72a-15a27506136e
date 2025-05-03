@@ -52,7 +52,6 @@ export class ViewloanComponent implements OnInit {
         loan.loanType?.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
- 
     this.totalPages = Math.ceil(this.filteredLoans.length / this.itemsPerPage);
     this.currentPage = 1; // Reset pagination
     this.updatePaginatedLoans();

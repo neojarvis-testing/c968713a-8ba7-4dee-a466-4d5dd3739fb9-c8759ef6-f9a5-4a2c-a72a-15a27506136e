@@ -9,19 +9,19 @@ body {
     height: 90vh;
     margin: 0;
   }
-  
+ 
   /* Blur Effect for Background */
   .container {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 10px;
-
+ 
     text-align: center;
     width: 350px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
-  
+ 
   /* Header Styling */
   h1 {
     font-size: 30px;
@@ -31,7 +31,7 @@ body {
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
-  
+ 
   /* Form Styling */
   .form-group {
     display: flex;
@@ -39,14 +39,14 @@ body {
     text-align: left;
     margin-bottom: 15px;
   }
-  
+ 
   label {
     font-weight: bold;
     margin-bottom: 5px;
     color: #fff9f9;
     font-family: 'Times New Roman', Times, serif;
   }
-  
+ 
   input {
     padding: 10px;
     border: 1px solid #e8d5d5;
@@ -56,12 +56,12 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     /* font-family: 'Times New Roman', Times, serif; */
   }
-  
+ 
   /* Password Field with Eye Icon */
   .password-container {
     position: relative;
   }
-  
+ 
   .password-container i {
     position: absolute;
     right: 10px;
@@ -70,7 +70,7 @@ body {
     cursor: pointer;
     color: #efe9e9;
   }
-  
+ 
   /* Button Styling */
   button {
     width: 100%;
@@ -83,16 +83,16 @@ body {
     cursor: pointer;
     transition: 0.3s;
   }
-  
+ 
   button:disabled {
     background: #ccc;
     cursor: not-allowed;
   }
-  
+ 
   button:hover {
     transform: scale(1.05);
   }
-  
+ 
   /* Link Styling */
   p {
     margin-top: 15px;
@@ -100,7 +100,7 @@ body {
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
   }
-  
+ 
   a {
     text-decoration: none;
     color: #3498db;
@@ -108,7 +108,8 @@ body {
     transition: 0.3s;
     font-family: 'Times New Roman', Times, serif;
   }
-  
+ 
   a:hover {
     color: #2ecc71;
   }
+ 

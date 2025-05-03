@@ -5,15 +5,39 @@
   padding: 20px;
   background: white;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 450px;
+    margin: auto;
+    color: white;
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
+
+
+
+body{
+
+  height: 950px;
+  width:1265px;
+  background: url('https://t3.ftcdn.net/jpg/12/47/65/74/240_F_1247657474_AChExzUjhbVFuBvkmAz7tqIVgxoYurVf.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+  border-radius: 10px;
+
+}
+
 
 /* Form Header */
 .create-loan-container h1 {
   text-align: center;
-  color: black;
+  color: white;
   margin-bottom: 20px;
   font-weight: bold;
   font-size: 24px;
@@ -25,7 +49,7 @@
   display: block;
   width: 100%;
   height: 2px;
-  background-color: blue; /* Blue line below the heading */
+  /* background-color: blue; Blue line below the heading */
   margin-top: 10px;
 }
 
@@ -36,19 +60,19 @@
 }
 
 label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
 }
 
 input, button {
-  width: 98%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
-  font-size: 14px;
-  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  outline: none; /* Set font to Times New Roman */
 }
 
 .required {
@@ -58,10 +82,11 @@ input, button {
 
 /* Submit Button */
 button {
-  background: blue;
+  background: linear-gradient(135deg, rgb(36, 66, 45), #2ecc71);
   color: white;
   border: none;
   cursor: pointer;
+ 
   transition: background 0.3s ease;
   font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
 }
@@ -74,12 +99,25 @@ button:disabled {
   background: #aaa;
   cursor: not-allowed;
 }
+h1 {
+  h1 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    font-weight: bold;
+    /* font-family: 'Cambria', serif; */
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+}
 
 /* Error messages */
 .error {
   color: red;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 5px;
+ /* font-weight: bold; */
   font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
 }
 

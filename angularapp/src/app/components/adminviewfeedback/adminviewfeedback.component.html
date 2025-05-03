@@ -1,9 +1,14 @@
 
 
+
 <app-adminnav></app-adminnav> 
 <router-outlet></router-outlet>
 
 
+
+
+
+<div class="image">
 
 <div class="view-feedback">
   <h1>Feedback Details</h1>
@@ -33,6 +38,7 @@
 </div>
 
 
+
 <!-- Modal for additional details -->
 <div class="modal" *ngIf="showProfileModal">
   <div class="modal-content">
@@ -45,9 +51,6 @@
     <p><strong>Date:</strong> {{ selectedFeedback?.date | date: 'mediumDate' }}</p>
     <!-- Add other details as needed -->
   </div>
-
-
-
 </div>
-
+</div>
 
