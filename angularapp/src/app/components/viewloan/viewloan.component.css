@@ -161,6 +161,8 @@ input[type="text"]::placeholder {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     position: relative;
+    width: 500px;
+    margin: auto;
   }
    
   .modal-content p {

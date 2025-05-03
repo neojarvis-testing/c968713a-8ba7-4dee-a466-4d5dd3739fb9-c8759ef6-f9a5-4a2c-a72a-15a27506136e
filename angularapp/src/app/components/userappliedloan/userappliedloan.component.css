@@ -15,7 +15,7 @@
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 }
 .image{
-  height: 950px;
+  min-height: 700px;
   width:1265px;
   background: url('https://www.shutterstock.com/image-photo/handshake-two-farmer-on-background-600nw-2176760259.jpg') no-repeat center center;
   background-size: cover;
