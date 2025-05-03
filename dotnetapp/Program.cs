@@ -84,3 +84,15 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.Run();
+
+
+
+///https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/ Duhita
+ 
+//https://8080-fddafbebadfbfdaaedceffaacaaae.premiumproject.examly.io/  Shreyas
+ 
+//https://8080-afbccbebadfbfdaaedceffaacaaae.premiumproject.examly.io/ vasavi
+ 
+//https://8080-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io/  Aditya
+ 
+ //https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/  Subham

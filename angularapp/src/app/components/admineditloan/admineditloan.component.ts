@@ -13,13 +13,14 @@ export class AdmineditloanComponent implements OnInit {
   
 
   loan: Loan = {
-    LoanType: '',
-    Description: '',
-    InterestRate: 0,
-    MaximumAmount: 0,
-    RepaymentTenure: 0,
-    Eligibility: '',
-    DocumentsRequired: ''
+    
+    loanType: '',
+    description: '',
+    interestRate: 0,
+    maximumAmount: 0,
+    repaymentTenure: 0,
+    eligibility: '',
+    documentsRequired: ''
   };
   message: string = '';
   showModal: boolean = false;

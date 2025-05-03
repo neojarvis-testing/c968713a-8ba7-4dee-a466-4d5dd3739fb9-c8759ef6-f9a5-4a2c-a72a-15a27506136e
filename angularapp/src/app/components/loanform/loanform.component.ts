@@ -20,13 +20,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoanformComponent implements OnInit {
   loanData: LoanApplication = {
-    LoanApplicationId: 0,
-    UserId: 0, // Initialize as 0
-    LoanId: 0, // Initialize as 0
+    
+    // Initialize as 0
     SubmissionDate: '', // Initialize as empty string
-    LoanStatus: 0,
+    
     FarmLocation: '',
-    FarmAddress: '',
+    FarmerAddress: '',
     FarmSizeInAcres: 0,
     FarmPurpose: '',
     File: ''
@@ -45,7 +44,7 @@ export class LoanformComponent implements OnInit {
   ngOnInit(): void {
     // Get loanId from URL
     this.route.params.subscribe(params => {
-      this.loanData.LoanId = +params['loanId']; // Convert string to number
+      this.loanData.loanId = +params['loanId']; // Convert string to number
     });
  
     // Get userId from local storage
@@ -57,7 +56,7 @@ export class LoanformComponent implements OnInit {
   }
  
   onSubmit(): void {
-    if (!this.loanData.FarmLocation || !this.loanData.FarmAddress || !this.loanData.FarmSizeInAcres || !this.loanData.FarmPurpose) {
+    if (!this.loanData.FarmLocation || !this.loanData.FarmerAddress || !this.loanData.FarmSizeInAcres || !this.loanData.FarmPurpose) {
       return;
     }
  
