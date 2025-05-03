@@ -1,4 +1,4 @@
-userviewfeedback.css
+
 h1 {
     color: #003366;
     margin: 25px 1px;
@@ -10,6 +10,7 @@ h1 {
     max-width: 1200px; /* Adjust the width as needed */
     margin: 0 auto; /* Center the container */
     padding: 20px; /* Add padding to the container */
+    
   }
  
   .image{
@@ -33,7 +34,7 @@ h1 {
   padding: 2rem;
   border-radius: 8px;
   /* text-align: center; */
- max-width: 1300px;
+ max-width: 1700px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   }
  
