@@ -64,6 +64,7 @@ import { Router } from '@angular/router';
 })
 export class CreateloanComponent implements OnInit {
   newLoan:Loan={
+    loanapplication:null,
     loanId:0,
     loanType:'',
     description:'',

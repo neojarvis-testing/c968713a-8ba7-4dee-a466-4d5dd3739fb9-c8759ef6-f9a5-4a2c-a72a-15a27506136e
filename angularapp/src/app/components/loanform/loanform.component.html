@@ -3,35 +3,35 @@
     <form #loanForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="farmLocation">Farm Location:</label>
-        <input id="farmLocation" name="farmLocation" [(ngModel)]="loanData.FarmLocation" required #farmLocation="ngModel" />
+        <input id="farmLocation" name="farmLocation" [(ngModel)]="loanData.farmLocation" required #farmLocation="ngModel" />
         <div *ngIf="farmLocation.invalid && farmLocation.touched" class="error-message">
           Location is required.
         </div>
       </div>
       <div class="form-group">
         <label for="farmerAddress">Farmer Address:</label>
-        <input id="farmerAddress" name="farmerAddress" [(ngModel)]="loanData.FarmerAddress" required #farmerAddress="ngModel" />
+        <input id="farmerAddress" name="farmerAddress" [(ngModel)]="loanData.farmerAddress" required #farmerAddress="ngModel" />
         <div *ngIf="farmerAddress.invalid && farmerAddress.touched" class="error-message">
           Farmer Address is required.
         </div>
       </div>
       <div class="form-group">
         <label for="farmSizeInAcres">Farm Size (in acres):</label>
-        <input id="farmSizeInAcres" name="farmSizeInAcres" [(ngModel)]="loanData.FarmSizeInAcres" required #farmSizeInAcres="ngModel" />
+        <input id="farmSizeInAcres" name="farmSizeInAcres" [(ngModel)]="loanData.farmSizeInAcres" required #farmSizeInAcres="ngModel" />
         <div *ngIf="farmSizeInAcres.invalid && farmSizeInAcres.touched" class="error-message">
           Size is required.
         </div>
       </div>
       <div class="form-group">
         <label for="farmPurpose">Farm Purpose:</label>
-        <input id="farmPurpose" name="farmPurpose" [(ngModel)]="loanData.FarmPurpose" required #farmPurpose="ngModel" />
+        <input id="farmPurpose" name="farmPurpose" [(ngModel)]="loanData.farmPurpose" required #farmPurpose="ngModel" />
         <div *ngIf="farmPurpose.invalid && farmPurpose.touched" class="error-message">
           Purpose is required.
         </div>
       </div>
       <div class="form-group">
         <label for="file">File:</label>
-        <input id="file" name="file" [(ngModel)]="loanData.File" />
+        <input id="file" name="file" [(ngModel)]="loanData.file" />
       </div>
       <button type="submit" [disabled]="loanForm.invalid">Apply</button>
       <button type="button" (click)="goBack()">Back</button>
