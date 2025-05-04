@@ -36,8 +36,10 @@
         <label for="file">File:</label>
         <input class="form-control" id="file" name="file" [(ngModel)]="loanData.File" />
       </div>
-      <button type="submit" [disabled]="loanForm.invalid">Apply</button>
-      <button type="button" (click)="goBack()">Back</button>
+      <div style="text-align: center;">
+      <button class="me-3" type="submit" [disabled]="loanForm.invalid">Apply</button>
+      <button class="ms-2" type="button" (click)="goBack()">Back</button>
+      </div>
     </form>
    
     <!-- Success Modal -->
