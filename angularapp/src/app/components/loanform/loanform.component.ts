@@ -22,15 +22,15 @@ export class LoanformComponent implements OnInit {
   loanData: LoanApplication = {
 
     loanApplicationId: 0,
-    UserId: 0, // Initialize as 0
+    userId: 0, // Initialize as 0
     loanId: 0, // Initialize as 0
-    SubmissionDate: '', // Initialize as empty string
+    submissionDate: '', // Initialize as empty string
     
-    FarmLocation: '',
-    FarmerAddress: '',
-    FarmSizeInAcres: 0,
-    FarmPurpose: '',
-    File: ''
+    farmLocation: '',
+    farmerAddress: '',
+    farmSizeInAcres: 0,
+    farmPurpose: '',
+    file: ''
   };
  
   showSuccessPopup = false;
@@ -50,19 +50,19 @@ export class LoanformComponent implements OnInit {
     });
  
     // Get userId from local storage
-    this.loanData.UserId = Number(localStorage.getItem('userId'));
+    this.loanData.userId = Number(localStorage.getItem('userId'));
  
     // Set the submissionDate dynamically with UTC time
     const now = new Date();
-    this.loanData.SubmissionDate = now.toISOString(); // This will format as '2024-12-04T10:58:57.559Z'
+    this.loanData.submissionDate = now.toISOString(); // This will format as '2024-12-04T10:58:57.559Z'
   }
  
   onSubmit(): void {
-    if (!this.loanData.FarmLocation || !this.loanData.FarmerAddress || !this.loanData.FarmSizeInAcres || !this.loanData.FarmPurpose) {
+    if (!this.loanData.farmLocation || !this.loanData.farmerAddress || !this.loanData.farmSizeInAcres || !this.loanData.farmPurpose) {
       return;
     }
  
-    // Log the loanData before making the HTTP request
+    // Log the loanDta before making the HTTP request
     console.log('Loan Data:', this.loanData);
  
     this.loanService.addLoanApplication(this.loanData).subscribe(response => {

@@ -100,9 +100,10 @@ button:disabled {
 
 .search-container {
   display: flex;
-  justify-content: flex-start; /* Align items to the start of the container */
+  justify-content: center; /* Align items to the start of the container */
   align-items: center;
   margin-bottom: 20px; /* Add some space between the underline and the table */
+
 }
 
 .search-container input[type="text"] {
@@ -110,7 +111,14 @@ button:disabled {
   border: none; /* Remove border */
   padding: 10px;
   font-size: 16px;
+  width: 500px;
+  border-radius: 18px;
 }
+
+ input[type="text"] ::placeholder{
+  text-align: center;
+}
+
 
 .confirmation-popup {
   position: fixed;

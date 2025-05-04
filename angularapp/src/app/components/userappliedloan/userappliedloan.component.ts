@@ -62,7 +62,7 @@ export class UserappliedloanComponent implements OnInit {
 
   confirmDelete(loan: LoanApplication): void {
     localStorage.setItem('loan',JSON.stringify(loan));
-    if (loan.LoanStatus === 1) {
+    if (loan.loanStatus === 1) {
       console.error('Cannot delete an approved loan.');
       return;
     }
