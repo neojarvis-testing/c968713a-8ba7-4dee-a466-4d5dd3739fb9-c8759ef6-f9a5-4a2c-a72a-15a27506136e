@@ -98,6 +98,8 @@ button:hover {
  
 .modal-content {
     padding: 20px;
+    width: 500px;
+    margin: auto;
 }
  
 .close-btn {

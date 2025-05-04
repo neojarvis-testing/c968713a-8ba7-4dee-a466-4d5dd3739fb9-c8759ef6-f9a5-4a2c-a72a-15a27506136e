@@ -42,13 +42,13 @@ export class UserappliedloanComponent implements OnInit {
 
   fetchLoanDetails(): void {
     this.loanApplications.forEach(loanApp => {
-      if (loanApp.LoanId) {
-        this.loanService.getLoanById(loanApp.LoanId).subscribe({
+      if (loanApp.loanId) {
+        this.loanService.getLoanById(loanApp.loanId).subscribe({
           next: (loan: Loan) => {
-            this.loanDetails[loanApp.LoanId] = loan;
+            this.loanDetails[loanApp.loanId] = loan;
           },
           error: (error) => {
-            console.error(`Error fetching loan with ID ${loanApp.LoanId}:`, error);
+            console.error(`Error fetching loan with ID ${loanApp.loanId}:`, error);
           }
         });
       }
@@ -57,7 +57,9 @@ export class UserappliedloanComponent implements OnInit {
 
   searchByLoanName(searchtxt: string): void {
     this.filteredLoans = this.loanApplications.filter(loan =>
-      this.loanDetails[loan.LoanId]?.loanType.toLowerCase().includes(searchtxt.toLowerCase())
+
+      this.loanDetails[loan.loanId]?.loanType.toLowerCase().includes(searchtxt.toLowerCase())
+
     );
   }
 
@@ -72,7 +74,7 @@ export class UserappliedloanComponent implements OnInit {
 
   deleteLoan(): void {
     if (this.loanToDelete) {
-      this.loanService.deleteLoan(this.loanToDelete.LoanId!).subscribe({
+      this.loanService.deleteLoan(this.loanToDelete.loanId!).subscribe({
         next: () => {
           this.loanApplications = this.loanApplications.filter(loan => loan !== this.loanToDelete);
           this.filteredLoans = this.loanApplications; // Update the filtered loans as well

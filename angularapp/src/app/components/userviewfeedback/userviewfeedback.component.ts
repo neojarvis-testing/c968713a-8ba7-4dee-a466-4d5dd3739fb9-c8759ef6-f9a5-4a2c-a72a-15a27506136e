@@ -20,6 +20,7 @@ export class UserviewfeedbackComponent implements OnInit {
   constructor(private feedbackService: FeedbackService, private router: Router) {}
  
   ngOnInit(): void {
+    
     this.loadFeedbacks();
   }
  
@@ -40,13 +41,18 @@ export class UserviewfeedbackComponent implements OnInit {
   }
  
   confirmDelete(feedback: Feedback): void {
+    localStorage.setItem('FeedbackId',JSON.stringify(feedback));
     this.selectedFeedback = feedback;
     this.showDeleteModal = true;
   }
  
   deleteFeedback(): void {
     if (this.selectedFeedback) {
-      this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId!).subscribe(
+      const storedFeedback = JSON.parse(localStorage.getItem('FeedbackId') || '{}');
+      console.log('Retrieved Feedback ID:', storedFeedback.feedbackId);
+     console.log("Getting Id as=>",storedFeedback.feedbackId);
+     const id=storedFeedback.feedbackId;
+      this.feedbackService.deleteFeedback(id).subscribe(
         () => {
           this.showDeleteModal = false;
           this.loadFeedbacks(); // Reload feedbacks to reflect the deletion

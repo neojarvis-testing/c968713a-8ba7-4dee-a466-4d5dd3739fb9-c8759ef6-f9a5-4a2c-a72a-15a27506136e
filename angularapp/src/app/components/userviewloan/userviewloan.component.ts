@@ -29,22 +29,29 @@ export class UserviewloanComponent implements OnInit {
   fetchLoans(): void {
     this.loanService.getAllLoans().subscribe(
       (loans: Loan[]) => {
-        console.log('Fetched loans:', loans); // Log fetched loans
-
+        console.log('Fetched loans:', loans); // Debugging
         this.loans = loans;
-        this.checkAppliedLoans(); // Check which loans have been applied for
-        this.filteredLoans = this.loans; // Initialize filtered loans to show all loans initially
+        this.filteredLoans = this.loans;
+        this.checkAppliedLoans();
       },
       error => {
         console.error('Error fetching loan data:', error);
       }
     );
   }
+  
+  applyForLoan(loanid:number): void {
+    console.log('Applying for Loan ID:', loanid); // Debugging
+    this.router.navigate([`/loanform/${loanid}`]); // Ensure LoanId exists
+  }
 
   checkAppliedLoans(): void {
+    console.log('Checking applied loans for user:', this.userId); // Debugging
+  
     this.loanService.getAppliedLoans(this.userId).subscribe(
       (appliedLoans: LoanApplication[]) => {
-        this.appliedLoanIds = appliedLoans.map(app => app.LoanId);
+        console.log('Received applied loans:', appliedLoans); // Debugging
+        this.appliedLoanIds = appliedLoans.map(app => app.loanId);
       },
       error => {
         console.error('Error fetching applied loans:', error);
@@ -61,9 +68,6 @@ export class UserviewloanComponent implements OnInit {
       loan.loanType.toLowerCase().includes(searchtxt.toLowerCase())
     );
   }
-
-  applyForLoan(loan: Loan): void {
-    this.router.navigate(['/loanform', loan.loanId]);
-  }
 }
+
 

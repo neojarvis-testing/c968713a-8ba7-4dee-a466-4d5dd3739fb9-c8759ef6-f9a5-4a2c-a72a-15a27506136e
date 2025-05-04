@@ -4,9 +4,9 @@ export interface LoanApplication
     UserId?:number;
     loanId?:number;
     SubmissionDate:string;
-    LoanStatus:number;
+    LoanStatus?:number;
     FarmLocation:string;
-    FarmAddress:string;
+    FarmerAddress:string;
     FarmSizeInAcres:number;
     FarmPurpose:string;
     File:string;

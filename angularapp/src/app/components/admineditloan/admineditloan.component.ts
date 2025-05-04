@@ -14,7 +14,7 @@ export class AdmineditloanComponent implements OnInit {
   
 
   loan: Loan = {
-    loanId:0,
+    
     loanType: '',
     description: '',
     interestRate: 0,

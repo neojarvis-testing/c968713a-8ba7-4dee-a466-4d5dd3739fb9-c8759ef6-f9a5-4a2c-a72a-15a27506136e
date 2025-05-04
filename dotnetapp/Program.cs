@@ -39,7 +39,15 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("SpecificOriginsPolicy", builder =>
     {
-        builder.WithOrigins("https://8081-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io") // Replace with your front-end origin
+        builder.WithOrigins("https://8081-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io",
+                           "https://8081-ceaeccbebfffaedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-cdebaaabaaceadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-abfbbbdabfccfffadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-cebeddbfbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-dedadddddbafecbafcedadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-dfaadbbbbbadafebfecdebbceacfecbecaeebe.premiumproject.examly.io",
+                           "https://8081-fddafbebadfbfdaaedceffaacaaae.premiumproject.examly.io",
+                           "https://8081-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io") // Replace with your front-end or
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials();
@@ -77,7 +85,16 @@ app.UseAuthorization();
 
 
 app.MapControllers();
-
 app.Run();
 
 
+
+///https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/ Duhita
+ 
+//https://8080-fddafbebadfbfdaaedceffaacaaae.premiumproject.examly.io/  Shreyas
+ 
+//https://8080-afbccbebadfbfdaaedceffaacaaae.premiumproject.examly.io/ vasavi
+ 
+//https://8080-fbdcdabdaeaacbadfbfdaaedceffaacaaae.premiumproject.examly.io/  Aditya
+ 
+ //https://8080-ffbdddabdbdabbadfbfdaaedceffaacaaae.premiumproject.examly.io/  Subham
