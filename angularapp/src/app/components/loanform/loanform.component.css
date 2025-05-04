@@ -1,20 +1,37 @@
-/* General styling for the form container */
 .create-loan-container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background: white;
+   
     border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+      background: rgba(136, 129, 129, 0.2);
+      backdrop-filter: blur(30px);
+      padding: 30px;
+      border-radius: 15px;
+      width: 450px;
+      margin: auto;
+      color: black;
 }
+.image{
+    min-height: 700px;
+    width:1265px;
+    background: url('https://www.shutterstock.com/image-photo/handshake-two-farmer-on-background-600nw-2176760259.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+   
+    }
  
 /* Form Header */
 .create-loan-container h1 {
     text-align: center;
     color: #003366;
     margin-bottom: 20px;
+    font-weight: bold;
     font-size: 24px;
+    position: relative;
 }
  
 /* Input Fields */
@@ -29,12 +46,13 @@ label {
 }
  
 input, button {
-    width: 98%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-size: 14px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none; /* Set font to Times New Roman */
 }
  
 /* Text input field styling - full width */
@@ -46,7 +64,7 @@ input[type="file"] {
  
 /* Submit Button */
 button {
-    background: #003366;
+    background: linear-gradient(135deg, rgb(36, 66, 45), #2ecc71);
     color: white;
     border: none;
     cursor: pointer;
@@ -94,7 +112,7 @@ button:disabled {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
  
-
+ 
 /* OK Button in Modal */
 .ok-button {
     background: #00509e;
