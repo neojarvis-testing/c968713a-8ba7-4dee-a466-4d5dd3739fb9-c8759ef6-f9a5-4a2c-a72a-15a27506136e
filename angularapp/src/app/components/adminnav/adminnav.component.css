@@ -1,25 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
  
 /* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(35deg,#000428, #a92e57, #004e92);
+    /* background: linear-gradient(35deg,#000428, #a92e57, #004e92); */
+    background-image: linear-gradient(40deg,rgb(6, 49, 6),rgb(34, 148, 34),rgb(6, 49, 6));
     padding: 10px 40px; /* Reduced height */
     color: white;
     border-radius: 0; /* Remove rounded edges */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow */
     font-family: "Times New Roman", Times, serif; /* Font change */
-       height: 4rem;
+    height: 4rem;
 }
  
 .logo {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-   margin-bottom: 7px;
-margin-left: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    /* align-items: center; */
 }
  
 .brand-logo {
@@ -27,15 +29,23 @@ margin-left: 10px;
     color: white;
     margin-top: 5px;
     margin-left: 10px;
+    /* align-items: center; */
 }
  
 .navbar-header {
-    display: flex;
-    align-items: first baseline;
-    margin-left: 0;
- 
-   
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: white;
 }
+/* .navbar-title  a{
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: white;
+  } */
  
 .navbar-brand {
     display: flex;
@@ -71,6 +81,10 @@ margin-left: 10px;
 .nav-links a:hover {
     text-decoration: underline;
 }
+ 
+/* .active {
+    font-weight: bold;
+  } */
  
 /* Admin info */
 .admin-info span {

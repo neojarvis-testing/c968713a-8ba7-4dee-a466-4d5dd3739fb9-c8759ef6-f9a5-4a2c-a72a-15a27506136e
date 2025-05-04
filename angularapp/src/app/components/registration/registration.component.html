@@ -1,110 +1,117 @@
-
-
 <app-navbar></app-navbar>
 <body>
-    
-
-<div class="Container">
+  <div class="Container">
     <h1>Registration</h1>
-    <form #registrationForm="ngForm" (ngSubmit)="onRegister()" class="form" >
-    
-        <!-- Username Field -->
-        <label class="form-label">Username</label>
-        <input 
-            class="form-control" 
-            type="text" 
-            id="username" 
-            name="username" 
-            placeholder="Username" 
-            required 
-            [(ngModel)]="registrationData.Username">
-        <div class="error" *ngIf="registrationForm.submitted && !registrationData.Username">
-            Username is required
-        </div>
-    
-        <!-- Email Field -->
-        <label>Email</label>
-        <input 
-            class="form-control" 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="Email" 
-            required 
-            [(ngModel)]="registrationData.Email">
-        <div class="error" *ngIf="registrationForm.submitted && !registrationData.Email">
-            Email is required
-        </div>
-    
-        <!-- Password Field -->
-        <label>Password</label>
-        <input 
-            class="form-control" 
-            type="password" 
-            id="password" 
-            name="password" 
-            placeholder="Password" 
-            required 
-            [(ngModel)]="registrationData.Password">
-        <div class="error" *ngIf="registrationForm.submitted && !registrationData.Password">
-            Password is required
-        </div>
-    
-        <!-- Confirm Password Field -->
-        <label>Confirm Password</label>
-        <input 
-            class="form-control" 
-            type="password" 
-            id="confirmPassword" 
-            name="confirmPassword" 
-            placeholder="Confirm Password" 
-            required 
-            [(ngModel)]="confirmPassword">
-        <div class="error" *ngIf="registrationForm.submitted && confirmPassword === ''">
-            Password do not match.. 
-        </div>
-    
-        <!-- Mobile Number Field -->
-        <label>Mobile Number</label>
-        <input 
-            class="form-control" 
-            type="text" 
-            id="mobile" 
-            name="mobile" 
-            placeholder="Mobile Number" 
-            required 
-            [(ngModel)]="registrationData.MobileNumber">
-        <div class="error" *ngIf="registrationForm.submitted && (!registrationData.MobileNumber || registrationData.MobileNumber.length !== 10)">
-            Mobile number must be 10 digits
-        </div>
-    
-        <!-- Role Field -->
-        <label>Role</label>
-        <select 
-            class="form-control" 
-            id="role" 
-            name="role" 
-            required 
-            [(ngModel)]="registrationData.UserRole">
-            <option value="">Select a role</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-        </select>
+    <form #registrationForm="ngForm" (ngSubmit)="onRegister()" class="form">
+      <!-- Username Field -->
+      <label class="form-label">Username</label>
+      <input
+        class="form-control"
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+        required
+        [(ngModel)]="registrationData.Username">
+      <div class="error" *ngIf="registrationForm.submitted && !registrationData.Username">
+        Username is required
+      </div>
 
-        <div class="error" *ngIf="registrationForm.submitted && !registrationData.UserRole">
-            Role is required
-        </div>
-       <br>
-        <!-- Submit Button -->
-        <div style="text-align: center;">
-            <button 
-                class="btn btn-success" 
-               type="submit" 
-                >
-                Register
-            </button>
-        </div>   
+      <!-- Email Field -->
+      <label>Email</label>
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+        [(ngModel)]="registrationData.Email">
+      <div class="error" *ngIf="registrationForm.submitted && !registrationData.Email">
+        Email is required
+      </div>
+      <div class="error" *ngIf="registrationForm.submitted && !validateEmail()">
+        Invalid email format
+      </div>
+
+      <!-- Password Field -->
+      <label>Password</label>
+      <input
+        class="form-control"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required
+        [(ngModel)]="registrationData.Password"
+        (input)="validatePassword()">
+      <div class="error" *ngIf="registrationForm.submitted && !registrationData.Password">
+        Password is required
+      </div>
+      <div class="error" *ngIf="registrationForm.submitted && !isPasswordStrong">
+        {{ passwordError }}
+      </div>
+
+      <!-- Confirm Password Field -->
+      <label>Confirm Password</label>
+      <input
+        class="form-control"
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        required
+        [(ngModel)]="confirmPassword"
+        (input)="passwordMatch()">
+      <div class="error" *ngIf="registrationForm.submitted && confirmPassword === ''">
+        Password do not match..
+      </div>
+      <div class="error" *ngIf="registrationForm.submitted && !isConfirm">
+        {{ error }}
+      </div>
+
+      <!-- Mobile Number Field -->
+      <label>Mobile Number</label>
+      <input
+        class="form-control"
+        type="text"
+        id="mobile"
+        name="mobile"
+        placeholder="Mobile Number"
+        required
+        [(ngModel)]="registrationData.MobileNumber">
+      <div class="error" *ngIf="registrationForm.submitted && (!registrationData.MobileNumber || registrationData.MobileNumber.length !== 10)">
+        Mobile number must be 10 digits
+      </div>
+      <div class="error" *ngIf="registrationForm.submitted && !validateMobileNumber()">
+        Invalid mobile number format
+      </div>
+
+      <!-- Role Field -->
+      <label>Role</label>
+      <select
+        class="form-control"
+        id="role"
+        name="role"
+        required
+        [(ngModel)]="registrationData.UserRole">
+        <option value="">Select a role</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+      <div class="error" *ngIf="registrationForm.submitted && !registrationData.UserRole">
+        Role is required
+      </div>
+      <br>
+      <!-- Submit Button -->
+      <div style="text-align: center;">
+        <button
+          class="btn btn-success"
+          type="submit">
+          Register
+        </button>
+      </div>
     </form>
-    </div>
+  </div>
 </body>
 

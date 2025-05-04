@@ -56,6 +56,7 @@ import { NgForm } from '@angular/forms';
 import { LoanService } from 'src/app/services/loan.service';
 import { Loan } from 'src/app/models/loan.model';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createloan',
@@ -64,6 +65,7 @@ import Swal from 'sweetalert2';
 })
 export class CreateloanComponent implements OnInit {
   newLoan:Loan={
+    loanapplication:null,
     loanId:0,
     loanType:'',
     description:'',
@@ -76,7 +78,7 @@ export class CreateloanComponent implements OnInit {
   message: string = '';
   showModal: boolean = false;
 
-  constructor(private loanService: LoanService) {}
+  constructor(private loanService: LoanService,private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -92,6 +94,7 @@ export class CreateloanComponent implements OnInit {
       response => {
         console.log('Loan added successfully:', response);
         this.showSuccessMessage('Loan added successfully'); // Show success message
+   this.router.navigate(['/viewloan']);
         this.message = '';  // Clear the message
         form.resetForm();
       },

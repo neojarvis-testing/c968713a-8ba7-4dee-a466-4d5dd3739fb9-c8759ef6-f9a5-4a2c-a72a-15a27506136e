@@ -64,7 +64,8 @@ export class UserappliedloanComponent implements OnInit {
   }
 
   confirmDelete(loan: LoanApplication): void {
-    if (loan.LoanStatus === 1) {
+    localStorage.setItem('loan',JSON.stringify(loan));
+    if (loan.loanStatus === 1) {
       console.error('Cannot delete an approved loan.');
       return;
     }
@@ -73,8 +74,16 @@ export class UserappliedloanComponent implements OnInit {
   }
 
   deleteLoan(): void {
+
     if (this.loanToDelete) {
-      this.loanService.deleteLoan(this.loanToDelete.loanId!).subscribe({
+       
+      const storedloan = JSON.parse(localStorage.getItem('loan') || '{}');
+      console.log('Retrieved loan ID:', storedloan.loanId);
+     console.log("Getting Id as=>",storedloan.loanId);
+     const id=storedloan.loanId;
+
+
+      this.loanService.deleteLoan(id).subscribe({
         next: () => {
           this.loanApplications = this.loanApplications.filter(loan => loan !== this.loanToDelete);
           this.filteredLoans = this.loanApplications; // Update the filtered loans as well

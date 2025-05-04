@@ -14,7 +14,7 @@ export class AdmineditloanComponent implements OnInit {
   
 
   loan: Loan = {
-    
+    loanapplication:null,
     loanType: '',
     description: '',
     interestRate: 0,
@@ -30,6 +30,7 @@ export class AdmineditloanComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private service: LoanService) { }
 
   ngOnInit(): void {
+  
     // Fetch the loan data based on the ID from the route parameters
     this.loanId = +this.route.snapshot.paramMap.get('id');
     this.getLoanById();

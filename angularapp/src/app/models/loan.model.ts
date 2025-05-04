@@ -1,3 +1,4 @@
+import { LoanApplication } from "./loanapplication.model";
 
 export interface Loan{
     loanId?:number;
@@ -8,5 +9,5 @@ export interface Loan{
     repaymentTenure:number;
     eligibility:string;
     documentsRequired:string;
+    loanapplication:LoanApplication;
 }
-

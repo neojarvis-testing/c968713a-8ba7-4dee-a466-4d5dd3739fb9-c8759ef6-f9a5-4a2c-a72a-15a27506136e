@@ -25,8 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { RouterModule } from '@angular/router';
- 
- 
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,15 +51,19 @@ import { RouterModule } from '@angular/router';
     ViewloanComponent,
     HomeComponent,
     AdminhomeComponent,
-    UserhomeComponent
- 
+    UserhomeComponent,
+    BarChartComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+   
     ReactiveFormsModule,
     HttpClientModule,
+    
+   
     RouterModule.forRoot([])
  
   ],

@@ -15,11 +15,12 @@ namespace dotnetapp.Models
         public int LoanApplicationId{get;set;}
         public int UserId{get;set;}
         [ForeignKey("UserId")]
-        [JsonIgnore]
+        
         public User? User{get;set;}
         public int LoanId{get;set;}
         [ForeignKey("LoadId")]
-        [JsonIgnore]
+        
+         [JsonIgnore]
         public Loan? Loan{get;set;}
         public DateTime SubmissionDate{get;set;}
         public int LoanStatus{get;set;}
