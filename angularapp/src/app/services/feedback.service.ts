@@ -10,10 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class FeedbackService {
 
- 
   private apiUrl = 'https://8080-afbccbebadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
- 
-
   constructor(private http: HttpClient, private authService: AuthService) {}
  
   private getHeaders(): HttpHeaders {

@@ -16,7 +16,7 @@
       <div class="error" *ngIf="registrationForm.submitted && !registrationData.Username">
         Username is required
       </div>
-
+ 
       <!-- Email Field -->
       <label>Email</label>
       <input
@@ -33,7 +33,7 @@
       <div class="error" *ngIf="registrationForm.submitted && !validateEmail()">
         Invalid email format
       </div>
-
+ 
       <!-- Password Field -->
       <label>Password</label>
       <input
@@ -51,7 +51,7 @@
       <div class="error" *ngIf="registrationForm.submitted && !isPasswordStrong">
         {{ passwordError }}
       </div>
-
+ 
       <!-- Confirm Password Field -->
       <label>Confirm Password</label>
       <input
@@ -69,7 +69,7 @@
       <div class="error" *ngIf="registrationForm.submitted && !isConfirm">
         {{ error }}
       </div>
-
+ 
       <!-- Mobile Number Field -->
       <label>Mobile Number</label>
       <input
@@ -86,7 +86,7 @@
       <div class="error" *ngIf="registrationForm.submitted && !validateMobileNumber()">
         Invalid mobile number format
       </div>
-
+ 
       <!-- Role Field -->
       <label>Role</label>
       <select

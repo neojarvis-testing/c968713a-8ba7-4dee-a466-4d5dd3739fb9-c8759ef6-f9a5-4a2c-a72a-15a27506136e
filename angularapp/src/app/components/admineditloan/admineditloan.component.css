@@ -1,81 +1,101 @@
-/* General styling for the form container */
 .edit-loan-container {
     max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 450px;
+    margin: auto;
+    color: white;
+ 
 }
-
+.image{
+    height: 950px;
+    width:1265px;
+    background: url('https://t3.ftcdn.net/jpg/12/47/65/74/240_F_1247657474_AChExzUjhbVFuBvkmAz7tqIVgxoYurVf.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+ 
+    }
+ 
 /* Form Header */
 .edit-loan-container h1 {
     text-align: center;
-    color: #003366;
+    color: white;
     margin-bottom: 20px;
+    font-weight: bold;
     font-size: 24px;
+    position: relative;
 }
-
+ 
 /* Input Fields */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
     margin-right: 20px;
 }
-
+ 
 label {
     margin-bottom: 5px;
     font-weight: bold;
 }
-
+ 
 input, button {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-size: 14px;
+   
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none; /* Set font to Times New Roman */
 }
-
+ 
 /* Submit Button */
 button {
-    background: #003366;
+    background: linear-gradient(135deg, rgb(36, 66, 45), #2ecc71);
     color: white;
     border: none;
     cursor: pointer;
     transition: background 0.3s ease;
 }
-
+ 
 button:hover {
     background: #00509e;
 }
-
+ 
 button:disabled {
     background: #aaa;
     cursor: not-allowed;
 }
-
+ 
 /* Error messages */
 .error {
     color: red;
     font-size: 12px;
     margin-top: 5px;
 }
-
+ 
 /* Success message */
 .success {
     color: green;
     font-size: 12px;
     margin-top: 5px;
 }
-
+ 
 /* Center the validation message */
 .form-validation-message {
     text-align: center;
     margin-top: 10px;
 }
-
+ 
 /* Modal styles */
 .modal {
     display: block;
@@ -88,7 +108,7 @@ button:disabled {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
 }
-
+ 
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -100,10 +120,10 @@ button:disabled {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
+ 
+ 
+ 
+ 
 /* OK Button in Modal */
 .ok-button {
     background-color: #003366;  /* Dark blue background */
@@ -115,15 +135,15 @@ button:disabled {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+ 
 .ok-button:hover {
     background-color: #00509e;  /* Lighter blue on hover */
 }
-
+ 
   .error-message {
     color: red; /* Red color for the error message */
     text-align: center; /* Center the text */
     margin-top: 10px; /* Add some space above the message */
     font-weight: bold; /* Make the text bold */
   }
-  
+ 
