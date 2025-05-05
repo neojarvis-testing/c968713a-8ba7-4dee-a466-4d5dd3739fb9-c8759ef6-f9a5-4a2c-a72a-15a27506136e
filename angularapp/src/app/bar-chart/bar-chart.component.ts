@@ -11,7 +11,7 @@ import Chart from 'chart.js';
 export class BarChartComponent implements OnInit {
   ngOnInit(): void {
     this.createBarChart();
-    this.createHistogramChart();
+    this.createLineChart();
   }
 
   createBarChart() {
@@ -22,7 +22,7 @@ export class BarChartComponent implements OnInit {
         labels: ['Loans Applied', 'Reviews', 'User Feedbacks', 'Loans Available'],
         datasets: [{
           label: 'Counts',
-          data: [1200, 850, 500, 300],
+          data: [25, 30, 70, 40],
           backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e'],
           borderWidth: 1
         }]
@@ -34,22 +34,27 @@ export class BarChartComponent implements OnInit {
     });
   }
 
-  createHistogramChart() {
-    const ctx = document.getElementById('histogramChart') as HTMLCanvasElement;
+  createLineChart() {
+    const ctx = document.getElementById('lineChart') as HTMLCanvasElement;
     new Chart(ctx, {
-      type: 'bar', // Histogram charts are essentially bar charts
+      type: 'line',
       data: {
-        labels: ['Low', 'Medium', 'High', 'Very High'],
+        labels: ['Loans Applied', 'Reviews', 'User Feedbacks', 'Loans Available'],
         datasets: [{
-          label: 'Risk Levels',
-          data: [700, 1000, 900, 1200],
-          backgroundColor: ['#d9534f', '#f0ad4e', '#5bc0de', '#5cb85c'],
-          borderWidth: 1
+          label: 'Counts Trend',
+          data: [25, 30, 70, 40], // Same data as bar chart
+          borderColor: '#4e73df',
+          backgroundColor: 'rgba(78, 115, 223, 0.2)',
+          borderWidth: 2,
+          tension: 0.3 // Adds a smooth curve effect
         }]
       },
       options: {
         responsive: true,
-        plugins: { legend: { display: true } }
+        plugins: { legend: { display: true } },
+        scales: {
+          y: { beginAtZero: true }
+        }
       }
     });
   }

@@ -23,6 +23,10 @@
         />
         <i class="fa" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePasswordVisibility()"></i>
       </div>
+
+    </div>
+    <div class="form-group">
+      <input type="password" [(ngModel)]="credentials.adminSecretKey" placeholder="Admin Key Required.." name="adminSecretKey" *ngIf="credentials.email.includes('admin')" />
     </div>
     <button class="btn btn-success" type="submit" >Login</button>
   </form>

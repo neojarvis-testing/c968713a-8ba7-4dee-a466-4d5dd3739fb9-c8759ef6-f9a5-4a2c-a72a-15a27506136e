@@ -13,10 +13,10 @@
 }
 
 .view-feedback h1 {
-    color:#003366;
+  font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     margin: 20px 0;
-    color: #333;
+    color: #f7f3f3;
 }
 
 /* Style the underline div */
