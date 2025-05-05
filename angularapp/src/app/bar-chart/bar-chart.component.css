@@ -1,0 +1,41 @@
+/* Chart Container Styling */
+.chart-container {
+    text-align: center;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 85%;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.chart-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styling */
+h2 {
+    font-size: 26px;
+    color: #222;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+/* Canvas for Charts */
+canvas {
+    max-width: 650px;
+    margin-bottom: 25px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin: auto;
+    
+}
+
+canvas:hover {
+    transform: scale(1.02);
+}

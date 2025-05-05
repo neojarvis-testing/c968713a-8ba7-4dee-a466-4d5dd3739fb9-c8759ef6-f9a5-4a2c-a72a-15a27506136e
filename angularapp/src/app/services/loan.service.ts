@@ -14,9 +14,7 @@ import { AuthService } from './auth.service';
 
 
 export class LoanService {
-
   private apiUrl = 'https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
-
 
 
   constructor(private http: HttpClient, private authService: AuthService) {}
@@ -68,6 +66,11 @@ export class LoanService {
 
   updateLoanStatus(id: number, loanApplication: LoanApplication): Observable<LoanApplication> {
     return this.http.put<LoanApplication>(`${this.apiUrl}/loan-application/${id}`, loanApplication);
+  }
+
+
+  removeLoanReferences(loanId: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/loan-application/remove-loan-references/${loanId}`, {}, { headers: this.getHeaders() });
   }
 }
 

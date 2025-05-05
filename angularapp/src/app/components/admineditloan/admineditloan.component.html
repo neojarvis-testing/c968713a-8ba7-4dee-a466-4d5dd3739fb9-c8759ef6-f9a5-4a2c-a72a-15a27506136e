@@ -10,7 +10,7 @@
         <div *ngIf="editLoanForm.controls.LoanType?.errors?.required" class="error">Loan Type is required</div>
       </div>
     </div>
-
+ 
     <div class="form-group">
       <label for="Description">Description</label>
       <input class="form-control" type="text" id="Description" name="Description" [(ngModel)]="loan.description" required>
@@ -18,7 +18,7 @@
         <div *ngIf="editLoanForm.controls.Description?.errors?.required" class="error">Description is required</div>
       </div>
     </div>
-
+ 
     <div class="form-group">
       <label for="InterestRate">Interest Rate</label>
       <input class="form-control" type="number" id="InterestRate" name="InterestRate" [(ngModel)]="loan.interestRate" required>
@@ -26,7 +26,7 @@
         <div *ngIf="editLoanForm.controls.InterestRate?.errors?.required" class="error">Interest Rate is required</div>
       </div>
     </div>
-
+ 
     <div class="form-group">
       <label for="MaximumAmount">Maximum Amount</label>
       <input class="form-control" type="number" id="MaximumAmount" name="MaximumAmount" [(ngModel)]="loan.maximumAmount" required>
@@ -34,7 +34,7 @@
         <div *ngIf="editLoanForm.controls.MaximumAmount?.errors?.required" class="error">Maximum Amount is required</div>
       </div>
     </div>
-
+ 
     <div class="form-group">
       <label for="RepaymentTenure">Repayment Tenure</label>
       <input class="form-control" type="number" id="RepaymentTenure" name="RepaymentTenure" [(ngModel)]="loan.repaymentTenure" required>
@@ -42,7 +42,7 @@
         <div *ngIf="editLoanForm.controls.RepaymentTenure?.errors?.required" class="error">Repayment Tenure is required</div>
       </div>
     </div>
-
+ 
     <div class="form-group">
       <label for="Eligibility">Eligibility</label>
       <input class="form-control" type="text" id="Eligibility" name="Eligibility" [(ngModel)]="loan.eligibility" required>
@@ -50,7 +50,7 @@
         <div *ngIf="editLoanForm.controls.Eligibility?.errors?.required" class="error">Eligibility is required</div>
       </div>
     </div>
-
+ 
     <div class="form-group">
       <label for="DocumentsRequired">Documents Required</label>
       <input class="form-control" type="text" id="DocumentsRequired" name="DocumentsRequired" [(ngModel)]="loan.documentsRequired" required>
@@ -58,19 +58,19 @@
         <div *ngIf="editLoanForm.controls.DocumentsRequired?.errors?.required" class="error">Documents Required is required</div>
       </div>
     </div>
-
+ 
      <div style="text-align: center;">
     <button type="submit">Update Loan</button>
     <br><br>
     <button type="button" (click)="goBack()">Back</button>
    </div>
   </form>
-
+ 
   <!-- Display error message -->
   <div *ngIf="message" class="error-message">
     {{ message }}
   </div>
-
+ 
   <!-- Modal -->
   <div *ngIf="showModal" class="modal">
     <div class="modal-content">
@@ -81,3 +81,4 @@
   </div>
 </div>
 </div>
+ 

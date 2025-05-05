@@ -8,17 +8,17 @@
  
   <div class="search-container">
     <label for="search"> </label>
-    <input type="text" id="search" name="search" placeholder="Search here..." (input)="searchByLoanName($event.target.value)">
+    <input type="text" id="search" name="search" placeholder="Search by Loan Name..." (input)="searchByLoanName($event.target.value)">
   </div>
  
   <table>
     <thead>
       <tr>
-        <th>S.No</th>
+        <th>Loan ID</th>
         <th>Loan Name</th>
         <th>Submission Date</th>
         <th>Status</th>
-        <th>Action</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -26,13 +26,13 @@
         <td colspan="5" class="no-records">Oops! No records found</td>
       </tr>
       <tr *ngFor="let loan of filteredLoans; let i = index">
-        <td>{{ i + 1 }}</td>
+        <td>{{loan.loanId}} </td>
         <td>{{ loanDetails[loan.loanId]?.loanType || 'N/A' }}</td>
         <td>{{ loan.submissionDate | date:'mediumDate' }}</td>
         <td>
           {{ loan.loanStatus === 0 ? 'Pending' : (loan.loanStatus === 1 ? 'Approved' : (loan.loanStatus === 2 ? 'Rejected' : 'Unknown')) }}
         </td>
-        <td><button (click)="confirmDelete(loan)" [disabled]="loan.loanStatus === 1 || loan.loanStatus==2">Delete</button></td>
+        
       </tr>
     </tbody>
   </table>

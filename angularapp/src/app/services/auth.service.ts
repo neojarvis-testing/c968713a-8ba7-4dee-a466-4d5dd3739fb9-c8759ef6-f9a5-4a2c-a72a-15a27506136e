@@ -11,11 +11,7 @@ export class AuthService {
 
   // private apiUrl = 'https://8080-baecbebeaafaffbefadcceffaacaaae.premiumproject.examly.io/api';
 
-
   private apiUrl = 'https://8080-ceeabaaafcbadfbfdaaedceffaacaaae.premiumproject.examly.io/api';
-
-
-
 
   private currentUserRole = new BehaviorSubject<string | null>(null);
 

@@ -1,9 +1,8 @@
-/* General styling for the form container */
 .create-loan-container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    
+   
     border: 1px solid #ddd;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
@@ -113,7 +112,7 @@ button:disabled {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
  
-
+ 
 /* OK Button in Modal */
 .ok-button {
     background: #00509e;
