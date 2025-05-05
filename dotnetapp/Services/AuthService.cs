@@ -43,9 +43,9 @@ namespace dotnetapp.Services
         return (400, "Invalid Email or Password");
             
             var token = GenerateToken(user);
-            Console.WriteLine(token);
-           return (200, JsonSerializer.Serialize(new { token ,  user.UserRole }));
+    
 
+           return (200, JsonSerializer.Serialize(new { token ,  user.UserRole }));// JsonSerializer.Serialize just converts the object into Json formatted string..
 }
 
 
@@ -60,7 +60,7 @@ namespace dotnetapp.Services
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256); //Encrypting the secrect key using HMAC 256 algo..
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
