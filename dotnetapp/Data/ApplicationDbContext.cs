@@ -24,13 +24,13 @@ namespace dotnetapp.Data
                 .HasOne(la => la.User)
                 .WithMany(u => u.LoanApplications)
                 .HasForeignKey(la => la.UserId);
-                // .OnDelete(DeleteBehavior.Cascade);
+                
  
             modelBuilder.Entity<LoanApplication>()
                 .HasOne(la => la.Loan)
                 .WithMany(l => l.LoanApplications)
                 .HasForeignKey(la => la.LoanId);
-                // .OnDelete(DeleteBehavior.Cascade);
+               
  
             modelBuilder.Entity<Feedback>()
                 .HasOne(fb => fb.User)

@@ -130,7 +130,7 @@ export class RequestedloanComponent implements OnInit {
       <p><strong>Loan Application ID:</strong> ${loanApplication?.loanApplicationId ?? 'Not Available'}</p>
         <p ><strong>Farm Purpose:</strong> ${loanApplication.farmPurpose?? 'Unknown'}</p>
         <p><strong>Farmer Address:</strong> ${loanApplication?.farmerAddress}</p>
-        <p><strong>Farm in Acares:</strong> ${loanApplication?.farmSizeInAcres}</p>
+        <p><strong>Farm in Acres:</strong> ${loanApplication?.farmSizeInAcres}</p>
         <p><strong>loanApplication Date :</strong> ${formattedDate}</p>
       </div>
     `,

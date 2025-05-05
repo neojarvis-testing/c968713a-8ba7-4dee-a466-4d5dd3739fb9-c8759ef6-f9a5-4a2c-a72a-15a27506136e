@@ -53,12 +53,13 @@ export class RegistrationComponent implements OnInit {
       this.error = '';
     }
   }
- 
-  validateEmail() {
+  
+  validateEmail(): boolean {
     const email = this.registrationData.Email;
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[^\s@]+@gmail\.com$/; // Ensures the domain is exactly "gmail.com"
     return regex.test(email);
   }
+  
  
  
     validateMobileNumber() {
@@ -69,6 +70,17 @@ export class RegistrationComponent implements OnInit {
    
  
   onRegister() {
+
+    if (!this.registrationData.Username || 
+      !this.registrationData.Email || 
+      !this.registrationData.Password || 
+      !this.registrationData.MobileNumber || 
+      !this.registrationData.UserRole) {
+    alert("All fields are required.");
+    return;
+  }
+
+
     if (!this.validateEmail()) {
       alert('Invalid email format');
       return;
