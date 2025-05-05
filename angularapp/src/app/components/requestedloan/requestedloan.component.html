@@ -18,7 +18,7 @@
     <thead>
       <tr>
         <th>S.No</th>
-        <th>Loan ID</th>
+        
         <th>Loan Type</th>
         <th>Farm Location</th>
         <th>Submission Date</th>
@@ -33,7 +33,7 @@
       </tr>
       <tr *ngFor="let loanRequest of filteredLoanRequests; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ loans[loanRequest.loanId]?.loanId || 'N/A' }}</td>
+       
         <td>{{ loans[loanRequest.loanId]?.loanType || 'N/A' }}</td>
         <td>{{ loanRequest.farmLocation }}</td>
         <td>{{ loanRequest.submissionDate | date:'mediumDate' }}</td>

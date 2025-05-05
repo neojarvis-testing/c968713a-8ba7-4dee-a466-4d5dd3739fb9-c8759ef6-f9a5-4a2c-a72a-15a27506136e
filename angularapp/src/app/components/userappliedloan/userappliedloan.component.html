@@ -14,7 +14,7 @@
   <table>
     <thead>
       <tr>
-        <th>Loan ID</th>
+        <th>S No</th>
         <th>Loan Name</th>
         <th>Submission Date</th>
         <th>Status</th>
@@ -26,7 +26,7 @@
         <td colspan="5" class="no-records">Oops! No records found</td>
       </tr>
       <tr *ngFor="let loan of filteredLoans; let i = index">
-        <td>{{loan.loanId}} </td>
+        <td>{{i+1}} </td>
         <td>{{ loanDetails[loan.loanId]?.loanType || 'N/A' }}</td>
         <td>{{ loan.submissionDate | date:'mediumDate' }}</td>
         <td>

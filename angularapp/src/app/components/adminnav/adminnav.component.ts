@@ -18,11 +18,6 @@ export class AdminnavComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private feedbackService: FeedbackService) {}
 
-
- 
-  
- 
-
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('userId')!, 10); 
     this.getUsername();
@@ -43,11 +38,6 @@ export class AdminnavComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
-
-  
-
- 
   // Add dropdown toggle functionality
   toggleDropdown(event: Event): void {
     event.preventDefault();

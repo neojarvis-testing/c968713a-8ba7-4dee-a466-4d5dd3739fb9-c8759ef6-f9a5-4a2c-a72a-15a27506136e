@@ -124,8 +124,8 @@ export class CreateloanComponent implements OnInit {
       this.showErrorMessage('Interest Rate must be less than 20');
       return false;
     }
-    if (maximumAmount && (maximumAmount < 30000 || maximumAmount > 1500000)) {
-      this.showErrorMessage('Maximum Amount must be greater than 30000 and less than 1500000');
+    if (maximumAmount && (maximumAmount < 100000 || maximumAmount > 1500000)) {
+      this.showErrorMessage('Maximum Amount must be greater than 100000 and less than 1500000');
       return false;
     }
     if (repaymentTenure && (repaymentTenure < 1 || repaymentTenure > 35)) {
