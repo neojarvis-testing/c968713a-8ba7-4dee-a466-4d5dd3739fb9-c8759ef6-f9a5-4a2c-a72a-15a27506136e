@@ -1,5 +1,3 @@
-
-
 import { Component, Injectable, OnInit } from '@angular/core';
  // Import ActivatedRoute for fetching URL parameters
 import { LoanService } from 'src/app/services/loan.service';
@@ -38,8 +36,8 @@ export class LoanformComponent implements OnInit {
  
   constructor(
     private loanService: LoanService,
-     private route: ActivatedRoute,  // Explicit injection
-      private router: Router,
+    private route: ActivatedRoute,  // Explicit injection
+    private router: Router
    
  ) { }
   

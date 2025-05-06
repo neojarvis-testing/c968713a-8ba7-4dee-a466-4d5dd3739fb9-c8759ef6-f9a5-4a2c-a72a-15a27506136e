@@ -17,10 +17,10 @@ export class AdminnavComponent implements OnInit {
   role: string = this.isAdmin ? 'Admin' : 'User';
   userId: number; // Ensure you have userId
 
- 
+
   constructor(private authService: AuthService, private router: Router, private feedbackService: FeedbackService) {}
- 
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('userId')!, 10); 
     this.getUsername();
   }
@@ -43,9 +43,12 @@ export class AdminnavComponent implements OnInit {
   }
 
 
+
   
 
  
+
+
 
   // Add dropdown toggle functionality
   toggleDropdown(event: Event): void {

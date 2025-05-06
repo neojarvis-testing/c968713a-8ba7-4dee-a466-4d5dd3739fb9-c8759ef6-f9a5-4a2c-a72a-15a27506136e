@@ -21,7 +21,7 @@ namespace dotnetapp.Controllers
         }
  
         [HttpGet]
-        // [Authorize(Roles="Admin")]
+      
         public async Task<ActionResult<IEnumerable<Loan>>> GetAllLoans()
         {
             try
@@ -37,7 +37,7 @@ namespace dotnetapp.Controllers
  
  
         [HttpGet("{loanId}")]
-        // [Authorize(Roles="Admin, User")]
+      
         public async Task<ActionResult> GetLoanById(int loanId)
         {
             try
@@ -57,7 +57,7 @@ namespace dotnetapp.Controllers
  
  
         [HttpPost]
-        // [Authorize(Roles="Admin")]
+     
         public async Task<ActionResult> AddLoan([FromBody] Loan loan)
         {
             try
@@ -78,7 +78,7 @@ namespace dotnetapp.Controllers
  
  
         [HttpPut("{loanId}")]
-        // [Authorize(Roles="Admin")]
+        
         public async Task<ActionResult> UpdateLoan(int loanId, [FromBody] Loan loan)
         {
             try
@@ -102,7 +102,7 @@ namespace dotnetapp.Controllers
  
  
         [HttpDelete("{loanId}")]
-        // [Authorize(Roles="Admin")]
+     
         public async Task<ActionResult> DeleteLoan(int loanId)
         {
             try

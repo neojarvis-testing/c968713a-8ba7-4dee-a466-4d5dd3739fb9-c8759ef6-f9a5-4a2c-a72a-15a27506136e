@@ -19,10 +19,6 @@ export class LoanService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  
-
- 
-
   private getHeaders(): HttpHeaders {
     const token = this.authService.getToken();
     return new HttpHeaders({ 'Authorization': `Bearer ${token}` });

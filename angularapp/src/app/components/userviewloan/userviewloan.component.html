@@ -12,7 +12,7 @@
   <table *ngIf="filteredLoans.length > 0; else noRecords" class="table-content">
     <thead>
       <tr>
-        <th>Loan ID</th>
+        <th>S No.</th>
         <th>Loan Type</th>
         <th>Loan Description</th>
         <th class="td-right">Interest Rate</th>
@@ -25,7 +25,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let loan of filteredLoans; let i = index">
-        <td>{{ loan.loanId }}</td>
+        <td>{{ i + 1 }}</td>
         <td>{{ loan.loanType }}</td>
         <td>{{ loan.description }}</td>
         <td>{{ loan.interestRate }}</td>
